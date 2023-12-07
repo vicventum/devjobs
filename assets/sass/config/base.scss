@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use './settings';
+@use './font-style-mapping.scss' as fs;
+@use '../../utils/scrollbar.scss';
+// @use 'vuetify/styles';
+
+body {
+	// font-size: fs.$body-1-size;
+	// font-family: fs.$body-1-font-family;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	@extend .scrollbar;
+}
+
+h1 {
+	// @extend .text-h1;
+	font-size: fs.$h1-size;
+	font-weight: fs.$h1-weight;
+	line-height: fs.$h1-line-height;
+	letter-spacing: fs.$h1-letter-spacing;
+	font-family: fs.$h1-font-family;
+	text-transform: fs.$h1-text-transform;
+}
+h2 {
+	font-size: fs.$h2-size;
+	font-weight: fs.$h2-weight;
+	line-height: fs.$h2-line-height;
+	letter-spacing: fs.$h2-letter-spacing;
+	font-family: fs.$h2-font-family;
+	text-transform: fs.$h2-text-transform;
+}
+h3 {
+	font-size: fs.$h3-size;
+	font-weight: fs.$h3-weight;
+	line-height: fs.$h3-line-height;
+	letter-spacing: fs.$h3-letter-spacing;
+	font-family: fs.$h3-font-family;
+	text-transform: fs.$h3-text-transform;
+}
+h4 {
+	font-size: fs.$h4-size;
+	font-weight: fs.$h4-weight;
+	line-height: fs.$h4-line-height;
+	letter-spacing: fs.$h4-letter-spacing;
+	font-family: fs.$h4-font-family;
+	text-transform: fs.$h4-text-transform;
+}
+
+p {
+	font-size: fs.$body-1-size;
+	font-weight: fs.$body-1-weight;
+	line-height: fs.$body-1-line-height;
+	letter-spacing: fs.$body-1-letter-spacing;
+	font-family: fs.$body-1-font-family;
+	text-transform: fs.$body-1-text-transform;
+}

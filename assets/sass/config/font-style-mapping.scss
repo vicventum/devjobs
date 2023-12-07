@@ -1,0 +1,121 @@
+@use './settings';
+
+$h1-size: map-get(map-get(settings.$custom-typography, 'h1'), 'size');
+$h1-weight: map-get(map-get(settings.$custom-typography, 'h1'), 'weight');
+$h1-line-height: map-get(
+	map-get(settings.$custom-typography, 'h1'),
+	'line-height'
+);
+$h1-letter-spacing: map-get(
+	map-get(settings.$custom-typography, 'h1'),
+	'letter-spacing'
+);
+$h1-font-family: map-get(
+	map-get(settings.$custom-typography, 'h1'),
+	'font-family'
+);
+$h1-text-transform: map-get(
+	map-get(settings.$custom-typography, 'h1'),
+	'text-transform'
+);
+
+$h2-size: map-get(map-get(settings.$custom-typography, 'h2'), 'size');
+$h2-weight: map-get(map-get(settings.$custom-typography, 'h2'), 'weight');
+$h2-line-height: map-get(
+	map-get(settings.$custom-typography, 'h2'),
+	'line-height'
+);
+$h2-letter-spacing: map-get(
+	map-get(settings.$custom-typography, 'h2'),
+	'letter-spacing'
+);
+$h2-font-family: map-get(
+	map-get(settings.$custom-typography, 'h2'),
+	'font-family'
+);
+$h2-text-transform: map-get(
+	map-get(settings.$custom-typography, 'h2'),
+	'text-transform'
+);
+
+$h3-size: map-get(map-get(settings.$custom-typography, 'h3'), 'size');
+$h3-weight: map-get(map-get(settings.$custom-typography, 'h3'), 'weight');
+$h3-line-height: map-get(
+	map-get(settings.$custom-typography, 'h3'),
+	'line-height'
+);
+$h3-letter-spacing: map-get(
+	map-get(settings.$custom-typography, 'h3'),
+	'letter-spacing'
+);
+$h3-font-family: map-get(
+	map-get(settings.$custom-typography, 'h3'),
+	'font-family'
+);
+$h3-text-transform: map-get(
+	map-get(settings.$custom-typography, 'h3'),
+	'text-transform'
+);
+
+$h4-size: map-get(map-get(settings.$custom-typography, 'h4'), 'size');
+$h4-weight: map-get(map-get(settings.$custom-typography, 'h4'), 'weight');
+$h4-line-height: map-get(
+	map-get(settings.$custom-typography, 'h4'),
+	'line-height'
+);
+$h4-letter-spacing: map-get(
+	map-get(settings.$custom-typography, 'h4'),
+	'letter-spacing'
+);
+$h4-font-family: map-get(
+	map-get(settings.$custom-typography, 'h4'),
+	'font-family'
+);
+$h4-text-transform: map-get(
+	map-get(settings.$custom-typography, 'h4'),
+	'text-transform'
+);
+
+$body-1-size: map-get(map-get(settings.$custom-typography, 'body-1'), 'size');
+$body-1-weight: map-get(
+	map-get(settings.$custom-typography, 'body-1'),
+	'weight'
+);
+$body-1-line-height: map-get(
+	map-get(settings.$custom-typography, 'body-1'),
+	'line-height'
+);
+$body-1-letter-spacing: map-get(
+	map-get(settings.$custom-typography, 'body-1'),
+	'letter-spacing'
+);
+$body-1-font-family: map-get(
+	map-get(settings.$custom-typography, 'body-1'),
+	'font-family'
+);
+$body-1-text-transform: map-get(
+	map-get(settings.$custom-typography, 'body-1'),
+	'text-transform'
+);
+
+$button-size: map-get(map-get(settings.$custom-typography, 'button'), 'size');
+$button-weight: map-get(
+	map-get(settings.$custom-typography, 'button'),
+	'weight'
+);
+$button-line-height: map-get(
+	map-get(settings.$custom-typography, 'button'),
+	'line-height'
+);
+$button-letter-spacing: map-get(
+	map-get(settings.$custom-typography, 'button'),
+	'letter-spacing'
+);
+$button-font-family: map-get(
+	map-get(settings.$custom-typography, 'button'),
+	'font-family'
+);
+$button-text-transform: map-get(
+	map-get(settings.$custom-typography, 'button'),
+	'text-transform'
+);

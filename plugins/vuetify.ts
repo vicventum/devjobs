@@ -1,5 +1,5 @@
 // import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
+import { createVuetify, type ThemeDefinition } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import {
 	mdiThemeLightDark,
@@ -16,14 +16,19 @@ import {
 // import { defineNuxtPlugin } from '#app'
 
 // Crea nuevo tema personalizado
-// const myTheme = {
-// 	dark: true,
-// 	colors: {
-// 		primary: '#ff33a4',
-// 		// background: '#7e22ce',
-// 		// surface: '#7e22ce',
-// 	},
-// }
+const lightTheme: ThemeDefinition = {
+	dark: false,
+	colors: {
+		primary: '#5964E0',
+		'primary-lighten-1': '#939BF4',
+		dark: '#121721',
+		'dark-lighten-1': '#19292D',
+		light: '#FAFAFA',
+		'light-darken-1': '#F4F6F8',
+		'light-darken-2': '#9DAEC2',
+		'light-darken-3': '#6E8098',
+	},
+}
 
 export const vuetify = createVuetify({
 	// your config will come here
@@ -60,10 +65,15 @@ export const vuetify = createVuetify({
 	},
 	// Configura los temas
 	theme: {
-		defaultTheme: 'dark',
-		// themes: {
-		// 	myTheme
-		// }
+		defaultTheme: 'lightTheme',
+		// variations: {
+		// 	colors: ['primary'],
+		// 	lighten: 1,
+		// 	darken: 1,
+		// },
+		themes: {
+			lightTheme,
+		},
 	},
 	// Configura los íconos personalizados
 	// icons: {
@@ -78,6 +88,7 @@ export const vuetify = createVuetify({
 	// 	VDataTable
 	// }
 })
+
 export default defineNuxtPlugin((nuxtApp) => {
 	nuxtApp.vueApp.use(vuetify)
 })

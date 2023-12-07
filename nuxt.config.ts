@@ -2,7 +2,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: false },
-	css: ['vuetify/styles'],
+	css: ['vuetify/styles', '~/assets/sass/main.scss'],
 	build: {
 		transpile: ['vuetify'],
 	},
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 	// Configuración de Google font
 	googleFonts: {
 		families: {
-			Poppins: [100, 200, 300, 400, 700, 900],
+			'Kumbh+Sans': [100, 200, 300, 400, 700, 900],
 			preload: true,
 			// useStylesheet: true,
 			download: true,
