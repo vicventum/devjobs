@@ -3,12 +3,8 @@ import { createVuetify, type ThemeDefinition } from 'vuetify'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import {
 	mdiThemeLightDark,
-	// mdiCartOutline,
-	// mdiViewList,
-	// mdiApps,
-	// mdiPlus,
-	// mdiMinus,
-	// mdiDelete,
+	mdiWhiteBalanceSunny,
+	mdiWeatherNight,
 } from '@mdi/js'
 
 // import { md1 } from 'vuetify/blueprints'
@@ -19,14 +15,47 @@ import {
 const lightTheme: ThemeDefinition = {
 	dark: false,
 	colors: {
+		background: '#F4F6F8',
+		surface: '#FAFAFA',
 		primary: '#5964E0',
-		'primary-lighten-1': '#939BF4',
 		dark: '#121721',
-		'dark-lighten-1': '#19292D',
 		light: '#FAFAFA',
+
+		'on-background': '#121721',
+		'on-surface': '#121721',
+		'on-primary': '#FAFAFA',
+
+		'primary-lighten-1': '#939BF4',
+		'dark-lighten-1': '#19292D',
 		'light-darken-1': '#F4F6F8',
 		'light-darken-2': '#9DAEC2',
 		'light-darken-3': '#6E8098',
+	},
+	variables: {
+		'hover-opacity': 0.3,
+	},
+}
+const darkTheme: ThemeDefinition = {
+	dark: true,
+	colors: {
+		background: '#121721',
+		surface: '#19202D',
+		primary: '#5964E0',
+		dark: '#121721',
+		light: '#FAFAFA',
+
+		'on-background': '#FAFAFA',
+		'on-surface': '#FAFAFA',
+		'on-primary': '#FAFAFA',
+
+		'primary-lighten-1': '#939BF4',
+		'dark-lighten-1': '#19292D',
+		'light-darken-1': '#F4F6F8',
+		'light-darken-2': '#9DAEC2',
+		'light-darken-3': '#6E8098',
+	},
+	variables: {
+		'hover-opacity': 0.3,
 	},
 }
 
@@ -39,12 +68,8 @@ export const vuetify = createVuetify({
 		aliases: {
 			...aliases,
 			themeLightDark: mdiThemeLightDark,
-			// cartOutline: mdiCartOutline,
-			// viewList: mdiViewList,
-			// apps: mdiApps,
-			// plus: mdiPlus,
-			// minus: mdiMinus,
-			// delete: mdiDelete,
+			whiteBalanceSunny: mdiWhiteBalanceSunny,
+			weatherNight: mdiWeatherNight,
 		},
 		sets: {
 			mdi,
@@ -73,6 +98,7 @@ export const vuetify = createVuetify({
 		// },
 		themes: {
 			lightTheme,
+			darkTheme,
 		},
 	},
 	// Configura los íconos personalizados

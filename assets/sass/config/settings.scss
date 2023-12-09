@@ -115,7 +115,9 @@ $custom-typography: (
 	$color-pack: false,
 	$heading-font-family: $ff,
 	$body-font-family: $ff,
-	// $field-border-radius: 8px,
+	$typography: $custom-typography,
+
+	// --- v-btn
 	$button-height: 48px,
 	$button-background: rgba(var(--v-theme-primary)),
 	$button-color: rgba(var(--v-theme-light)),
@@ -124,5 +126,16 @@ $custom-typography: (
 		'hover': 2,
 		'active': 4,
 	),
-	$typography: $custom-typography
+
+	// --- v-container
+	$container-max-widths:
+		(
+			'lg': 1110px,
+		),
+
+	// --- v-app-bar
+	$app-bar-prominent-height: 165px,
+	$app-bar-background: rgb(var(--v-theme-background)),
+	// --- v-switch
+	// $switch-thumb-background: red
 );

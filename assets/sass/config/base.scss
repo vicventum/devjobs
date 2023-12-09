@@ -1,7 +1,7 @@
 @use 'sass:map';
 @use './settings';
 @use './font-style-mapping.scss' as fs;
-@use '../../utils/scrollbar.scss';
+@use '../utils/scrollbar.scss';
 // @use 'vuetify/styles';
 
 body {
