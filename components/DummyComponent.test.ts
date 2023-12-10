@@ -9,7 +9,7 @@ describe('DummyComponent.vue', () => {
 		mount(DummyComponent)
 		// const store = useCartStore()
 		const message = screen.getByRole('button')
-		screen.debug(message)
+		// screen.debug(message)
 		// screen.debug()
 	})
 })

@@ -7,7 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BaseImg: typeof import('./components/base/BaseImg.vue')['default']
+    BaseSwitch: typeof import('./components/base/BaseSwitch.vue')['default']
+    BaseSwitchTheme: typeof import('./components/base/BaseSwitchTheme.vue')['default']
     DummyComponent: typeof import('./components/DummyComponent.vue')['default']
+    LayoutHeader: typeof import('./components/layouts/LayoutHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -17,6 +17,7 @@ watch(
 	<BaseSwitch
 		v-model="isDarkTheme"
 		class="switch"
+		role="switch"
 		prepend-icon="$whiteBalanceSunny"
 		append-icon="$weatherNight"
 	/>

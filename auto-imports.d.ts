@@ -77,6 +77,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useSlots: typeof import('vue')['useSlots']
+  const useSrc: typeof import('./composables/use-src')['default']
   const vi: typeof import('vitest')['vi']
   const vitest: typeof import('vitest')['vitest']
   const vuetify: typeof import('./plugins/vuetify')['default']

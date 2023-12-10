@@ -4,7 +4,7 @@
 </script>
 
 <template>
-	<v-app>
+	<v-app data-testid="app">
 		<LayoutHeader />
 		<v-container>
 			<slot />

@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import useSrc from '@/composables/use-src'
+</script>
 
 <template>
 	<v-app-bar
