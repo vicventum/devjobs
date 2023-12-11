@@ -9,6 +9,7 @@ import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 import { mdiWhiteBalanceSunny, mdiWeatherNight } from '@mdi/js'
 
+export * from '@testing-library/vue'
 export * from '@testing-library/user-event'
 
 // import { createRouter, createWebHistory } from 'vue-router'
@@ -107,10 +108,11 @@ const vuetify = createVuetify({
 		},
 	},
 })
-export function mount(component, { NuxtPage } = {}) {
+export function mount(component, { NuxtPage, container } = {}) {
 	// router.push('/')
 	// await router.isReady()
 	return vtlRender(component, {
+		container,
 		global: {
 			plugins: [
 				createTestingPinia({ stubActions: false }),
@@ -130,5 +132,3 @@ export function mount(component, { NuxtPage } = {}) {
 		},
 	})
 }
-
-export * from '@testing-library/vue'
