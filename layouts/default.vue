@@ -5,8 +5,8 @@
 
 <template>
 	<v-app data-testid="app">
-		<LayoutHeader />
-		<v-container>
+		<LayoutHeader class="mb-n8" />
+		<v-container class="position-relative">
 			<slot />
 		</v-container>
 	</v-app>

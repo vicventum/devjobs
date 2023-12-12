@@ -11,6 +11,8 @@ declare module 'vue' {
     BaseSwitch: typeof import('./components/base/BaseSwitch.vue')['default']
     BaseSwitchTheme: typeof import('./components/base/BaseSwitchTheme.vue')['default']
     DummyComponent: typeof import('./components/DummyComponent.vue')['default']
+    FormFilter: typeof import('./components/forms/FormFilter.vue')['default']
+    FormFIlter: typeof import('./components/forms/FormFIlter.vue')['default']
     LayoutHeader: typeof import('./components/layouts/LayoutHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

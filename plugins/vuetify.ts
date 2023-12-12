@@ -5,6 +5,8 @@ import {
 	mdiThemeLightDark,
 	mdiWhiteBalanceSunny,
 	mdiWeatherNight,
+	mdiMagnify,
+	mdiMapMarker,
 } from '@mdi/js'
 
 // import { md1 } from 'vuetify/blueprints'
@@ -70,6 +72,8 @@ export const vuetify = createVuetify({
 			themeLightDark: mdiThemeLightDark,
 			whiteBalanceSunny: mdiWhiteBalanceSunny,
 			weatherNight: mdiWeatherNight,
+			magnify: mdiMagnify,
+			mapMarker: mdiMapMarker,
 		},
 		sets: {
 			mdi,

@@ -137,5 +137,9 @@ $custom-typography: (
 	$app-bar-prominent-height: 165px,
 	$app-bar-background: rgb(var(--v-theme-background)),
 	// --- v-switch
-	// $switch-thumb-background: red
+	$switch-track-background: rgb(var(--v-theme-light)),
+	$switch-thumb-background: rgb(var(--v-theme-primary)),
+	// --- v-sheet
+	// $sheet-rounded-border-radius: 4px
+	// --- v-checkbox
 );

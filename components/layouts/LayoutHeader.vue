@@ -4,10 +4,9 @@ import useSrc from '@/composables/use-src'
 
 <template>
 	<v-app-bar
-		class="position-relative"
+		class="header position-relative"
 		image="@/assets/img/desktop/bg-pattern-header.svg"
 		height="161"
-		position="static"
 		flat
 	>
 		<v-container class="d-flex align-center mt-n8">
@@ -26,7 +25,10 @@ import useSrc from '@/composables/use-src'
 			</div>
 		</v-container>
 	</v-app-bar>
-	<!-- pito -->
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.header {
+	z-index: 0 !important;
+}
+</style>
