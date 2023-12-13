@@ -112,34 +112,35 @@ $custom-typography: (
 );
 
 @use 'vuetify/settings' with (
-	$color-pack: false,
-	$heading-font-family: $ff,
-	$body-font-family: $ff,
-	$typography: $custom-typography,
+		$color-pack: false,
+		$heading-font-family: $ff,
+		$body-font-family: $ff,
+		$typography: $custom-typography,
 
-	// --- v-btn
-	$button-height: 48px,
-	$button-background: rgba(var(--v-theme-primary)),
-	$button-color: rgba(var(--v-theme-light)),
-	$button-elevation: (
-		'default': 1,
-		'hover': 2,
-		'active': 4,
-	),
-
-	// --- v-container
-	$container-max-widths:
-		(
-			'lg': 1110px,
+		// --- v-btn
+		$button-height: 48px,
+		$button-background: rgba(var(--v-theme-primary)),
+		$button-color: rgba(var(--v-theme-light)),
+		$button-elevation: (
+			'default': 1,
+			'hover': 2,
+			'active': 4,
 		),
 
-	// --- v-app-bar
-	$app-bar-prominent-height: 165px,
-	$app-bar-background: rgb(var(--v-theme-background)),
-	// --- v-switch
-	$switch-track-background: rgb(var(--v-theme-light)),
-	$switch-thumb-background: rgb(var(--v-theme-primary)),
-	// --- v-sheet
-	// $sheet-rounded-border-radius: 4px
-	// --- v-checkbox
-);
+		// --- v-container
+		$container-max-widths:
+			(
+				'lg': 1110px,
+			),
+
+		// --- v-app-bar
+		$app-bar-prominent-height: 165px,
+		$app-bar-background: rgb(var(--v-theme-background)),
+		// --- v-switch
+		$switch-track-background: rgb(var(--v-theme-light)),
+		$switch-thumb-background: rgb(var(--v-theme-primary)),
+		// --- v-sheet
+		// $sheet-rounded-border-radius: 4px
+		$sheet-border-radius: 4px,
+		// --- v-checkbox
+	);
