@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { jobsStore } from '@/stores/jobs-store'
+
+await jobsStore().fetchJobList()
+</script>
 
 <template>
 	<div>

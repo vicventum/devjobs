@@ -2,6 +2,17 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: false },
+	devServer: {
+		port: 1234,
+	},
+	runtimeConfig: {
+		// The private keys which are only available within server-side
+		API_KEY: process.env.API_KEY,
+		// Keys within public, will be also exposed to the client-side
+		public: {
+			API_BASE: process.env.API_BASE,
+		},
+	},
 	css: ['vuetify/styles', '~/assets/sass/main.scss'],
 	components: [
 		{
@@ -12,6 +23,9 @@ export default defineNuxtConfig({
 	build: {
 		transpile: ['vuetify'],
 	},
+	// imports: {
+
+	// },
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@pinia/nuxt',
