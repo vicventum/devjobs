@@ -10,7 +10,9 @@ export default defineNuxtConfig({
 		API_KEY: process.env.API_KEY,
 		// Keys within public, will be also exposed to the client-side
 		public: {
+			API_KEY: process.env.API_KEY,
 			API_BASE: process.env.API_BASE,
+			API_PROXY: process.env.API_PROXY,
 		},
 	},
 	css: ['vuetify/styles', '~/assets/sass/main.scss'],
@@ -51,6 +53,7 @@ export default defineNuxtConfig({
 			script: {
 				defineModel: true,
 				// ^^ enables the feature
+				propsDestructure: true,
 			},
 		},
 	},

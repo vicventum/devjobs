@@ -1,28 +1,19 @@
 <script setup lang="ts">
-import data from '@/assets/data/data.json'
-const API_KEY = useRuntimeConfig().API_KEY
-// console.log('🚀🚀 ~ API_KEY:', API_KEY, process.env.API_KEY)
-// const res = await useFetch(
-// 	'https://corsproxy.io/?https://findwork.dev/api/jobs',
-// 	{
-// 		headers: {
-// 			Authorization: `Token c6bef58abe2eded3348921b287e5f5f27daf73f9`,
-// 		},
-// 	},
-// )
-// console.log('🚀 ~ res:', res, res.data)
+// import data from '@/assets/data/data.json'
+import type { JobData } from '@/types'
+const jobList: JobData[] = jobsStore().jobList
 </script>
 
 <template>
 	<div class="gallery">
 		<CardJob
-			v-for="job in data"
+			v-for="job in jobList"
 			:key="job.id"
 			class="gallery__card"
-			logo="/assets/img/desktop/logo.svg"
-			:date="job.postedAt"
-			:type="job.contract"
-			:title="job.position"
+			:logo="job.logo"
+			:date="job.date"
+			:type="job.type"
+			:title="job.title"
 			:company="job.company"
 			:location="job.location"
 		/>

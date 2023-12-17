@@ -1,19 +1,17 @@
 <script setup lang="ts">
 const props = defineProps<{
-	logo: string
-	date: string
-	type: string
+	logo: string | null
+	date: Date
+	type: string | null
 	title: string
 	company: string
-	location: string
+	location: string | null
 }>()
 </script>
 
 <template>
 	<v-sheet class="card px-8 pt-12 pb-8" tag="article">
-		<div class="card__img">
-			<BaseImg :src="useSrc(logo)" alt="logo" :cover="false" />
-		</div>
+		<CardJobImg class="card__img" :src="logo" :text="company" />
 
 		<div class="card__content">
 			<h3 class="card__time text-body-1 text-light-darken-3 mb-3">
@@ -39,20 +37,6 @@ const props = defineProps<{
 		position: absolute;
 		left: 32px;
 		top: -25px;
-		width: 50px;
-		height: 50px;
-		padding: 4px;
-
-		display: flex;
-		place-items: center;
-
-		background: rgb(var(--v-theme-primary));
-
-		border-radius: 1rem;
-	}
-
-	&__time {
-		// @extend .text-h1 !optional;
 	}
 }
 </style>

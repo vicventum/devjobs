@@ -14,9 +14,8 @@ export const jobsStore = defineStore({
 
 	actions: {
 		async fetchJobList() {
-			const API_KEY = useRuntimeConfig().API_KEY
-			console.log('🚀🚀🚀 ~ API_KEY:', API_KEY, process.env.API_KEY)
-			await getJobList()
+			// @ts-ignore
+			this.jobList = await getJobList()
 		},
 	},
 })
