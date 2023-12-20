@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import type { HexadecimalColor } from '@/types'
 defineProps<{
 	src: string | null
 	text: string
+	color: HexadecimalColor
 }>()
 </script>
 
@@ -15,7 +17,12 @@ defineProps<{
 			:initials-text="text"
 			:alt="`${text} logo`"
 		/>
-		<BaseAvatar v-else :initials-text="text" />
+		<BaseAvatar
+			v-else
+			:initials-text="text"
+			background="transparent"
+			color="rgb(var(--v-theme-light))"
+		/>
 	</div>
 </template>
 
@@ -28,7 +35,8 @@ defineProps<{
 	display: flex;
 	place-items: center;
 
-	background: rgb(var(--v-theme-surface-bright));
+	// background: rgb(var(--v-theme-surface-bright));
+	background: v-bind(color);
 
 	&,
 	&-inner {

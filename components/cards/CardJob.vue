@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { HexadecimalColor } from '@/types'
+
 const props = defineProps<{
 	logo: string | null
 	date: Date
@@ -6,12 +8,13 @@ const props = defineProps<{
 	title: string
 	company: string
 	location: string | null
+	color: HexadecimalColor
 }>()
 </script>
 
 <template>
 	<v-sheet class="card px-8 pt-12 pb-8" tag="article">
-		<CardJobImg class="card__img" :src="logo" :text="company" />
+		<CardJobImg class="card__img" :src="logo" :text="company" :color="color" />
 
 		<div class="card__content">
 			<h3 class="card__time text-body-1 text-light-darken-3 mb-3">

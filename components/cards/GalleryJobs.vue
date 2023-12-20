@@ -16,6 +16,7 @@ const jobList: JobData[] = jobsStore().jobList
 			:title="job.title"
 			:company="job.company"
 			:location="job.location"
+			:color="job.color"
 		/>
 		<!-- :logo="job.logo" -->
 	</div>

@@ -22,7 +22,11 @@ function errorLoadingImg(): void {
 		</template>
 		<template #error>
 			<!-- <v-img class="mx-auto" src="https://picsum.photos/40/40?image=232" /> -->
-			<BaseAvatar :initials-text="initialsText" />
+			<BaseAvatar
+				:initials-text="initialsText"
+				background="transparent"
+				color="rgb(var(--v-theme-light))"
+			/>
 		</template>
 	</v-img>
 </template>

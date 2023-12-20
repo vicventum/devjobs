@@ -1,13 +1,31 @@
 <script setup lang="ts">
-const { initialsText = '' } = defineProps<{
+const {
+	initialsText = '',
+	background = 'primary',
+	color = undefined,
+} = defineProps<{
 	initialsText: string | undefined
+	background?: string
+	color?: string
 }>()
+
+const textColor = computed(() => {
+	return color && `color: ${color}`
+})
 </script>
 
 <template>
-	<v-avatar color="primary">
-		<span class="text-h5">{{ useGetFirstLetter(initialsText) }}</span>
+	<v-avatar class="avatar" :color="background">
+		<span class="avatar__text text-h5 font-weight-bold">
+			{{ useGetFirstLetter(initialsText) }}
+		</span>
 	</v-avatar>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.avatar {
+	&__text {
+		color: v-bind(color);
+	}
+}
+</style>

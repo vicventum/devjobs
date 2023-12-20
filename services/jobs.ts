@@ -18,6 +18,7 @@ async function getJobList() {
 			type: job.employment_type,
 			location: job.location,
 			date: job.date_posted,
+			color: useRandomColor(),
 		}))
 
 		return jobList
