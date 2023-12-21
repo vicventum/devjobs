@@ -35,6 +35,16 @@ const props = defineProps<{
 <style lang="scss">
 .card {
 	position: relative;
+	cursor: pointer;
+
+	transition-property: box-shadow, filter;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-out;
+
+	&:hover {
+		filter: drop-shadow(0px 0px 1px rgb(var(--v-theme-primary)));
+		// transform: scale(1.01);
+	}
 
 	&__img {
 		position: absolute;
