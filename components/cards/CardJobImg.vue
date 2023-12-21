@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import type { HexadecimalColor } from '@/types'
-defineProps<{
+import type { Color } from '@/types'
+const props = defineProps<{
 	src: string | null
 	text: string
-	color: HexadecimalColor
+	color: Color
 }>()
+
+const bgColor = ref(props.color)
+function setRandomColor() {
+	bgColor.value = utilRandomColor()
+}
 </script>
 
 <template>
-	<div class="img">
+	<div class="img elevation-1-">
 		<!-- <BaseImg :src="useSrc(logo)" alt="logo" :cover="false" /> -->
 		<BaseImg
 			v-if="src"
@@ -16,6 +21,7 @@ defineProps<{
 			:src="src"
 			:initials-text="text"
 			:alt="`${text} logo`"
+			@error="setRandomColor"
 		/>
 		<BaseAvatar
 			v-else
@@ -34,9 +40,10 @@ defineProps<{
 
 	display: flex;
 	place-items: center;
+	place-content: center;
 
 	// background: rgb(var(--v-theme-surface-bright));
-	background: v-bind(color);
+	background: v-bind(bgColor);
 
 	&,
 	&-inner {

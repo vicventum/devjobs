@@ -5,10 +5,12 @@ const attrs = useAttrs()
 defineProps<{
 	initialsText?: string
 }>()
+const emits = defineEmits(['error'])
 
 const isErrorLoading = ref<boolean>(false)
 
 function errorLoadingImg(): void {
+	emits('error')
 	isErrorLoading.value = true
 }
 </script>
@@ -22,11 +24,13 @@ function errorLoadingImg(): void {
 		</template>
 		<template #error>
 			<!-- <v-img class="mx-auto" src="https://picsum.photos/40/40?image=232" /> -->
-			<BaseAvatar
-				:initials-text="initialsText"
-				background="transparent"
-				color="rgb(var(--v-theme-light))"
-			/>
+			<div v-if="initialsText" class="d-flex justify-center align-center">
+				<BaseAvatar
+					:initials-text="initialsText"
+					background="transparent"
+					color="rgb(var(--v-theme-light))"
+				/>
+			</div>
 		</template>
 	</v-img>
 </template>

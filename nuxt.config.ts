@@ -3,7 +3,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 export default defineNuxtConfig({
 	devtools: { enabled: false },
 	devServer: {
-		port: 1234,
+		// port: 1234,
 	},
 	runtimeConfig: {
 		// The private keys which are only available within server-side
@@ -25,9 +25,12 @@ export default defineNuxtConfig({
 	build: {
 		transpile: ['vuetify'],
 	},
-	// imports: {
-
-	// },
+	imports: {
+		dirs: [
+			// scan all modules within given directory
+			'composables/**',
+		],
+	},
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@pinia/nuxt',

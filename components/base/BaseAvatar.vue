@@ -17,7 +17,7 @@ const textColor = computed(() => {
 <template>
 	<v-avatar class="avatar" :color="background">
 		<span class="avatar__text text-h5 font-weight-bold">
-			{{ useGetFirstLetter(initialsText) }}
+			{{ utilGetFirstLetter(initialsText) }}
 		</span>
 	</v-avatar>
 </template>

@@ -29,9 +29,9 @@ const lightTheme: ThemeDefinition = {
 
 		'primary-lighten-1': '#939BF4',
 		'dark-lighten-1': '#19292D',
-		'light-darken-1': '#F4F6F8',
-		'light-darken-2': '#9DAEC2',
-		'light-darken-3': '#6E8098',
+		'light-darken-2': '#d7dee7',
+		'light-darken-3': '#9DAEC2',
+		'light-darken-4': '#6E8098',
 	},
 	variables: {
 		'hover-opacity': 0.3,
@@ -52,9 +52,9 @@ const darkTheme: ThemeDefinition = {
 
 		'primary-lighten-1': '#939BF4',
 		'dark-lighten-1': '#19292D',
-		'light-darken-1': '#F4F6F8',
-		'light-darken-2': '#9DAEC2',
-		'light-darken-3': '#6E8098',
+		'light-darken-2': '#d7dee7',
+		'light-darken-3': '#9DAEC2',
+		'light-darken-4': '#6E8098',
 	},
 	variables: {
 		'hover-opacity': 0.3,

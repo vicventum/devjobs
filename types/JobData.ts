@@ -1,4 +1,4 @@
-import type { HexadecimalColor } from '@/types'
+import type { Color } from '@/types'
 
 type JobType = 'contract' | 'full time' | null
 
@@ -10,7 +10,7 @@ export interface JobData {
 	type: JobType
 	location: string | null
 	date: Date
-	color: HexadecimalColor
+	color: Color
 
 	// company_num_employees: z.union([z.null(), z.string()]),
 	// remote: z.boolean(),

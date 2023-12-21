@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 // import persistedState from '@pinia-plugin-persistedstate/nuxt'
-import { getJobList } from '@/services/jobs'
+// import { useJobs } from '~/composables/services/use-jobs'
 
 export const jobsStore = defineStore({
 	id: 'jobsStore',
@@ -15,7 +15,7 @@ export const jobsStore = defineStore({
 	actions: {
 		async fetchJobList() {
 			// @ts-ignore
-			this.jobList = await getJobList()
+			this.jobList = await useJob().getJobList()
 		},
 	},
 })

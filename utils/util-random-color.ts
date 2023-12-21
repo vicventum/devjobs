@@ -9,7 +9,7 @@ const COLORS: HexadecimalColor[] = [
 	'#3F51B5',
 ]
 
-export default function useRandomColor(): HexadecimalColor {
+export default function utilRandomColor(): HexadecimalColor {
 	// Obtener un índice aleatorio dentro del rango de la longitud del array COLORS
 	const randomColor = Math.floor(Math.random() * COLORS.length)
 

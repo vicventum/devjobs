@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { HexadecimalColor } from '@/types'
+import type { Color } from '@/types'
 
 const props = defineProps<{
 	logo: string | null
@@ -8,7 +8,7 @@ const props = defineProps<{
 	title: string
 	company: string
 	location: string | null
-	color: HexadecimalColor
+	color: Color
 }>()
 </script>
 
@@ -17,11 +17,11 @@ const props = defineProps<{
 		<CardJobImg class="card__img" :src="logo" :text="company" :color="color" />
 
 		<div class="card__content">
-			<h3 class="card__time text-body-1 text-light-darken-3 mb-3">
+			<h3 class="card__time text-body-1 text-light-darken-4 mb-3">
 				{{ date }} . {{ type }}
 			</h3>
 			<h2 class="card__title text-h3 mb-3">{{ title }}</h2>
-			<h3 class="card__company text-body-1 text-light-darken-3">
+			<h3 class="card__company text-body-1 text-light-darken-4">
 				{{ company }}
 			</h3>
 		</div>
