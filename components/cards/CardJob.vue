@@ -10,6 +10,9 @@ const props = defineProps<{
 	location: string | null
 	color: Color
 }>()
+
+const { toRelativeDate } = utilFormat()
+const relativeDate = ref(toRelativeDate(props.date))
 </script>
 
 <template>
@@ -18,7 +21,11 @@ const props = defineProps<{
 
 		<div class="card__content">
 			<h3 class="card__time text-body-1 text-light-darken-4 mb-3">
-				{{ date }} . {{ type }}
+				{{ relativeDate }}
+				<span v-if="type">
+					<span class="card__separator-point">•</span>
+					{{ type }}
+				</span>
 			</h3>
 			<h2 class="card__title text-h3 mb-3">{{ title }}</h2>
 			<h3 class="card__company text-body-1 text-light-darken-4">
@@ -50,6 +57,12 @@ const props = defineProps<{
 		position: absolute;
 		left: 32px;
 		top: -25px;
+	}
+
+	&__separator-point {
+		margin: 0 8px;
+		display: inline-block;
+		transform: scale(2);
 	}
 }
 </style>
