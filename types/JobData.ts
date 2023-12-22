@@ -1,6 +1,6 @@
 import type { Color } from '@/types'
 
-type JobType = 'contract' | 'full time' | null
+export type JobType = 'contract' | 'full time' | null
 
 export interface JobData {
 	id: string
