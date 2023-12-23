@@ -7,12 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BaseAvatar: typeof import('./components/base/BaseAvatar.vue')['default']
+    BaseCheckbox: typeof import('./components/base/BaseCheckbox.vue')['default']
     BaseImg: typeof import('./components/base/BaseImg.vue')['default']
+    BaseInput: typeof import('./components/base/BaseInput.vue')['default']
     BaseSwitch: typeof import('./components/base/BaseSwitch.vue')['default']
     BaseSwitchTheme: typeof import('./components/base/BaseSwitchTheme.vue')['default']
+    CardJob: typeof import('./components/cards/CardJob.vue')['default']
+    CardJobImg: typeof import('./components/cards/CardJobImg.vue')['default']
     DummyComponent: typeof import('./components/DummyComponent.vue')['default']
     FormFilter: typeof import('./components/forms/FormFilter.vue')['default']
     FormFIlter: typeof import('./components/forms/FormFIlter.vue')['default']
+    GalleryJobs: typeof import('./components/cards/GalleryJobs.vue')['default']
     LayoutHeader: typeof import('./components/layouts/LayoutHeader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -5,7 +5,7 @@ import { JobListSchema, JobDataSchema } from '@/types'
 // const DEFAULT_JOB_COLOR = 'rgb(var(--v-theme-light-darken-2))'
 
 // async function getJobList(): Promise<void> {
-export function useJob() {
+export function useJobs() {
 	async function getJobList() {
 		const { DEFAULT_JOB_COLOR } = useConstants()
 		try {

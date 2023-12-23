@@ -15,7 +15,7 @@ export const jobsStore = defineStore({
 	actions: {
 		async fetchJobList() {
 			// @ts-ignore
-			this.jobList = await useJob().getJobList()
+			this.jobList = await useJobs().getJobList()
 		},
 	},
 })

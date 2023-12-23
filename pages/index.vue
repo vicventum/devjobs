@@ -5,7 +5,7 @@ await jobsStore().fetchJobList()
 <template>
 	<div>
 		<FormFilter class="filter" />
-		<GalleryJobs />
+		<!-- <GalleryJobs /> -->
 	</div>
 </template>
 
