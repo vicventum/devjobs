@@ -7,7 +7,14 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
 import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
-import { mdiWhiteBalanceSunny, mdiWeatherNight } from '@mdi/js'
+import { defineComponent } from 'vue'
+import {
+	mdiThemeLightDark,
+	mdiWhiteBalanceSunny,
+	mdiWeatherNight,
+	mdiMagnify,
+	mdiMapMarker,
+} from '@mdi/js'
 
 export * from '@testing-library/vue'
 export * from '@testing-library/user-event'
@@ -87,8 +94,11 @@ const vuetify = createVuetify({
 		// aliases,
 		aliases: {
 			...aliases,
+			themeLightDark: mdiThemeLightDark,
 			whiteBalanceSunny: mdiWhiteBalanceSunny,
 			weatherNight: mdiWeatherNight,
+			magnify: mdiMagnify,
+			mapMarker: mdiMapMarker,
 		},
 		sets: {
 			mdi,
@@ -108,14 +118,52 @@ const vuetify = createVuetify({
 		},
 	},
 })
-export function mount(component, { NuxtPage, container } = {}) {
+export function mount(component, { NuxtPage, container, initialState } = {}) {
 	// router.push('/')
 	// await router.isReady()
 	return vtlRender(component, {
 		container,
 		global: {
 			plugins: [
-				createTestingPinia({ stubActions: false }),
+				createTestingPinia({
+					stubActions: false,
+					initialState,
+				}),
+				vuetify,
+				// router,
+				// piniaPluginPersistedstate()
+			],
+			stubs: {
+				NuxtPage: false,
+				NuxtLink: true,
+			},
+			components: {
+				// NuxtPage: Index,
+				NuxtPage,
+				// NuxtLink,
+			},
+		},
+	})
+}
+
+export function asyncMount(
+	AsyncComponent,
+	{ NuxtPage, container, initialState } = {},
+) {
+	// router.push('/')
+	// await router.isReady()
+	const TestAsyncComponent = defineComponent({
+		components: { AsyncComponent },
+		template: '<div><Suspense><AsyncComponent/></Suspense></div>',
+	})
+	return vtlRender(TestAsyncComponent, {
+		container,
+		global: {
+			plugins: [
+				createTestingPinia({
+					stubActions: false,
+					initialState,
+				}),
 				vuetify,
 				// router,
 				// piniaPluginPersistedstate()

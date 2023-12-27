@@ -1,8 +1,24 @@
 import '@testing-library/jest-dom'
-import { it, describe, expect, vi, beforeEach, beforeAll } from 'vitest'
-import { mount, screen, userEvent } from '@/test-utils/custom-render'
+import {
+	it,
+	describe,
+	expect,
+	vi,
+	beforeEach,
+	beforeAll,
+	type Mock,
+} from 'vitest'
+import { flushPromises } from '@vue/test-utils'
+import {
+	mount,
+	asyncMount,
+	screen,
+	userEvent,
+	waitFor,
+} from '@/test-utils/custom-render'
 import type { JobData, JobType } from '@/types'
 
+// import Index from '@/test-utils/WrapperIndex.vue'
 // eslint-disable-next-line import/order
 import Index from './index.vue'
 
@@ -13,26 +29,38 @@ import {
 	generateJobList,
 } from '@/test-utils/factories/job-factory'
 
-// vi.mock('@/composables/services/use-jobs', () => ({
-// 	getJobList: vi.fn(),
-// }))
+const mockJobList: Mock = vi.fn()
 vi.mock('@/composables/services/use-jobs', () => ({
-	useJobs: () => {
-		return { getJobList: () => vi.fn() }
-	},
-	// getJobList: () => 'mocked value 2',
+	useJobs: () => ({
+		getJobList: mockJobList,
+		// getJobList: () => jobList,
+	}),
 }))
 
-// let appClasses: string
 describe('When a user lands on page', () => {
-	it('should render the jobs', () => {
+	it('should render the jobs', async () => {
 		const jobList: JobData[] = generateJobList()
+		mockJobList.mockResolvedValue(jobList)
 
-		// @ts-ignore
-		useJobs().getJobList().mockResolvedValueOnce(jobList)
+		asyncMount(Index)
+		await flushPromises()
 
-		mount(Index)
-		console.log('🚀 ~ it ~ jobList:', jobList, useJobs().getJobList())
-		// useJobs().getJobList()
+		const job = await screen.findByText(jobList[0].title)
+		// screen.debug(job)
+		expect(job).toBeInTheDocument()
+	})
+
+	describe('and there are no jobs to show', () => {
+		it('should display a message that no jobs have been found', async () => {
+			const jobList: JobData[] = []
+			mockJobList.mockResolvedValue(jobList)
+
+			asyncMount(Index)
+			await flushPromises()
+
+			const message = await screen.findByText(/no se han encontrado empleos/i)
+			screen.debug(message)
+			expect(message).toBeInTheDocument()
+		})
 	})
 })

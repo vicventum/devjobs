@@ -6,11 +6,12 @@ import { JobListSchema, JobDataSchema } from '@/types'
 
 // async function getJobList(): Promise<void> {
 export function useJobs() {
-	async function getJobList() {
+	async function getJobList(): Promise<JobData[]> {
 		const { DEFAULT_JOB_COLOR } = useConstants()
 		try {
-			const { data } = await useMyFetch<JobListResponse>(`/jobs/`)
+			const { data, error } = await useMyFetch<JobListResponse>(`/jobsA/`)
 			// Validar los datos recibidos con el esquema
+			console.log('🚀 ~ getJobList ~ error:', error)
 			const jobListResponse: JobListResponse = JobListSchema.parse(data.value)
 			// Los datos son válidos si no se ha lanzado una excepción hasta este punto
 			// console.log('Datos válidos:', jobListResponse)
@@ -29,7 +30,8 @@ export function useJobs() {
 			return jobList
 		} catch (error) {
 			// En caso de error de validación o de la petición HTTP
-			console.error('Error al obtener o validar los datos:', error)
+			console.error('⚠ Error al obtener o validar los datos:', error)
+			throw error
 		}
 	}
 
