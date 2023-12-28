@@ -2,23 +2,17 @@
 // ;(async () => {
 // 	await jobsStore().fetchJobList()
 // })()
-const isErrorLoadingJobs = ref(false)
-try {
-	await jobsStore().fetchJobList()
-} catch (error) {
-	isErrorLoadingJobs.value = true
-	console.error('⚠ ~ Index error:', error)
-}
+await jobsStore().fetchJobList()
+const { isError } = jobsStore().jobList
 </script>
 
 <template>
 	<div>
 		<FormFilter class="filter" />
-		<section v-if="isErrorLoadingJobs">
-			<h2 class="text-center">
-				Ha ocurrido un error, inténtelo de nuevo o recargue la página
-			</h2>
-		</section>
+		<BaseErrorMessage
+			v-if="isError"
+			message="Ha ocurrido un error, inténtelo de nuevo o recargue la página"
+		/>
 		<GalleryJobs />
 	</div>
 </template>

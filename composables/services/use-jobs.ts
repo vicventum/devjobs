@@ -1,3 +1,4 @@
+import type { FetchError } from 'ofetch'
 import type { JobListResponse, JobDataResponse, JobData } from '@/types'
 import { JobListSchema, JobDataSchema } from '@/types'
 
@@ -6,13 +7,34 @@ import { JobListSchema, JobDataSchema } from '@/types'
 
 // async function getJobList(): Promise<void> {
 export function useJobs() {
-	async function getJobList(): Promise<JobData[]> {
+	async function getJobList() {
 		const { DEFAULT_JOB_COLOR } = useConstants()
+		const { data, error, pending } = await useMyFetch<JobListResponse>(
+			`/jobs/`,
+			{
+				lazy: true,
+			},
+		)
+		// Validar los datos recibidos con el esquema
+
+		// const isLoading = ref(true)
+		// setTimeout(() => {
+		// 	isLoading.value = false
+		// 	console.log('📡📡 ~ setTimeout ~ isLoading.value:', isLoading.value)
+		// }, 1000)
+		// watch(
+		// 	() => isLoading,
+		// 	() => {
+		// 		console.log('📡 ~ isLoading:', isLoading.value)
+		// 	},
+		// 	{
+		// 		immediate: true,
+		// 	},
+		// )
+
 		try {
-			const { data, error } = await useMyFetch<JobListResponse>(`/jobsA/`)
-			// Validar los datos recibidos con el esquema
-			console.log('🚀 ~ getJobList ~ error:', error)
 			const jobListResponse: JobListResponse = JobListSchema.parse(data.value)
+
 			// Los datos son válidos si no se ha lanzado una excepción hasta este punto
 			// console.log('Datos válidos:', jobListResponse)
 
@@ -26,12 +48,12 @@ export function useJobs() {
 				date: job.date_posted,
 				color: job.logo ? DEFAULT_JOB_COLOR : utilRandomColor(),
 			}))
-
-			return jobList
+			return { data: jobList, isError: false, isLoading: pending }
 		} catch (error) {
 			// En caso de error de validación o de la petición HTTP
-			console.error('⚠ Error al obtener o validar los datos:', error)
-			throw error
+			console.log('⚠ Error al obtener o validar los datos:', error)
+			// return { data: null, isError: true, isLoading: pending }
+			return { data: null, isError: true, isLoading: pending }
 		}
 	}
 

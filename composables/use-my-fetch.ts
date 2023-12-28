@@ -56,5 +56,6 @@ export default function useMyFetch<T>(
 
 	// for nice deep defaults, please use unjs/defu
 	const params = defu(options, defaults)
+	// const { error } = useFetch(url, params)
 	return useFetch(url, params)
 }
