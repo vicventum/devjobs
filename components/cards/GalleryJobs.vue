@@ -12,7 +12,7 @@ const { data: jobList, isError, isLoading } = toRefs(jobsStore().jobList)
 watch(
 	() => isLoading,
 	() => {
-		console.log('🚀 ~ isLoading:', isLoading)
+		// console.log('🚀 ~ isLoading:', isLoading)
 	},
 	{
 		immediate: true,
@@ -24,21 +24,22 @@ watch(
 <template>
 	<div class="gallery">
 		<template v-if="isLoading">
-			<v-skeleton-loader
+			<!-- {{ isLoading }} -->
+			<!-- <v-skeleton-loader
 				v-for="job in 9"
 				:key="job"
 				type="avatar, text, paragraph"
 				height="220px"
-			/>
+			/> -->
 		</template>
 
 		<BaseErrorMessage
 			v-if="!jobList?.length && !isError && !isLoading"
 			class="gallery__no-data-message"
-			message="No se han encontrado empleos disponibles"
+			message="No available jobs found"
 		/>
 
-		<template v-else>
+		<!-- <template v-else>
 			<CardJob
 				v-for="job in jobList"
 				:key="job.id"
@@ -51,7 +52,7 @@ watch(
 				:location="job.location"
 				:color="job.color"
 			/>
-		</template>
+		</template> -->
 	</div>
 </template>
 

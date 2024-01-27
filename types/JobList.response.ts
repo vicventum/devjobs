@@ -3,8 +3,8 @@ import { JobDataSchema } from './JobData.response'
 
 export const JobListSchema = z.object({
 	count: z.number(),
-	next: z.string(),
-	previous: z.null(),
+	next: z.union([z.null(), z.string()]),
+	previous: z.union([z.null(), z.string()]),
 	results: z.array(JobDataSchema),
 })
 export type JobListResponse = z.infer<typeof JobListSchema>
