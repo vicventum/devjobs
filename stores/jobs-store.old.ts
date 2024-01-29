@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia'
+/* import { defineStore } from 'pinia'
 // import persistedState from '@pinia-plugin-persistedstate/nuxt'
-import { useJobs } from '@/composables/services/use-jobs'
+import useJobs from '@/composables/services/use-jobs'
 import type { JobData } from '~/types'
 
 // export const jobsStore = defineStore({
@@ -135,3 +135,4 @@ export const jobsStore = defineStore('jobsStore', () => {
 		loadMoreJobs,
 	}
 })
+ */

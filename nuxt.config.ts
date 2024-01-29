@@ -1,7 +1,7 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	devtools: { enabled: false },
+	devtools: { enabled: true },
 	devServer: {
 		// port: 1234,
 	},
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: [
 			// scan all modules within given directory
-			'composables/**',
+			'composables/**/*',
 		],
 	},
 	modules: [

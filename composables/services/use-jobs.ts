@@ -1,82 +1,67 @@
-import type { FetchError } from 'ofetch'
 import type { JobListResponse, JobDataResponse, JobData } from '@/types'
 import { JobListSchema, JobDataSchema } from '@/types'
 
-// const DEFAULT_COLOR = theme.current.value.colors['light-darken-2']
-// const DEFAULT_JOB_COLOR = 'rgb(var(--v-theme-light-darken-2))'
+import { getJobList } from '@/utils/services/jobs-service'
+import { useJobsStore } from '@/stores/jobs.store'
 
-// async function getJobList(): Promise<void> {
-export function useJobs() {
-	async function getJobList({ page = 1 }: { page?: number } = {}) {
-		console.log('🚀 ~ getJobList ~ page:', page)
-		const { DEFAULT_JOB_COLOR } = useConstants()
+const useJobs = () => {
+	const { DEFAULT_JOB_COLOR } = useConstants()
+	const store = useJobsStore()
+	const { jobList, currentPage } = storeToRefs(store)
 
-		const BASE_PATH = `/jobs/?page=${page}`
+	const { pending, data, error } = useAsyncData('jobList', () => getJobList(), {
+		watch: [currentPage],
+	})
+	console.warn('🚀 ~ useAsyncData ~ error:', error.value)
 
-		const { data, error, pending } = await toRefs(
-			useMyFetch<JobListResponse>(
-				BASE_PATH,
-				// {
-				// 	lazy: true,
-				// },
-			),
-		)
-		// Validar los datos recibidos con el esquema
+	// ? Insertando la data (cuando ya se obtenga) en el store
+	watch(
+		() => data.value,
+		(newJobs) => {
+			if (newJobs) {
+				try {
+					const jobListResponse: JobListResponse = JobListSchema.parse(newJobs)
 
-		// const isLoading = ref(true)
-		// setTimeout(() => {
-		// 	isLoading.value = false
-		// 	console.log('📡📡 ~ setTimeout ~ isLoading.value:', isLoading.value)
-		// }, 1000)
-		watch(
-			() => pending.value,
-			() => {
-				console.log('🔴 ~ pending:', pending.value, data.value)
-			},
-			{
-				immediate: true,
-			},
-		)
-		watch(
-			() => data.value,
-			() => {
-				console.log('🔴 ~ data:', data.value)
-				if (data.value) {
-					try {
-						const jobListResponse: JobListResponse = JobListSchema.parse(
-							data.value,
-						)
+					// Los datos son válidos si no se ha lanzado una excepción hasta este punto
+					// console.log('Datos válidos:', jobListResponse)
 
-						// Los datos son válidos si no se ha lanzado una excepción hasta este punto
-						// console.log('Datos válidos:', jobListResponse)
+					const jobList: JobData[] = jobListResponse.results.map((job) => ({
+						id: job.id,
+						logo: job.logo,
+						title: job.role,
+						company: job.company_name,
+						type: job.employment_type,
+						location: job.location,
+						date: job.date_posted,
+						color: job.logo ? DEFAULT_JOB_COLOR : utilRandomColor(),
+					}))
 
-						const jobList: JobData[] = jobListResponse.results.map((job) => ({
-							id: job.id,
-							logo: job.logo,
-							title: job.role,
-							company: job.company_name,
-							type: job.employment_type,
-							location: job.location,
-							date: job.date_posted,
-							color: job.logo ? DEFAULT_JOB_COLOR : utilRandomColor(),
-						}))
-						return { data: jobList, isError: ref(false), isLoading: pending }
-					} catch (error) {
-						// En caso de error de validación o de la petición HTTP
-						console.log('⚠ Error al obtener o validar los datos:', error)
-						// return { data: null, isError: true, isLoading: pending }
-						return { data: null, isError: ref(true), isLoading: pending }
-					}
+					console.log('🚀 ~ useJobs ~ jobList:', jobList)
+					store.setJobs(jobList)
+				} catch (error) {
+					// En caso de error de validación o de la petición HTTP
+					console.warn('⚠ Error al obtener o validar los datos:', error)
+					return { data: null, error, isLoading: pending, isError: !!error }
 				}
-			},
-			{
-				immediate: true,
-			},
-		)
-		return { data: null, isError: ref(false), isLoading: pending }
-	}
+			}
+		},
+		{ immediate: true },
+	)
 
 	return {
-		getJobList,
+		// --- Properties
+		jobList,
+		currentPage,
+		isLoading: pending,
+		error,
+		isError: !!error.value,
+		// totalPages,
+
+		// --- Methods
+		// getPage(page: number) {
+		// 	store.setPage(page)
+		// },
 	}
 }
+
+export default useJobs
