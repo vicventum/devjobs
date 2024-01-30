@@ -27,18 +27,20 @@ defineProps<Props>()
 
 		<!-- <template v-else> -->
 		<ClientOnly>
-			<CardJob
-				v-for="job in jobList"
-				:key="job.id"
-				class="gallery__card"
-				:logo="job.logo"
-				:date="job.date"
-				:type="job.type"
-				:title="job.title"
-				:company="job.company"
-				:location="job.location"
-				:color="job.color"
-			/>
+			<template v-if="jobList.length">
+				<CardJob
+					v-for="job in jobList"
+					:key="job.id"
+					class="gallery__card"
+					:logo="job.logo"
+					:date="job.date"
+					:type="job.type"
+					:title="job.title"
+					:company="job.company"
+					:location="job.location"
+					:color="job.color"
+				/>
+			</template>
 		</ClientOnly>
 		<!-- </template> -->
 	</div>

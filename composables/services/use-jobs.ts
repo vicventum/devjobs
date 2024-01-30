@@ -1,5 +1,4 @@
-import type { JobListResponse, JobDataResponse, JobData } from '@/types'
-import { JobListSchema, JobDataSchema } from '@/types'
+import type { JobData } from '@/types'
 
 import { getJobList } from '@/utils/services/jobs-service'
 import { useJobsStore } from '@/stores/jobs.store'
@@ -12,37 +11,25 @@ const useJobs = () => {
 	const { pending, data, error } = useAsyncData('jobList', () => getJobList(), {
 		watch: [currentPage],
 	})
-	console.warn('🚀 ~ useAsyncData ~ error:', error.value)
 
 	// ? Insertando la data (cuando ya se obtenga) en el store
 	watch(
 		() => data.value,
-		(newJobs) => {
-			if (newJobs) {
-				try {
-					const jobListResponse: JobListResponse = JobListSchema.parse(newJobs)
+		(newJobsResponse) => {
+			if (newJobsResponse) {
+				const jobList: JobData[] = newJobsResponse.results.map((job) => ({
+					id: job.id,
+					logo: job.logo,
+					title: job.role,
+					company: job.company_name,
+					type: job.employment_type,
+					location: job.location,
+					date: job.date_posted,
+					color: job.logo ? DEFAULT_JOB_COLOR : utilRandomColor(),
+				}))
 
-					// Los datos son válidos si no se ha lanzado una excepción hasta este punto
-					// console.log('Datos válidos:', jobListResponse)
-
-					const jobList: JobData[] = jobListResponse.results.map((job) => ({
-						id: job.id,
-						logo: job.logo,
-						title: job.role,
-						company: job.company_name,
-						type: job.employment_type,
-						location: job.location,
-						date: job.date_posted,
-						color: job.logo ? DEFAULT_JOB_COLOR : utilRandomColor(),
-					}))
-
-					console.log('🚀 ~ useJobs ~ jobList:', jobList)
-					store.setJobs(jobList)
-				} catch (error) {
-					// En caso de error de validación o de la petición HTTP
-					console.warn('⚠ Error al obtener o validar los datos:', error)
-					return { data: null, error, isLoading: pending, isError: !!error }
-				}
+				// console.log('🚀 ~ useJobs ~ jobList:', jobList)
+				store.setJobs(jobList)
 			}
 		},
 		{ immediate: true },

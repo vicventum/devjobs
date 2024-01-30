@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import useJobsApi from '~/composables/api/use-jobs-api'
 import useJobs from '~/composables/services/use-jobs'
 
 /// / ;(async () => {
@@ -46,7 +45,7 @@ import useJobs from '~/composables/services/use-jobs'
 // const resp = jobApi('/jobs/')
 // const resp = jobApijobs/')
 // console.services('🚀 ~ resp)
-const { jobList, isLoading, currentPage, isError } = useJobs()
+const { jobList, isLoading, currentPage, isError, error } = useJobs()
 console.log(
 	'🚀 ~ data, pending:',
 	jobList.value,
@@ -54,16 +53,26 @@ console.log(
 	currentPage.value,
 	isError,
 )
+
+const errorMessage = computed(() => {
+	if (isError)
+		return 'An error has occurred, please try again or reload the page'
+	if (!jobList.value.length) return 'No available jobs found'
+})
 </script>
 
 <template>
 	<div>
 		<FormFilter class="filter" />
+
+		<GallerySkeleton v-if="isLoading" />
+
 		<BaseErrorMessage
-			v-if="isError"
-			message="An error has occurred, please try again or reload the page"
+			v-else-if="error || !jobList.length"
+			:message="errorMessage"
 		/>
-		<GalleryJobs :job-list="jobList" />
+
+		<GalleryJobs v-else :job-list="jobList" />
 
 		<footer class="pa-4 d-flex justify-center my-16">
 			<!-- <v-btn :loading="pending" color="primary" @click="loadMoreJobs"> -->
