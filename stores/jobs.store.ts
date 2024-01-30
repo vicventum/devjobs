@@ -3,12 +3,14 @@ import type { JobData } from '@/types'
 export const useJobsStore = defineStore('Jobs', () => {
 	const jobList = ref<JobData[]>([])
 	const currentPage = ref<number>(1)
+	const isFinalPage = ref<boolean>(false)
 	// const totalPages = ref<number>(5)
 
 	return {
 		// --- State
 		jobList,
 		currentPage,
+		isFinalPage,
 
 		// --- Getters
 		// squareCount: computed(() => currentPage.value * currentPage.value),
@@ -17,12 +19,16 @@ export const useJobsStore = defineStore('Jobs', () => {
 		setJobs(newJobs: JobData[]) {
 			jobList.value.push(...newJobs)
 		},
-		// setPage(page: number) {
-		//   if (currentPage.value === page) return null
-		//   if (page <= 0) return null
-		//   if (page > totalPages.value) return null
+		setPage(page: number) {
+			console.log('🚀 ~ setPage ~ page:', page)
+			if (currentPage.value === page) return null
+			if (page <= 0) return null
+			// if (page > totalPages.value) return null
 
-		//   currentPage.value = page
-		// }
+			currentPage.value = page
+		},
+		setFinalPage(finalPage: string | null) {
+			isFinalPage.value = !finalPage
+		},
 	}
 })

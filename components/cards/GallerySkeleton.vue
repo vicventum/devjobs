@@ -1,12 +1,17 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+interface Props {
+	items?: number
+}
+const { items = 9 } = defineProps<Props>()
+</script>
 
 <template>
 	<section class="gallery">
 		<v-skeleton-loader
-			v-for="job in 9"
+			v-for="job in items"
 			:key="job"
 			type="avatar, text, paragraph"
-			height="220px"
+			height="270px"
 		/>
 	</section>
 </template>

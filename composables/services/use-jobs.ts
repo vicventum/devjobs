@@ -6,7 +6,7 @@ import { useJobsStore } from '@/stores/jobs.store'
 const useJobs = () => {
 	const { DEFAULT_JOB_COLOR } = useConstants()
 	const store = useJobsStore()
-	const { jobList, currentPage } = storeToRefs(store)
+	const { jobList, currentPage, isFinalPage } = storeToRefs(store)
 
 	const { pending, data, error } = useAsyncData('jobList', () => getJobList(), {
 		watch: [currentPage],
@@ -30,6 +30,7 @@ const useJobs = () => {
 
 				// console.log('🚀 ~ useJobs ~ jobList:', jobList)
 				store.setJobs(jobList)
+				store.setFinalPage(newJobsResponse.next)
 			}
 		},
 		{ immediate: true },
@@ -39,15 +40,17 @@ const useJobs = () => {
 		// --- Properties
 		jobList,
 		currentPage,
-		isLoading: pending,
+		isFinalPage,
 		error,
+		isLoading: pending,
 		isError: !!error.value,
 		// totalPages,
 
 		// --- Methods
-		// getPage(page: number) {
-		// 	store.setPage(page)
-		// },
+		getPage(page: number) {
+			console.log('🚀 ~ useJobs getPage ~ page:', page)
+			store.setPage(page)
+		},
 	}
 }
 
