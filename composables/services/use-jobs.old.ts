@@ -1,4 +1,4 @@
-import type { FetchError } from 'ofetch'
+/* import type { FetchError } from 'ofetch'
 import type { JobListResponse, JobDataResponse, JobData } from '@/types'
 import { JobListSchema, JobDataSchema } from '@/types'
 
@@ -80,3 +80,4 @@ export function useJobs() {
 		getJobList,
 	}
 }
+ */

@@ -39,6 +39,7 @@ defineProps<Props>()
 					:company="job.company"
 					:location="job.location"
 					:color="job.color"
+					:remote="job.remote"
 				/>
 			</template>
 		</ClientOnly>

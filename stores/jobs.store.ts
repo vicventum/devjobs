@@ -1,16 +1,27 @@
-import type { JobData } from '@/types'
+import type { JobData, DataFilter } from '@/types'
 
 export const useJobsStore = defineStore('Jobs', () => {
 	const jobList = ref<JobData[]>([])
 	const currentPage = ref<number>(1)
 	const isFinalPage = ref<boolean>(false)
-	// const totalPages = ref<number>(5)
+	const dataFilter = ref<DataFilter>({
+		title: '',
+		location: '',
+		isRemote: false,
+	})
+
+	function resetData() {
+		jobList.value = []
+		currentPage.value = 1
+		isFinalPage.value = false
+	}
 
 	return {
 		// --- State
 		jobList,
 		currentPage,
 		isFinalPage,
+		dataFilter,
 
 		// --- Getters
 		// squareCount: computed(() => currentPage.value * currentPage.value),
@@ -29,6 +40,10 @@ export const useJobsStore = defineStore('Jobs', () => {
 		},
 		setFinalPage(finalPage: string | null) {
 			isFinalPage.value = !finalPage
+		},
+		setDataFilter(data: DataFilter) {
+			resetData()
+			dataFilter.value = { ...data }
 		},
 	}
 })

@@ -1,14 +1,35 @@
-import type { JobListResponse, JobDataResponse, JobData } from '@/types'
-import { JobListSchema, JobDataSchema } from '@/types'
+import type { JobListResponse, DataFilter } from '@/types'
+import { JobListSchema } from '@/types'
 // import type {  } from 'zod'
 
 import useJobsApi from '@/composables/api/use-jobs-api'
 
 async function getJobList({
 	page = 1,
-}: { page?: number } = {}): Promise<JobListResponse> {
+	filters = {
+		title: '',
+		location: '',
+		isRemote: false,
+	},
+}: { page?: number; filters?: DataFilter } = {}): Promise<JobListResponse> {
+	// const queryPage = `page=${page}`
+	// const filterQueryTitle = `search=${filters.title}`
+	// const filterQueryLocation = `source=&location=${filters.location}`
+	// const filterQueryRemote = `remote=${filters.isRemote}`
+	// const URL = `/jobs/?${queryPage}&${filterQueryTitle}&${filterQueryLocation}&${filterQueryRemote}`
+	// const resp = await jobsApi<JobListResponse>(URL)
+
+	const remoteOnly: true | '' = filters.isRemote ? filters.isRemote : ''
+	const query = {
+		// page,
+		search: filters.title,
+		location: filters.location,
+		remote: remoteOnly,
+	}
+	console.log('🚀 ~ query:', query)
+
 	const jobsApi = useJobsApi()
-	const resp = await jobsApi<JobListResponse>(`/jobs/?page=${page}`)
+	const resp = await jobsApi<JobListResponse>(`/jobs/?page=${page}`, { query })
 
 	try {
 		const jobListResponse: JobListResponse = JobListSchema.parse(resp)

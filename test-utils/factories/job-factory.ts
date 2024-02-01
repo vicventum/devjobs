@@ -23,6 +23,7 @@ const factoryJob = Factory.define<JobData>(({ sequence }) => ({
 	location: faker.location.city(),
 	color: generateRandomColor(),
 	type: faker.helpers.arrayElement<JobType>(jobTypeList),
+	remote: true, // ! cambiar a data de Faker
 	// content: faker.lorem.paragraph(),
 	// user: generateUser(),
 }))

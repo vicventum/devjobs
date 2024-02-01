@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import useJobs from '~/composables/services/use-jobs'
+import type { DataFilter } from '@/types'
+import useJobs from '@/composables/services/use-jobs'
 
-const { jobList, isLoading, isError, currentPage, isFinalPage, getPage } =
-	useJobs()
+const {
+	jobList,
+	isLoading,
+	isError,
+	currentPage,
+	isFinalPage,
+	getPage,
+	getDataFilter,
+} = useJobs()
 console.log(
 	'🚀 ~ data, pending:',
 	jobList.value,
@@ -17,12 +25,20 @@ const errorMessage = computed(() => {
 		return 'An error has occurred, please try again or reload the page'
 	if (!jobList.value.length) return 'No available jobs found'
 })
+
+function submitDataFilter(dataFilter: DataFilter) {
+	getDataFilter(dataFilter)
+}
 </script>
 
 <template>
 	<div>
 		<ClientOnly>
-			<FormFilter class="filter" />
+			<FormFilter
+				class="filter"
+				:is-loading="isLoading"
+				@submit="submitDataFilter"
+			/>
 
 			<GallerySkeleton v-if="isLoading && !jobList.length" />
 			<BaseErrorMessage

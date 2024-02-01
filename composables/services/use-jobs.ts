@@ -1,4 +1,4 @@
-import type { JobData } from '@/types'
+import type { JobData, DataFilter } from '@/types'
 
 import { getJobList } from '@/utils/services/jobs-service'
 import { useJobsStore } from '@/stores/jobs.store'
@@ -6,11 +6,15 @@ import { useJobsStore } from '@/stores/jobs.store'
 const useJobs = () => {
 	const { DEFAULT_JOB_COLOR } = useConstants()
 	const store = useJobsStore()
-	const { jobList, currentPage, isFinalPage } = storeToRefs(store)
+	const { jobList, currentPage, isFinalPage, dataFilter } = storeToRefs(store)
 
-	const { pending, data, error } = useAsyncData('jobList', () => getJobList(), {
-		watch: [currentPage],
-	})
+	const { pending, data, error } = useAsyncData(
+		'jobList',
+		() => getJobList({ page: currentPage.value, filters: dataFilter.value }),
+		{
+			watch: [currentPage, dataFilter],
+		},
+	)
 
 	// ? Insertando la data (cuando ya se obtenga) en el store
 	watch(
@@ -26,6 +30,7 @@ const useJobs = () => {
 					location: job.location,
 					date: job.date_posted,
 					color: job.logo ? DEFAULT_JOB_COLOR : utilRandomColor(),
+					remote: job.remote,
 				}))
 
 				// console.log('🚀 ~ useJobs ~ jobList:', jobList)
@@ -50,6 +55,10 @@ const useJobs = () => {
 		getPage(page: number) {
 			console.log('🚀 ~ useJobs getPage ~ page:', page)
 			store.setPage(page)
+		},
+		getDataFilter(data: DataFilter) {
+			console.log('🚀 ~ useJobs getPage ~ page:', data)
+			store.setDataFilter(data)
 		},
 	}
 }
