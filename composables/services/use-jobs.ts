@@ -13,6 +13,7 @@ const useJobs = () => {
 		() => getJobList({ page: currentPage.value, filters: dataFilter.value }),
 		{
 			watch: [currentPage, dataFilter],
+			lazy: true,
 		},
 	)
 

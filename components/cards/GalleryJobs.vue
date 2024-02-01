@@ -5,27 +5,17 @@ interface Props {
 	jobList: JobData[]
 }
 defineProps<Props>()
+
+const router = useRouter()
+
+function goToPage(id: string) {
+	router.push({ name: 'id', params: { id } })
+	// router.push(`/${id}`)
+}
 </script>
 
 <template>
 	<div class="gallery">
-		<!-- <template v-if="isLoading">
-			{{ isLoading }}
-			<v-skeleton-loader
-				v-for="job in 9"
-				:key="job"
-				type="avatar, text, paragraph"
-				height="220px"
-			/>
-		</template>
-
-		<BaseErrorMessage
-			v-if="!jobList?.length && !isError && !isLoading"
-			class="gallery__no-data-message"
-			message="No available jobs found"
-		/> -->
-
-		<!-- <template v-else> -->
 		<ClientOnly>
 			<template v-if="jobList.length">
 				<CardJob
@@ -40,10 +30,10 @@ defineProps<Props>()
 					:location="job.location"
 					:color="job.color"
 					:remote="job.remote"
+					@click="goToPage(job.id)"
 				/>
 			</template>
 		</ClientOnly>
-		<!-- </template> -->
 	</div>
 </template>
 

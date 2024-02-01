@@ -44,7 +44,7 @@ const relativeDate = ref(toRelativeDate(props.date))
 	</v-sheet>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
 	position: relative;
 	cursor: pointer;

@@ -11,14 +11,6 @@ const {
 	getPage,
 	getDataFilter,
 } = useJobs()
-console.log(
-	'🚀 ~ data, pending:',
-	jobList.value,
-	isLoading.value,
-	currentPage.value,
-	isError,
-	isFinalPage.value,
-)
 
 const errorMessage = computed(() => {
 	if (isError)
