@@ -9,7 +9,7 @@ defineProps<Props>()
 const router = useRouter()
 
 function goToPage(id: string) {
-	router.push({ name: 'id', params: { id } })
+	router.push({ name: 'job-id', params: { id } })
 	// router.push(`/${id}`)
 }
 </script>

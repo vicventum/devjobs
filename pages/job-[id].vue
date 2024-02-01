@@ -9,10 +9,13 @@ console.log('🚀 ~ route:', route)
 
 <template>
 	<NuxtLayout name="detail">
-		<CardJobSummary color="#009688" />
+		<CardJobSummary class="job-summary mb-8" color="#009688" />
+		<CardJobContent class="job-content mb-8" />
 
-		<template #footer> footer </template>
+		<template #footer>
+			<LayoutJobDetailFooter />
+		</template>
 	</NuxtLayout>
 </template>
 
-<style></style>
+<style scoped></style>

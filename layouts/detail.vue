@@ -13,6 +13,6 @@
 <style scoped>
 .container {
 	position: relative;
-	max-width: 730px;
+	max-width: var(--job-detail-container-width);
 }
 </style>

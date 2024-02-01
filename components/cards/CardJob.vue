@@ -24,7 +24,7 @@ const relativeDate = ref(toRelativeDate(props.date))
 			<h3 class="card__time text-body-1 text-light-darken-4 mb-3">
 				{{ relativeDate }}
 				<span v-if="type">
-					<span class="card__separator-point">•</span>
+					<BaseSeparatorPoint />
 					{{ type }}
 				</span>
 			</h3>
@@ -62,12 +62,6 @@ const relativeDate = ref(toRelativeDate(props.date))
 		position: absolute;
 		left: 32px;
 		top: -25px;
-	}
-
-	&__separator-point {
-		margin: 0 8px;
-		display: inline-block;
-		transform: scale(2);
 	}
 
 	&__actions {

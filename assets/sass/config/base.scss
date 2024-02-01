@@ -3,6 +3,9 @@
 @use './font-style-mapping.scss' as fs;
 @use '../utils/scrollbar.scss';
 // @use 'vuetify/styles';
+:root {
+	--job-detail-container-width: 730px;
+}
 
 body {
 	// font-size: fs.$body-1-size;
