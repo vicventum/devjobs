@@ -11,7 +11,7 @@ export interface JobData {
 	location: string | null
 	date: Date
 	color: Color
-
+	remote: boolean
 	// company_num_employees: z.union([z.null(), z.string()]),
 	// remote: z.boolean(),
 	// url: z.string(),

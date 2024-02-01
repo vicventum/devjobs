@@ -9,6 +9,7 @@ const props = defineProps<{
 	company: string
 	location: string | null
 	color: Color
+	remote: boolean
 }>()
 
 const { toRelativeDate } = utilFormat()
@@ -34,7 +35,11 @@ const relativeDate = ref(toRelativeDate(props.date))
 		</div>
 
 		<footer class="card__actions mt-10">
-			<h4 class="card__location text-h4 text-primary">{{ location }}</h4>
+			<h4 v-if="location" class="card__location text-h4 text-primary">
+				{{ location }}
+			</h4>
+			<v-divider v-if="location && remote" class="mx-4" vertical />
+			<h4 v-if="remote" class="card__remote text-h4 text-success">Remote</h4>
 		</footer>
 	</v-sheet>
 </template>
@@ -63,6 +68,11 @@ const relativeDate = ref(toRelativeDate(props.date))
 		margin: 0 8px;
 		display: inline-block;
 		transform: scale(2);
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
 	}
 }
 </style>

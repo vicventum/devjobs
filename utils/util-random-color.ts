@@ -6,7 +6,7 @@ const COLORS: HexadecimalColor[] = [
 	'#009688',
 	'#FFC107',
 	'#FF7043',
-	'#3F51B5',
+	'#039BE5',
 ]
 
 export default function utilRandomColor(): HexadecimalColor {

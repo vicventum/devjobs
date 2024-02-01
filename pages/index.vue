@@ -1,60 +1,69 @@
 <script setup lang="ts">
-// ;(async () => {
-// 	await jobsStore().fetchJobList()
-// })()
-const { isError, isLoading } = toRefs(jobsStore().jobList)
-// const jobList = jobsStore().jobList
-// console.log('🟢 ~ isLoading:', jobList.isLoading.value)
-watch(
-	() => isLoading.value,
-	() => {
-		console.log('🟢🟢 isLoading:', isLoading.value)
-	},
-	{
-		immediate: true,
-	},
+import type { DataFilter } from '@/types'
+import useJobs from '@/composables/services/use-jobs'
+
+const {
+	jobList,
+	isLoading,
+	isError,
+	currentPage,
+	isFinalPage,
+	getPage,
+	getDataFilter,
+} = useJobs()
+console.log(
+	'🚀 ~ data, pending:',
+	jobList.value,
+	isLoading.value,
+	currentPage.value,
+	isError,
+	isFinalPage.value,
 )
 
-await jobsStore().fetchJobList()
-// let isLoad = ref(false)
-async function loadMoreJobs() {
-	await jobsStore().loadMoreJobs()
-	// const BASE_PATH = `/jobs/?page=${7}`
-	// const { data, error, pending } = await useMyFetch(
-	// 	BASE_PATH,
-	// 	// {
-	// 	// 	lazy: true,
-	// 	// },
-	// )
-	// isLoad = toRef(pending)
-	// watch(
-	// 	() => pending.value,
-	// 	() => {
-	// 		console.log('🟠 ~ pending:', pending.value, isLoad.value)
-	// 		// isLoad.value = pending.value
-	// 	},
-	// 	{
-	// 		immediate: true,
-	// 	},
-	// )
+const errorMessage = computed(() => {
+	if (isError)
+		return 'An error has occurred, please try again or reload the page'
+	if (!jobList.value.length) return 'No available jobs found'
+})
+
+function submitDataFilter(dataFilter: DataFilter) {
+	getDataFilter(dataFilter)
 }
 </script>
 
 <template>
 	<div>
-		<FormFilter class="filter" />
-		<BaseErrorMessage
-			v-if="isError"
-			message="An error has occurred, please try again or reload the page"
-		/>
-		<GalleryJobs />
+		<ClientOnly>
+			<FormFilter
+				class="filter"
+				:is-loading="isLoading"
+				@submit="submitDataFilter"
+			/>
 
-		<footer class="pa-4 d-flex justify-center my-16">
-			{{ isLoading }}
-			<v-btn :loading="isLoading" color="primary" @click="loadMoreJobs">
-				Load More {{ isLoading }}
-			</v-btn>
-		</footer>
+			<GallerySkeleton v-if="isLoading && !jobList.length" />
+			<BaseErrorMessage
+				v-else-if="isError || !jobList.length"
+				:message="errorMessage"
+			/>
+			<GalleryJobs v-else :job-list="jobList" />
+			<GallerySkeleton
+				v-if="isLoading && jobList.length"
+				class="my-16"
+				:items="3"
+			/>
+
+			<footer class="pa-4 d-flex justify-center my-16">
+				<!-- <v-btn :loading="pending" color="primary" @click="loadMoreJobs"> -->
+				<v-btn
+					:loading="isLoading"
+					:disabled="isLoading || isFinalPage"
+					color="primary"
+					@click="getPage(currentPage + 1)"
+				>
+					Load More
+				</v-btn>
+			</footer>
+		</ClientOnly>
 	</div>
 </template>
 

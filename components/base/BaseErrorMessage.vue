@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { message = 'Ha ocurrido un error' } = defineProps<{
-	message: string
+	message?: string
 }>()
 </script>
 
