@@ -18,7 +18,13 @@ const relativeDate = ref(toRelativeDate(props.date))
 
 <template>
 	<v-sheet class="card px-8 pt-12 pb-8" tag="article">
-		<CardJobImg class="card__img" :src="logo" :text="company" :color="color" />
+		<CardJobImg
+			class="card__img"
+			:src="logo"
+			:text="company"
+			:color="color"
+			size="50px"
+		/>
 
 		<div class="card__content">
 			<h3 class="card__time text-body-1 text-light-darken-4 mb-3">

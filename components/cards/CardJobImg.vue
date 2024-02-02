@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { Color } from '@/types'
-const props = defineProps<{
-	src: string | null
+const { color, size = '100%' } = defineProps<{
+	src?: string | null
 	text: string
 	color: Color
+	size?: string
 }>()
 
-const bgColor = ref(props.color)
+const bgColor = ref(color)
 function setRandomColor() {
 	bgColor.value = utilRandomColor()
 }
@@ -34,8 +35,8 @@ function setRandomColor() {
 
 <style lang="scss" scoped>
 .img {
-	width: 50px;
-	height: 50px;
+	width: v-bind(size);
+	height: v-bind(size);
 	padding: 4px;
 
 	display: flex;

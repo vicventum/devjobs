@@ -4,9 +4,9 @@
 		<v-container class="container">
 			<slot />
 		</v-container>
-		<footer>
+		<v-sheet>
 			<slot name="footer" />
-		</footer>
+		</v-sheet>
 	</v-app>
 </template>
 

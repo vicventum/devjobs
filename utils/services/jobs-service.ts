@@ -1,5 +1,5 @@
-import type { JobListResponse, DataFilter } from '@/types'
-import { JobListSchema } from '@/types'
+import type { JobListResponse, DataFilter, JobDataResponse } from '@/types'
+import { JobListSchema, JobDataSchema } from '@/types'
 // import type {  } from 'zod'
 
 import useJobsApi from '@/composables/api/use-jobs-api'
@@ -37,10 +37,34 @@ async function getJobList({
 		// console.log('Datos válidos:', jobListResponse)
 		return jobListResponse
 	} catch (error) {
+		// TODO: Indicar el tipo del error
 		// En caso de error de validación o de la petición HTTP
 		console.error('⚠ Error al obtener o validar los datos:', error)
 		throw error
 	}
 }
 
-export { getJobList }
+async function getJobDetail({ id }: { id: string }): Promise<JobDataResponse> {
+	const jobsApi = useJobsApi()
+	const api = $fetch.create({
+		// your default options
+		baseURL: 'https://cors-anywhere.herokuapp.com/https://findwork.dev/api',
+		headers: {
+			Authorization: `Token c6bef58abe2eded3348921b287e5f5f27daf73f9`,
+		},
+	})
+
+	const resp = await jobsApi<JobDataResponse>(`/jobs/${id}`)
+
+	console.log('🚀 ~ getJobDetail ~ resp:', resp)
+	try {
+		const jobDataResponse: JobDataResponse = JobDataSchema.parse(resp)
+		return jobDataResponse
+	} catch (error) {
+		// TODO: Indicar el tipo del error
+		console.error('⚠ Error al obtener o validar los datos:', error)
+		throw error
+	}
+}
+
+export { getJobList, getJobDetail }
