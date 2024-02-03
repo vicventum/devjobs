@@ -16,11 +16,12 @@ function setFallbackColor(color: Color) {
 
 function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 	const { id, color } = data
-	const finalColor = fallbackColorComputed.value ?? color
+	const finalColor = ref(fallbackColorComputed.value ?? color)
+	console.log('🚀 ~ goToPage ~ finalColor:', finalColor.value)
 	return {
 		name: 'job-id',
 		params: { id },
-		query: { color: finalColor },
+		query: { color: finalColor.value },
 	}
 	// router.push({ name: 'job-id', params: { id }, query: { color: finalColor } })
 	// router.push(`/${id}`)
