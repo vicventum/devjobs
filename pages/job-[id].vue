@@ -7,7 +7,7 @@ definePageMeta({
 
 const route = useRoute()
 const { jobDetail, isLoading, isError } = useJob({ id: `${route.params.id}` })
-console.log('🚀 ~ jobDetail:', jobDetail, route.params)
+console.log('🚀 ~ jobDetail:', jobDetail, route)
 </script>
 
 <template>

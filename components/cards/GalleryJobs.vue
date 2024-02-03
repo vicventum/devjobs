@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { JobData } from '@/types'
+import type { JobData, Color } from '@/types'
 
 interface Props {
 	jobList: JobData[]
@@ -7,9 +7,16 @@ interface Props {
 defineProps<Props>()
 
 const router = useRouter()
+const fallbackColor = ref('')
 
-function goToPage(id: string) {
-	router.push({ name: 'job-id', params: { id } })
+function setFallbackColor(color: Color) {
+	fallbackColor.value = color
+}
+
+function goToPage(data: { id: string; color: string }) {
+	const { id, color } = data
+	const finalColor = fallbackColor.value ?? color
+	router.push({ name: 'job-id', params: { id }, query: { color: finalColor } })
 	// router.push(`/${id}`)
 }
 </script>
@@ -30,7 +37,8 @@ function goToPage(id: string) {
 					:location="job.location"
 					:color="job.color"
 					:remote="job.remote"
-					@click="goToPage(job.id)"
+					@error-loading-img="setFallbackColor"
+					@click="goToPage({ id: job.id, color: job.color })"
 				/>
 			</template>
 		</ClientOnly>

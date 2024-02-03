@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import type { Color } from '@/types'
-const {
-	color,
-	size = '100%',
-	rounded = false,
-} = defineProps<{
+
+type Props = {
 	src?: string | null
 	text: string
 	color: Color
@@ -12,11 +9,20 @@ const {
 	rounded?: boolean
 	sizeAvatar?: string
 	sizeAvatarText?: string
-}>()
+}
+type Emits = {
+	error: [fallbackColor: Color]
+}
+const { color, size = '100%', rounded = false } = defineProps<Props>()
+const emit = defineEmits<Emits>()
 
 const bgColor = ref(color)
+const route = useRoute()
+const fallbackColor: Color = route.query.color as Color
 function setRandomColor() {
-	bgColor.value = utilRandomColor()
+	const randomColor = utilRandomColor()
+	emit('error', randomColor)
+	bgColor.value = fallbackColor ?? randomColor
 }
 </script>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Color } from '@/types'
 
-const props = defineProps<{
+type Props = {
 	logo: string | null
 	date: Date
 	type: string | null
@@ -10,7 +10,13 @@ const props = defineProps<{
 	location: string | null
 	color: Color
 	remote: boolean
-}>()
+}
+type Emits = {
+	errorLoadingImg: [fallbackColor: Color]
+}
+
+const props = defineProps<Props>()
+const emit = defineEmits<Emits>()
 
 const { toRelativeDate } = utilFormat()
 const relativeDate = ref(toRelativeDate(props.date))
@@ -25,6 +31,7 @@ const relativeDate = ref(toRelativeDate(props.date))
 			:color="color"
 			size="50px"
 			rounded
+			@error="(fallbackColor) => emit('errorLoadingImg', fallbackColor)"
 		/>
 
 		<div class="card__content">
