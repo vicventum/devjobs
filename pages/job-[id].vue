@@ -22,7 +22,19 @@ console.log('🚀 ~ jobDetail:', jobDetail, route.params)
 				:url-apply="jobDetail.urlApply"
 				:url-company="jobDetail?.urlCompany"
 			/>
-			<CardJobContent class="job-content mb-8" />
+			<CardJobContent
+				class="job-content mb-8"
+				:company="jobDetail.company"
+				:date="jobDetail.date"
+				:keywords="jobDetail.keywords"
+				:location="jobDetail.location"
+				:remote="jobDetail.remote"
+				:source="jobDetail.source"
+				:text="jobDetail.text"
+				:title="jobDetail.title"
+				:type="jobDetail.type"
+				:url-apply="jobDetail.urlApply"
+			/>
 		</template>
 		<template #footer>
 			<LayoutJobDetailFooter />

@@ -57,3 +57,7 @@ p {
 	font-family: fs.$body-1-font-family;
 	text-transform: fs.$body-1-text-transform;
 }
+
+a {
+	color: rgb(var(--v-theme-light-darken-4));
+}

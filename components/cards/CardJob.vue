@@ -24,6 +24,7 @@ const relativeDate = ref(toRelativeDate(props.date))
 			:text="company"
 			:color="color"
 			size="50px"
+			rounded
 		/>
 
 		<div class="card__content">

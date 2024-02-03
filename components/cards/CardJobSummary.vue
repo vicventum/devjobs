@@ -57,7 +57,7 @@ const props = defineProps<Props>()
 	grid-template-columns: auto 1fr;
 	height: var(--card-height);
 
-	// outline: 1px solid red;
+	overflow: hidden;
 
 	&__logo-container {
 		width: var(--card-height);
@@ -66,8 +66,8 @@ const props = defineProps<Props>()
 
 		display: flex;
 		place-content: center;
-		border-top-left-radius: 4px;
-		border-bottom-left-radius: 4px;
+		// border-top-left-radius: 4px;
+		// border-bottom-left-radius: 4px;
 	}
 
 	&__content {

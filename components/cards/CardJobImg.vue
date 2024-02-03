@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import type { Color } from '@/types'
-const { color, size = '100%' } = defineProps<{
+const {
+	color,
+	size = '100%',
+	rounded = false,
+} = defineProps<{
 	src?: string | null
 	text: string
 	color: Color
 	size?: string
+	rounded?: boolean
 }>()
 
 const bgColor = ref(color)
@@ -14,11 +19,12 @@ function setRandomColor() {
 </script>
 
 <template>
-	<div class="img elevation-1-">
+	<div class="job-img elevation-1-">
 		<!-- <BaseImg :src="useSrc(logo)" alt="logo" :cover="false" /> -->
 		<BaseImg
 			v-if="src"
-			class="img-inner"
+			class="job-img__image"
+			:class="{ 'job-img__image--rounded': rounded }"
 			:src="src"
 			:initials-text="text"
 			:alt="`${text} logo`"
@@ -26,6 +32,8 @@ function setRandomColor() {
 		/>
 		<BaseAvatar
 			v-else
+			class="job-img__avatar"
+			:class="{ 'job-img__avatar--rounded': rounded }"
 			:initials-text="text"
 			background="transparent"
 			color="rgb(var(--v-theme-light))"
@@ -34,7 +42,7 @@ function setRandomColor() {
 </template>
 
 <style lang="scss" scoped>
-.img {
+.job-img {
 	width: v-bind(size);
 	height: v-bind(size);
 	padding: 4px;
@@ -46,8 +54,8 @@ function setRandomColor() {
 	// background: rgb(var(--v-theme-surface-bright));
 	background: v-bind(bgColor);
 
-	&,
-	&-inner {
+	&__avatar--rounded,
+	&__image--rounded {
 		border-radius: 1rem;
 	}
 }

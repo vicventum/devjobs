@@ -6,7 +6,7 @@
 export default function utilFormat() {
 	function toRelativeDate(
 		date: Date | number | string,
-		lang: string = 'es',
+		lang: string = 'en',
 	): string {
 		const now: Date = new Date()
 		const diff: number = now.getTime() - new Date(date).getTime()
