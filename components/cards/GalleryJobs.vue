@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { RouteLocationRaw } from 'vue-router'
 import type { JobData, Color } from '@/types'
 
 interface Props {
@@ -6,17 +7,22 @@ interface Props {
 }
 defineProps<Props>()
 
-const router = useRouter()
 const fallbackColor = ref('')
+const fallbackColorComputed = computed(() => fallbackColor.value)
 
 function setFallbackColor(color: Color) {
 	fallbackColor.value = color
 }
 
-function goToPage(data: { id: string; color: string }) {
+function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 	const { id, color } = data
-	const finalColor = fallbackColor.value ?? color
-	router.push({ name: 'job-id', params: { id }, query: { color: finalColor } })
+	const finalColor = fallbackColorComputed.value ?? color
+	return {
+		name: 'job-id',
+		params: { id },
+		query: { color: finalColor },
+	}
+	// router.push({ name: 'job-id', params: { id }, query: { color: finalColor } })
 	// router.push(`/${id}`)
 }
 </script>
@@ -25,21 +31,25 @@ function goToPage(data: { id: string; color: string }) {
 	<div class="gallery">
 		<ClientOnly>
 			<template v-if="jobList.length">
-				<CardJob
+				<NuxtLink
 					v-for="job in jobList"
 					:key="job.id"
-					class="gallery__card"
-					:logo="job.logo"
-					:date="job.date"
-					:type="job.type"
-					:title="job.title"
-					:company="job.company"
-					:location="job.location"
-					:color="job.color"
-					:remote="job.remote"
-					@error-loading-img="setFallbackColor"
-					@click="goToPage({ id: job.id, color: job.color })"
-				/>
+					class="gallery__link"
+					:to="goToPage({ id: job.id, color: job.color })"
+				>
+					<CardJob
+						class="gallery__card"
+						:logo="job.logo"
+						:date="job.date"
+						:type="job.type"
+						:title="job.title"
+						:company="job.company"
+						:location="job.location"
+						:color="job.color"
+						:remote="job.remote"
+						@error-loading-img="setFallbackColor"
+					/>
+				</NuxtLink>
 			</template>
 		</ClientOnly>
 	</div>
@@ -54,6 +64,13 @@ function goToPage(data: { id: string; color: string }) {
 
 	&__no-data-message {
 		grid-column: 1/-1;
+	}
+
+	&__link {
+		text-decoration: none;
+	}
+	&__card {
+		height: 100%;
 	}
 }
 </style>
