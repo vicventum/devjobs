@@ -3,10 +3,14 @@ const {
 	initialsText = '',
 	background = 'primary',
 	color = undefined,
+	size = '40px',
+	sizeText = 'var(--h2-size)',
 } = defineProps<{
 	initialsText: string | undefined
 	background?: string
 	color?: string
+	size?: string
+	sizeText?: string
 }>()
 
 const textColor = computed(() => {
@@ -15,8 +19,8 @@ const textColor = computed(() => {
 </script>
 
 <template>
-	<v-avatar class="avatar" :color="background">
-		<span class="avatar__text text-h5 font-weight-bold">
+	<v-avatar class="avatar" :color="background" :size="size">
+		<span class="avatar__text font-weight-bold">
 			{{ utilGetFirstLetter(initialsText) }}
 		</span>
 	</v-avatar>
@@ -26,6 +30,7 @@ const textColor = computed(() => {
 .avatar {
 	&__text {
 		color: v-bind(color);
+		font-size: v-bind(sizeText);
 	}
 }
 </style>

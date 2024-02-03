@@ -37,7 +37,12 @@ console.log('🚀 ~ jobDetail:', jobDetail, route.params)
 			/>
 		</template>
 		<template #footer>
-			<LayoutJobDetailFooter />
+			<LayoutJobDetailFooter
+				v-if="jobDetail"
+				:company="jobDetail.company"
+				:title="jobDetail.title"
+				:url-apply="jobDetail.urlApply"
+			/>
 		</template>
 	</NuxtLayout>
 </template>

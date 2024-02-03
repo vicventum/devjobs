@@ -5,6 +5,7 @@
 // @use 'vuetify/styles';
 :root {
 	--job-detail-container-width: 730px;
+	--h2-size: #{fs.$h2-size};
 }
 
 body {
@@ -13,6 +14,13 @@ body {
 	overflow-x: hidden;
 	scroll-behavior: smooth;
 	@extend .scrollbar;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	text-wrap: balance;
 }
 
 h1 {

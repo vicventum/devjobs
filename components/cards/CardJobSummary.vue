@@ -20,6 +20,8 @@ const props = defineProps<Props>()
 				:src="logo"
 				:text="company"
 				:color="color"
+				size-avatar="100%"
+				size-avatar-text="3.5rem"
 			/>
 		</div>
 
@@ -41,7 +43,7 @@ const props = defineProps<Props>()
 			</div>
 
 			<div>
-				<v-btn v-if="urlCompany" color="primary" variant="tonal">
+				<v-btn color="primary" variant="tonal" :disabled="!urlCompany">
 					Company Site
 				</v-btn>
 			</div>

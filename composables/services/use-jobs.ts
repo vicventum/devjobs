@@ -49,8 +49,9 @@ const useJobs = () => {
 		isFinalPage,
 		error,
 		isLoading: pending,
-		isError: !!error.value,
-		// totalPages,
+
+		// --- Computed
+		isError: computed(() => !!error.value),
 
 		// --- Methods
 		getPage(page: number) {

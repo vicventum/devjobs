@@ -52,8 +52,10 @@ const useJob = ({ id, color }: { id: string; color?: Color }) => {
 		jobDetail,
 		error,
 		isLoading: pending,
-		isError: !!error.value,
-		// totalPages,
+		// isError: !!error.value,
+
+		// --- Computed
+		isError: computed(() => !!error.value),
 
 		// --- Methods
 		// getPage(page: number) {

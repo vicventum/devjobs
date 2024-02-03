@@ -4,6 +4,8 @@ const attrs = useAttrs()
 // const { src = 'https://picsum.photos/40/40?image=232' } = defineProps<{
 defineProps<{
 	initialsText?: string
+	sizeAvatar?: string
+	sizeAvatarText?: string
 }>()
 const emits = defineEmits(['error'])
 
@@ -29,6 +31,8 @@ function errorLoadingImg(): void {
 					:initials-text="initialsText"
 					background="transparent"
 					color="rgb(var(--v-theme-light))"
+					:size="sizeAvatar"
+					:size-text="sizeAvatarText"
 				/>
 			</div>
 		</template>

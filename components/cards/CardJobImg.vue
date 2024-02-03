@@ -10,6 +10,8 @@ const {
 	color: Color
 	size?: string
 	rounded?: boolean
+	sizeAvatar?: string
+	sizeAvatarText?: string
 }>()
 
 const bgColor = ref(color)
@@ -19,7 +21,7 @@ function setRandomColor() {
 </script>
 
 <template>
-	<div class="job-img elevation-1-">
+	<div class="job-img elevation-1-" :class="{ 'job-img--rounded': rounded }">
 		<!-- <BaseImg :src="useSrc(logo)" alt="logo" :cover="false" /> -->
 		<BaseImg
 			v-if="src"
@@ -28,6 +30,8 @@ function setRandomColor() {
 			:src="src"
 			:initials-text="text"
 			:alt="`${text} logo`"
+			:size-avatar="sizeAvatar"
+			:size-avatar-text="sizeAvatarText"
 			@error="setRandomColor"
 		/>
 		<BaseAvatar
@@ -37,6 +41,8 @@ function setRandomColor() {
 			:initials-text="text"
 			background="transparent"
 			color="rgb(var(--v-theme-light))"
+			:size="sizeAvatar"
+			:size-text="sizeAvatarText"
 		/>
 	</div>
 </template>
@@ -46,15 +52,17 @@ function setRandomColor() {
 	width: v-bind(size);
 	height: v-bind(size);
 	padding: 4px;
-
-	display: flex;
-	place-items: center;
-	place-content: center;
-
-	// background: rgb(var(--v-theme-surface-bright));
 	background: v-bind(bgColor);
+	// background: rgb(var(--v-theme-surface-bright));
 
-	&__avatar--rounded,
+	&,
+	&__image:deep(.v-img__error) {
+		display: flex;
+		place-items: center;
+		place-content: center;
+	}
+
+	&--rounded,
 	&__image--rounded {
 		border-radius: 1rem;
 	}
