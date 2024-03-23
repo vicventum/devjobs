@@ -18,7 +18,7 @@ const emit = defineEmits<Emits>()
 
 const bgColor = ref(color)
 const route = useRoute()
-const fallbackColor: Color = route.query.color as Color
+const fallbackColor = route.query.color as Color
 function setRandomColor() {
 	const randomColor = utilRandomColor()
 	emit('error', randomColor)

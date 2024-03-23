@@ -28,6 +28,7 @@ async function getJobList({
 	}
 	console.log('🚀 ~ query:', query)
 
+	// ! FIXME: CLARA VIOLACION A _OCP_, NECESITO INYECTAR DEPENDENCIAS
 	const jobsApi = useJobsApi()
 	const resp = await jobsApi<JobListResponse>(`/jobs/?page=${page}`, { query })
 

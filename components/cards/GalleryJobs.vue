@@ -7,21 +7,12 @@ interface Props {
 }
 defineProps<Props>()
 
-const fallbackColor = ref('')
-const fallbackColorComputed = computed(() => fallbackColor.value)
-
-function setFallbackColor(color: Color) {
-	fallbackColor.value = color
-}
-
 function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 	const { id, color } = data
-	const finalColor = ref(fallbackColorComputed.value ?? color)
-	console.log('🚀 ~ goToPage ~ finalColor:', finalColor.value)
 	return {
 		name: 'job-id',
 		params: { id },
-		query: { color: finalColor.value },
+		query: { color },
 	}
 	// router.push({ name: 'job-id', params: { id }, query: { color: finalColor } })
 	// router.push(`/${id}`)
@@ -48,7 +39,6 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 						:location="job.location"
 						:color="job.color"
 						:remote="job.remote"
-						@error-loading-img="setFallbackColor"
 					/>
 				</NuxtLink>
 			</template>
