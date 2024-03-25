@@ -58,6 +58,7 @@
     "@mdi/js": "7.3.67",
     "@pinia/nuxt": "0.5.1",
     "@vee-validate/zod": "^4.12.5",
+    "@vue/test-utils": "^2.4.5",
     "eslint-config-standard-with-typescript": "40.0.0",
     "pinia": "2.1.7",
     "vee-validate": "^4.12.0"

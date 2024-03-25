@@ -15,6 +15,7 @@ import {
 	mdiMagnify,
 	mdiMapMarker,
 } from '@mdi/js'
+// import NuxtLink from 'node_modules/nuxt/dist/app/components/nuxt-link.js'
 
 export * from '@testing-library/vue'
 export * from '@testing-library/user-event'
@@ -34,7 +35,6 @@ export * from '@testing-library/user-event'
 // })
 
 // import Index from '../pages/index.vue'
-// import NuxtLink from '../node_modules/nuxt/dist/app/components/nuxt-link.js'
 // import { NuxtLink } from '#build/components.js'
 
 const lightTheme = {
@@ -135,7 +135,8 @@ export function mount(component, { NuxtPage, container, initialState } = {}) {
 			],
 			stubs: {
 				NuxtPage: false,
-				NuxtLink: true,
+				NuxtLink: false,
+				ClientOnly: '<div><slot /></div>',
 			},
 			components: {
 				// NuxtPage: Index,
@@ -156,6 +157,13 @@ export function asyncMount(
 		components: { AsyncComponent },
 		template: '<div><Suspense><AsyncComponent/></Suspense></div>',
 	})
+	const LinkComponent = defineComponent({
+		props: ['to'],
+		template: '<a><slot/></a>',
+	})
+	const OnlyClientComponent = defineComponent({
+		template: '<div><slot/></div>',
+	})
 	return vtlRender(TestAsyncComponent, {
 		container,
 		global: {
@@ -170,7 +178,8 @@ export function asyncMount(
 			],
 			stubs: {
 				NuxtPage: false,
-				NuxtLink: true,
+				NuxtLink: LinkComponent,
+				ClientOnly: OnlyClientComponent,
 			},
 			components: {
 				// NuxtPage: Index,

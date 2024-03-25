@@ -19,6 +19,7 @@ export default defineConfig({
 		AutoImport({
 			imports: [
 				'vue',
+				'vue-router',
 				'vitest',
 				'pinia',
 
