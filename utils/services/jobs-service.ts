@@ -19,6 +19,8 @@ async function getJobList({
 	// const URL = `/jobs/?${queryPage}&${filterQueryTitle}&${filterQueryLocation}&${filterQueryRemote}`
 	// const resp = await jobsApi<JobListResponse>(URL)
 
+	console.log('test')
+
 	const remoteOnly: true | '' = filters.isRemote ? filters.isRemote : ''
 	const query = {
 		// page,

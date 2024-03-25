@@ -22,6 +22,7 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 <template>
 	<div class="gallery">
 		<ClientOnly>
+			<p>test</p>
 			<template v-if="jobList.length">
 				<NuxtLink
 					v-for="job in jobList"
@@ -29,6 +30,8 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 					class="gallery__link"
 					:to="goToPage({ id: job.id, color: job.color })"
 				>
+					<!-- v-for="job in jobList"
+			:key="job.id" -->
 					<CardJob
 						class="gallery__card"
 						:logo="job.logo"
