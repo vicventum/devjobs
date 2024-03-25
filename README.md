@@ -1,6 +1,9 @@
-# Nuxt 3 Minimal Starter
+# DevJobs
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> [!warning]
+> This is a work in progress
+
+Platform challenge [frontendmentor.io](https://www.frontendmentor.io) in which I have created a jobs app, mainly using Nuxt 3, Vue 3, Vuetify 3 and TypeSccript for the frontend, and Vitest and Testing Library for testing.
 
 ## Setup
 
@@ -15,9 +18,6 @@ pnpm install
 
 # yarn
 yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -33,43 +33,4 @@ pnpm run dev
 
 # yarn
 yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
