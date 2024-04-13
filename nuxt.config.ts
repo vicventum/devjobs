@@ -18,7 +18,7 @@ export default defineNuxtConfig({
 	css: ['vuetify/styles', '~/assets/sass/main.scss'],
 	components: [
 		{
-			path: '~/components',
+			path: '~/modules',
 			pathPrefix: false,
 		},
 	],
@@ -28,7 +28,8 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: [
 			// scan all modules within given directory
-			'composables/**/*',
+			'modules/**/*',
+			// 'composables/**/*',
 		],
 	},
 	modules: [
