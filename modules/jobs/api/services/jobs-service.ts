@@ -1,69 +1,66 @@
-// import type { JobListResponse, DataFilter, JobDataResponse } from '@/types'
-// import { JobListSchema, JobDataSchema } from '@/types'
-// import type {  } from 'zod'
-
+import { JobListSchema, JobDataSchema } from '@/modules/jobs/types'
+import type {
+	JobListResponse,
+	DataFilter,
+	JobDataResponse,
+} from '@/modules/jobs/types'
+import type { GetAll, Get } from '@/modules/jobs/types/JobsProvider'
+import { utilCheckResponseType } from '@/modules/core/utils/util-check-response-schema'
 // import useJobsApi from '@/composables/api/use-jobs-api'
 
-async function getJobList({
-	page = 1,
-	filters = {
-		title: '',
-		location: '',
-		isRemote: false,
-	},
-}: { page?: number; filters?: DataFilter } = {}): Promise<JobListResponse> {
-	// const queryPage = `page=${page}`
-	// const filterQueryTitle = `search=${filters.title}`
-	// const filterQueryLocation = `source=&location=${filters.location}`
-	// const filterQueryRemote = `remote=${filters.isRemote}`
-	// const URL = `/jobs/?${queryPage}&${filterQueryTitle}&${filterQueryLocation}&${filterQueryRemote}`
-	// const resp = await jobsApi<JobListResponse>(URL)
+type JobListOptions = { page?: number; filters?: DataFilter }
 
-	const remoteOnly: true | '' = filters.isRemote ? filters.isRemote : ''
+async function getJobList(
+	provider: GetAll,
+	options: JobListOptions = {},
+): Promise<JobListResponse> {
+	const {
+		page = 1,
+		filters = {
+			title: '',
+			location: '',
+			isRemote: false,
+		},
+	} = options
+
+	const isRemoteOnly: true | '' = filters.isRemote ? filters.isRemote : ''
 	const query = {
 		// page,
 		search: filters.title,
 		location: filters.location,
-		remote: remoteOnly,
+		remote: isRemoteOnly,
 	}
 
-	// ! FIXME: CLARA VIOLACION A _OCP_, NECESITO INYECTAR DEPENDENCIAS
-	const jobsApi = useJobsApi()
-	const resp = await jobsApi<JobListResponse>(`/jobs/?page=${page}`, { query })
+	const jobListResponse = await provider({ page, query })
 
-	try {
-		const jobListResponse: JobListResponse = JobListSchema.parse(resp)
-		// Los datos son válidos si no se ha lanzado una excepción hasta este punto
-		// console.log('Datos válidos:', jobListResponse)
-		return jobListResponse
-	} catch (error) {
-		// TODO: Indicar el tipo del error
-		// En caso de error de validación o de la petición HTTP
-		console.error('⚠ Error al obtener o validar los datos:', error)
-		throw error
-	}
+	const jobListResponseChecked = utilCheckResponseType<JobListResponse>(
+		jobListResponse,
+		JobListSchema,
+	)
+
+	return jobListResponseChecked
 }
 
-async function getJobDetail({ id }: { id: string }): Promise<JobDataResponse> {
-	const jobsApi = useJobsApi()
-	const api = $fetch.create({
-		// your default options
-		baseURL: 'https://cors-anywhere.herokuapp.com/https://findwork.dev/api',
-		headers: {
-			Authorization: `Token c6bef58abe2eded3348921b287e5f5f27daf73f9`,
-		},
-	})
+async function getJobDetail(
+	provider: Get,
+	{ id }: { id: string },
+): Promise<JobDataResponse> {
+	const jobDetailResponse = await provider(id)
 
-	const resp = await jobsApi<JobDataResponse>(`/jobs/${id}`)
+	const jobDetailResponseChecked = utilCheckResponseType<JobDataResponse>(
+		jobDetailResponse,
+		JobDataSchema,
+	)
 
-	try {
-		const jobDataResponse: JobDataResponse = JobDataSchema.parse(resp)
-		return jobDataResponse
-	} catch (error) {
-		// TODO: Indicar el tipo del error
-		console.error('⚠ Error al obtener o validar los datos:', error)
-		throw error
-	}
+	return jobDetailResponseChecked
 }
 
 export { getJobList, getJobDetail }
+
+// const api = $fetch.create({
+// 	// your default options
+// 	baseURL: 'https://cors-anywhere.herokuapp.com/https://findwork.dev/api',
+// 	headers: {
+// 		Authorization: `Token c6bef58abe2eded3348921b287e5f5f27daf73f9`,
+// 	},
+// })

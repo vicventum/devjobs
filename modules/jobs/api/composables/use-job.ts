@@ -1,6 +1,6 @@
-// import type { JobDataDetail, DataFilter, Color } from '@/types'
-
-// import { getJobDetail } from '@/utils/services/jobs-service'
+import type { JobDataDetail, DataFilter, Color } from '@/modules/jobs/types'
+import { getJobDetail } from '@/modules/jobs/api/services/jobs-service'
+import { get as ofetchGet } from '@/modules/jobs/api/providers/jobs-ofetch-provider'
 // import { useJobsStore } from '@/stores/jobs.store'
 
 const useJob = ({ id, color }: { id: string; color?: Color }) => {
@@ -8,10 +8,11 @@ const useJob = ({ id, color }: { id: string; color?: Color }) => {
 	// const store = useJobsStore()
 	// const { jobList, currentPage, isFinalPage, dataFilter } = storeToRefs(store)
 	const jobDetail = ref<JobDataDetail>()
+	const provider = ofetchGet
 
 	const { data, pending, error } = useAsyncData(
 		'jobDetail',
-		() => getJobDetail({ id }),
+		() => getJobDetail(provider, { id }),
 		{
 			// watch: [currentPage, dataFilter],
 			lazy: false,

@@ -1,5 +1,6 @@
 // import type { JobData, DataFilter } from '@/types'
-// import { getJobList } from '@/utils/services/jobs-service'
+import { getJobList } from '@/modules/jobs/api/services/jobs-service'
+import { getAll as ofetchGetAll } from '@/modules/jobs/api/providers/jobs-ofetch-provider'
 // import { useJobsStore } from '@/stores/jobs.store'
 
 const useJobs = () => {
@@ -7,9 +8,15 @@ const useJobs = () => {
 	const store = useJobsStore()
 	const { jobList, currentPage, isFinalPage, dataFilter } = storeToRefs(store)
 
+	const provider = ofetchGetAll
+
 	const { pending, data, error } = useAsyncData(
 		'jobList',
-		() => getJobList({ page: currentPage.value, filters: dataFilter.value }),
+		() =>
+			getJobList(provider, {
+				page: currentPage.value,
+				filters: dataFilter.value,
+			}),
 		{
 			watch: [currentPage, dataFilter],
 			lazy: true,

@@ -1,7 +1,7 @@
 import { $fetch } from 'ofetch'
 import type { $Fetch } from 'ofetch'
 
-const useJobApi = (): $Fetch => {
+const useOfetchApi = (): $Fetch => {
 	const { API_URL, API_KEY } = useConstants()
 
 	const api = $fetch.create({
@@ -15,4 +15,4 @@ const useJobApi = (): $Fetch => {
 	return api
 }
 
-export default useJobApi
+export { useOfetchApi }

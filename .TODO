@@ -1,1 +1,7 @@
-- [] Refactorizar el componente CardJobImg (probablemente separarlo)
+## TODO's
+
+- [ ] Refactorizar el componente CardJobImg (probablemente separarlo)
+
+## FIX ME
+
+- [ ] Corregir error al recargar la página del detalle de un job: "_[nuxt] A composable that requires access to the Nuxt instance was called outside of a plugin, Nuxt hook, Nuxt middleware, or Vue setup function. This is probably not a Nuxt bug._"
