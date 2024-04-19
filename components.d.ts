@@ -10,7 +10,7 @@ declare module 'vue' {
     AsyncDummy: typeof import('./components/AsyncDummy.vue')['default']
     BaseAvatar: typeof import('./components/base/BaseAvatar.vue')['default']
     BaseCheckbox: typeof import('./components/base/BaseCheckbox.vue')['default']
-    BaseErrorMessage: typeof import('./components/base/BaseErrorMessage.vue')['default']
+    ErrorMessage: typeof import('./components/shared/ErrorMessage.vue')['default']
     BaseImg: typeof import('./components/base/BaseImg.vue')['default']
     BaseInput: typeof import('./components/base/BaseInput.vue')['default']
     BaseSeparatorPoint: typeof import('./components/base/BaseSeparatorPoint.vue')['default']

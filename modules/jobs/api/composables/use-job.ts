@@ -1,10 +1,10 @@
-import type { JobDataDetail, DataFilter, Color } from '@/modules/jobs/types'
+import type { JobDataDetail, Color } from '@/modules/jobs/types'
 import { getJobDetail } from '@/modules/jobs/api/services/jobs-service'
 import { get as ofetchGet } from '@/modules/jobs/api/providers/jobs-ofetch-provider'
-// import { useJobsStore } from '@/stores/jobs.store'
+import { utilFormatJob } from '@/modules/jobs/utils/util-format-job'
+// import { useJobsStore } from '@/modules/jobs/stores/jobs.store'
 
 const useJob = ({ id, color }: { id: string; color?: Color }) => {
-	const { DEFAULT_JOB_COLOR } = useConstants()
 	// const store = useJobsStore()
 	// const { jobList, currentPage, isFinalPage, dataFilter } = storeToRefs(store)
 	const jobDetail = ref<JobDataDetail>()
@@ -14,8 +14,7 @@ const useJob = ({ id, color }: { id: string; color?: Color }) => {
 		'jobDetail',
 		() => getJobDetail(provider, { id }),
 		{
-			// watch: [currentPage, dataFilter],
-			lazy: false,
+			lazy: true,
 		},
 	)
 
@@ -24,28 +23,12 @@ const useJob = ({ id, color }: { id: string; color?: Color }) => {
 		() => data.value,
 		(newJobDetailResponse) => {
 			if (newJobDetailResponse) {
-				const CUSTOM_COLOR = color ?? utilRandomColor()
-				jobDetail.value = {
-					id: newJobDetailResponse.id,
-					logo: newJobDetailResponse.logo,
-					title: newJobDetailResponse.role,
-					company: newJobDetailResponse.company_name,
-					type: newJobDetailResponse.employment_type,
-					location: newJobDetailResponse.location,
-					date: newJobDetailResponse.date_posted,
-					color: newJobDetailResponse.logo ? DEFAULT_JOB_COLOR : CUSTOM_COLOR,
-					remote: newJobDetailResponse.remote,
-					urlApply: newJobDetailResponse.url,
-					text: newJobDetailResponse.text,
-					keywords: newJobDetailResponse.keywords,
-					source: newJobDetailResponse.source,
-					companyNumEmployees: newJobDetailResponse.company_num_employees,
-					urlCompany: undefined,
-				}
+				jobDetail.value = utilFormatJob(newJobDetailResponse, color)
 				// store.setJobs(jobDetail)
 			}
 		},
-		{ immediate: true },
+		// ? Al colocarlo en `false`, hace que no se tenga data desde un inicio, y por lo tanto se muestre el loader, de otra forma se mostraría la data previamente guardada por el `useAsyncData`
+		{ immediate: false },
 	)
 
 	return {

@@ -31,7 +31,6 @@ export const useJobsStore = defineStore('Jobs', () => {
 			jobList.value.push(...newJobs)
 		},
 		setPage(page: number) {
-			console.log('🚀 ~ setPage ~ page:', page)
 			if (currentPage.value === page) return null
 			if (page <= 0) return null
 			// if (page > totalPages.value) return null

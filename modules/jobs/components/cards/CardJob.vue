@@ -9,7 +9,7 @@ type Props = {
 	company: string
 	location: string | null
 	color: Color
-	remote: boolean
+	isRemote: boolean
 }
 type Emits = {
 	errorLoadingImg: [fallbackColor: Color]
@@ -24,7 +24,7 @@ const relativeDate = ref(toRelativeDate(props.date))
 
 <template>
 	<v-sheet class="card px-8 pt-12 pb-8" tag="article">
-		<CardJobImg
+		<JobImg
 			class="card__img"
 			:src="logo"
 			:text="company"
@@ -34,27 +34,14 @@ const relativeDate = ref(toRelativeDate(props.date))
 			@error="(fallbackColor) => emit('errorLoadingImg', fallbackColor)"
 		/>
 
-		<div class="card__content">
-			<h3 class="card__time text-body-1 text-light-darken-4 mb-3">
-				{{ relativeDate }}
-				<span v-if="type">
-					<BaseSeparatorPoint />
-					{{ type }}
-				</span>
-			</h3>
-			<h2 class="card__title text-h3 mb-3">{{ title }}</h2>
-			<h3 class="card__company text-body-1 text-light-darken-4">
-				{{ company }}
-			</h3>
-		</div>
+		<CardJobContent
+			:relative-date="relativeDate"
+			:type="type"
+			:title="title"
+			:company="company"
+		/>
 
-		<footer class="card__actions mt-10">
-			<h4 v-if="location" class="card__location text-h4 text-primary">
-				{{ location }}
-			</h4>
-			<v-divider v-if="location && remote" class="mx-4" vertical />
-			<h4 v-if="remote" class="card__remote text-h4 text-success">Remote</h4>
-		</footer>
+		<JobLocation class="mt-10" :location="location" :is-remote="isRemote" />
 	</v-sheet>
 </template>
 
@@ -76,11 +63,6 @@ const relativeDate = ref(toRelativeDate(props.date))
 		position: absolute;
 		left: 32px;
 		top: -25px;
-	}
-
-	&__actions {
-		display: flex;
-		align-items: center;
 	}
 }
 </style>

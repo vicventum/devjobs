@@ -31,18 +31,14 @@ function submitDataFilter(dataFilter: DataFilter) {
 			@submit="submitDataFilter"
 		/>
 
-		<GallerySkeleton v-if="isLoading && !jobList.length" />
-		<BaseErrorMessage
-			v-else-if="isError || !jobList.length"
-			:message="errorMessage"
-		/>
-		<GalleryJobs v-else :job-list="jobList" />
-		<!-- <GalleryJobs :job-list="jobList" /> -->
-		<GallerySkeleton
-			v-if="isLoading && jobList.length"
-			class="my-16"
-			:items="3"
-		/>
+		<GalleryJobsErrorHandler
+			:is-loading="isLoading"
+			:is-error="isError"
+			:is-empty="!jobList.length"
+			:error-message="errorMessage"
+		>
+			<GalleryJobs :job-list="jobList" />
+		</GalleryJobsErrorHandler>
 
 		<!-- <v-btn :loading="pending" color="primary" @click="loadMoreJobs"> -->
 		<footer class="pa-4 d-flex justify-center my-16">

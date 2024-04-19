@@ -2,7 +2,7 @@
 import type { RouteLocationRaw } from 'vue-router'
 // import type { JobData, Color } from '@/types'
 
-interface Props {
+type Props = {
 	jobList: JobData[]
 }
 defineProps<Props>()
@@ -40,7 +40,7 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 						:company="job.company"
 						:location="job.location"
 						:color="job.color"
-						:remote="job.remote"
+						:is-remote="job.remote"
 					/>
 				</NuxtLink>
 			</template>
