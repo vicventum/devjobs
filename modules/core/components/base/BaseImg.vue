@@ -1,8 +1,7 @@
 <script setup lang="ts">
 type Props = {
-	initialsText?: string
-	sizeAvatar?: string
-	sizeAvatarText?: string
+	src: string
+	alt?: string
 }
 
 // const { src = 'https://picsum.photos/40/40?image=232' } = defineProps<{
@@ -18,7 +17,13 @@ function errorLoadingImg(): void {
 </script>
 
 <template>
-	<v-img class="img" height="100" @error="errorLoadingImg">
+	<v-img
+		class="img"
+		height="100"
+		:src="src"
+		:alt="alt"
+		@error="errorLoadingImg"
+	>
 		<template #placeholder>
 			<div class="d-flex align-center justify-center fill-height">
 				<v-progress-circular color="light-darken-2" indeterminate />
@@ -26,15 +31,7 @@ function errorLoadingImg(): void {
 		</template>
 		<template #error>
 			<!-- <v-img class="mx-auto" src="https://picsum.photos/40/40?image=232" /> -->
-			<div v-if="initialsText" class="d-flex justify-center align-center">
-				<BaseAvatar
-					:initials-text="initialsText"
-					background="transparent"
-					color="rgb(var(--v-theme-light))"
-					:size="sizeAvatar"
-					:size-text="sizeAvatarText"
-				/>
-			</div>
+			<slot name="error" />
 		</template>
 	</v-img>
 </template>

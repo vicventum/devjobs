@@ -1,24 +1,24 @@
 <script setup lang="ts">
-// import type { Color } from '@/types'
+import type { Color } from '@/modules/jobs/types'
 
 type Props = {
-	src?: string | null
+	src: string | null
 	text: string
 	color: Color
 	size?: string
 	rounded?: boolean
-	sizeAvatar?: string
-	sizeAvatarText?: string
 }
 type Emits = {
 	error: [fallbackColor: Color]
 }
+
 const { color, size = '100%', rounded = false } = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
 const bgColor = ref(color)
 const route = useRoute()
 const fallbackColor = route.query.color as Color
+
 function setRandomColor() {
 	const randomColor = utilRandomColor()
 	emit('error', randomColor)
@@ -34,22 +34,14 @@ function setRandomColor() {
 			class="job-img__image"
 			:class="{ 'job-img__image--rounded': rounded }"
 			:src="src"
-			:initials-text="text"
 			:alt="`${text} logo`"
-			:size-avatar="sizeAvatar"
-			:size-avatar-text="sizeAvatarText"
 			@error="setRandomColor"
-		/>
-		<BaseAvatar
-			v-else
-			class="job-img__avatar"
-			:class="{ 'job-img__avatar--rounded': rounded }"
-			:initials-text="text"
-			background="transparent"
-			color="rgb(var(--v-theme-light))"
-			:size="sizeAvatar"
-			:size-text="sizeAvatarText"
-		/>
+		>
+			<template #error>
+				<slot name="error" />
+			</template>
+		</BaseImg>
+		<slot v-else name="error" />
 	</div>
 </template>
 

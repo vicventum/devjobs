@@ -1,11 +1,8 @@
 <script setup lang="ts">
 type Props = {
-	company: string
 	date: Date
-	keywords: string[]
 	location: string | null
 	isRemote: boolean
-	source: string
 	text: string
 	title: string
 	type: string | null
@@ -28,7 +25,7 @@ const relativeDate = ref(toRelativeDate(props.date))
 				/>
 				<h1 class="text-h1 mb-2">{{ title }}</h1>
 
-				<JobLocation class="mt-10" :location="location" :is-remote="isRemote" />
+				<JobLocation :location="location" :is-remote="isRemote" />
 			</div>
 
 			<div class="card-info__actions">

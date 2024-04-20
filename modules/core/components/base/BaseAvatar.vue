@@ -1,26 +1,24 @@
 <script setup lang="ts">
 type Props = {
-	initialsText: string | undefined
+	text: string
 	background?: string
 	color?: string
 	size?: string
 	sizeText?: string
 }
 const {
-	initialsText = '',
 	background = 'primary',
-	color = undefined,
 	size = '40px',
 	sizeText = 'var(--h2-size)',
 } = defineProps<Props>()
 
-const textColor = computed(() => color && `color: ${color}`)
+// const textColor = computed(() => color && `color: ${color}`)
 </script>
 
 <template>
 	<v-avatar class="avatar" :color="background" :size="size">
 		<span class="avatar__text font-weight-bold">
-			{{ utilGetFirstLetter(initialsText) }}
+			{{ utilGetFirstLetter(text) }}
 		</span>
 	</v-avatar>
 </template>

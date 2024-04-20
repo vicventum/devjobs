@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from 'vue-router'
-// import type { JobData, Color } from '@/types'
+import type { JobData } from '@/modules/jobs/types'
 
 type Props = {
 	jobList: JobData[]

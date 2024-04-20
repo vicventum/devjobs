@@ -32,7 +32,16 @@ const relativeDate = ref(toRelativeDate(props.date))
 			size="50px"
 			rounded
 			@error="(fallbackColor) => emit('errorLoadingImg', fallbackColor)"
-		/>
+		>
+			<template #error>
+				<BaseAvatar
+					:text="company"
+					size="50px"
+					background="transparent"
+					color="rgb(var(--v-theme-light))"
+				/>
+			</template>
+		</JobImg>
 
 		<CardJobContent
 			:relative-date="relativeDate"

@@ -17,6 +17,9 @@ defineProps<Props>()
 			:is-loading="isLoading"
 			:is-error="isError"
 			:is-empty="isEmpty"
+			:error-message="errorMessage"
+			:loading-message="loadingMessage"
+			:empty-message="emptyMessage"
 		>
 			<template #loader>
 				<div>

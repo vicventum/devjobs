@@ -12,7 +12,7 @@
 		<v-container class="d-flex align-center mt-n8">
 			<Nuxt-Link to="/" style="width: 115px">
 				<BaseImg
-					:src="useSrc('/assets/img/desktop/logo.svg')"
+					:src="useSrc('/assets/img/desktop/logo.svg')!"
 					alt="logo"
 					:cover="false"
 				/>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import type { DataFilter } from '@/types'
+import type { DataFilter } from '@/modules/jobs/types'
 // import useJobs from '@/composables/services/use-jobs'
 
 const {
@@ -41,7 +41,7 @@ function submitDataFilter(dataFilter: DataFilter) {
 		</GalleryJobsErrorHandler>
 
 		<!-- <v-btn :loading="pending" color="primary" @click="loadMoreJobs"> -->
-		<footer class="pa-4 d-flex justify-center my-16">
+		<footer class="actions pa-4 my-16">
 			<v-btn
 				:loading="isLoading"
 				:disabled="isLoading || isFinalPage"
@@ -57,5 +57,9 @@ function submitDataFilter(dataFilter: DataFilter) {
 <style lang="scss" scoped>
 .filter {
 	margin-bottom: 104px;
+}
+.actions {
+	display: flex;
+	justify-content: center;
 }
 </style>

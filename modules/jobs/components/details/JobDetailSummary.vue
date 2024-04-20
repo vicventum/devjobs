@@ -15,14 +15,17 @@ const props = defineProps<Props>()
 <template>
 	<JobDetailSummarySection :image-bg-color="color">
 		<template #image>
-			<JobImg
-				class="card__logo-img"
-				:src="logo"
-				:text="company"
-				:color="color"
-				size-avatar="100%"
-				size-avatar-text="3.5rem"
-			/>
+			<JobImg class="card__logo-img" :src="logo" :text="company" :color="color">
+				<template #error>
+					<BaseAvatar
+						:text="company"
+						size="100%"
+						size-text="3.5rem"
+						background="transparent"
+						color="rgb(var(--v-theme-light))"
+					/>
+				</template>
+			</JobImg>
 		</template>
 
 		<template #default>
