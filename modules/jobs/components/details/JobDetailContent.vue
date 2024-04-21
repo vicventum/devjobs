@@ -16,10 +16,10 @@ const relativeDate = ref(toRelativeDate(props.date))
 
 <template>
 	<v-sheet class="pa-10" tag="main">
-		<article class="card-info mb-10">
-			<div class="card-info__content">
+		<article class="detail-info mb-10">
+			<div class="detail-info__content">
 				<JobTime
-					class="card-info__time mb-1"
+					class="detail-info__time mb-1"
 					:relative-date="relativeDate"
 					:type="type"
 				/>
@@ -28,22 +28,40 @@ const relativeDate = ref(toRelativeDate(props.date))
 				<JobLocation :location="location" :is-remote="isRemote" />
 			</div>
 
-			<div class="card-info__actions">
+			<div class="detail-info__actions">
 				<v-btn color="primary" :href="urlApply" target="_blank">
 					Apply Now
 				</v-btn>
 			</div>
 		</article>
 
-		<article v-html="text" />
+		<article class="detail-content" v-html="text" />
 	</v-sheet>
 </template>
 
 <style lang="scss" scoped>
-.card-info {
+.detail-info {
 	display: flex;
 	gap: 1rem;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.detail-content {
+	&:deep(h1, h2, h3) {
+		margin-top: 1.5rem;
+		margin-bottom: 1rem;
+	}
+	&:deep(li) {
+		margin-bottom: 0.3rem !important;
+	}
+	&:deep(p) {
+		margin-bottom: 0.5rem !important;
+	}
+	&:deep(br) {
+		display: block;
+		margin-top: 0.5rem !important;
+		margin-bottom: 0.5rem !important;
+	}
 }
 </style>

@@ -10,12 +10,21 @@ type Props = {
 	companyNumEmployees: string | null
 }
 const props = defineProps<Props>()
+
+const route = useRoute()
+const fallbackColor = route.query.color as Color
+const finalColor = ref(fallbackColor ?? props.color)
 </script>
 
 <template>
-	<JobDetailSummarySection :image-bg-color="color">
+	<JobDetailSummarySection :image-bg-color="finalColor">
 		<template #image>
-			<JobImg class="card__logo-img" :src="logo" :text="company" :color="color">
+			<JobImg
+				class="card__logo-img"
+				:src="logo"
+				:text="company"
+				:color="finalColor"
+			>
 				<template #error>
 					<BaseAvatar
 						:text="company"

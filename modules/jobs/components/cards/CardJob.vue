@@ -2,6 +2,7 @@
 // import type { Color } from '@/types'
 
 type Props = {
+	id: string
 	logo: string | null
 	date: Date
 	type: string | null
@@ -12,14 +13,21 @@ type Props = {
 	isRemote: boolean
 }
 type Emits = {
-	errorLoadingImg: [fallbackColor: Color]
+	'error-loading-image': [id: string]
 }
-
-const props = defineProps<Props>()
+const { id, color, logo, date } = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
 const { toRelativeDate } = utilFormat()
-const relativeDate = ref(toRelativeDate(props.date))
+const relativeDate = ref(toRelativeDate(date))
+
+const { DEFAULT_JOB_COLOR } = useConstants()
+const finalColor = ref(logo ? DEFAULT_JOB_COLOR : color)
+
+function setOriginalColor() {
+	emit('error-loading-image', id)
+	finalColor.value = color
+}
 </script>
 
 <template>
@@ -28,10 +36,10 @@ const relativeDate = ref(toRelativeDate(props.date))
 			class="card__img"
 			:src="logo"
 			:text="company"
-			:color="color"
+			:color="finalColor"
 			size="50px"
 			rounded
-			@error="(fallbackColor) => emit('errorLoadingImg', fallbackColor)"
+			@error="setOriginalColor"
 		>
 			<template #error>
 				<BaseAvatar

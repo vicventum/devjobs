@@ -19,7 +19,7 @@ function errorLoadingImg(): void {
 <template>
 	<v-img
 		class="img"
-		height="100"
+		height="140"
 		:src="src"
 		:alt="alt"
 		@error="errorLoadingImg"

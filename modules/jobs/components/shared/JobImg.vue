@@ -9,20 +9,14 @@ type Props = {
 	rounded?: boolean
 }
 type Emits = {
-	error: [fallbackColor: Color]
+	error: []
 }
 
-const { color, size = '100%', rounded = false } = defineProps<Props>()
+const { size = '100%', rounded = false } = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
-const bgColor = ref(color)
-const route = useRoute()
-const fallbackColor = route.query.color as Color
-
-function setRandomColor() {
-	const randomColor = utilRandomColor()
-	emit('error', randomColor)
-	bgColor.value = fallbackColor ?? randomColor
+function errorLoadingImage() {
+	emit('error')
 }
 </script>
 
@@ -35,7 +29,7 @@ function setRandomColor() {
 			:class="{ 'job-img__image--rounded': rounded }"
 			:src="src"
 			:alt="`${text} logo`"
-			@error="setRandomColor"
+			@error="errorLoadingImage"
 		>
 			<template #error>
 				<slot name="error" />
@@ -49,8 +43,8 @@ function setRandomColor() {
 .job-img {
 	width: v-bind(size);
 	height: v-bind(size);
-	padding: 4px;
-	background: v-bind(bgColor);
+	background: v-bind(color);
+	// padding: 4px;
 	// background: rgb(var(--v-theme-surface-bright));
 
 	&,
@@ -58,6 +52,10 @@ function setRandomColor() {
 		display: flex;
 		place-items: center;
 		place-content: center;
+	}
+
+	&__image {
+		// border: 1px solid v-bind(color);
 	}
 
 	&--rounded,

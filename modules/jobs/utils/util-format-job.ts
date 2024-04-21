@@ -1,8 +1,8 @@
 import type { Color, JobDataResponse } from '@/modules/jobs/types'
 
 export function utilFormatJob(job: JobDataResponse, color?: Color) {
-	const { DEFAULT_JOB_COLOR } = useConstants()
-	const CUSTOM_COLOR = color ?? utilRandomColor()
+	// const { DEFAULT_JOB_COLOR } = useConstants()
+	const customColor = color ?? utilRandomColor()
 
 	return {
 		id: job.id,
@@ -12,7 +12,8 @@ export function utilFormatJob(job: JobDataResponse, color?: Color) {
 		type: job.employment_type,
 		location: job.location,
 		date: job.date_posted,
-		color: job.logo ? DEFAULT_JOB_COLOR : CUSTOM_COLOR,
+		// color: job.logo ? DEFAULT_JOB_COLOR : customColor,
+		color: customColor,
 		remote: job.remote,
 		urlApply: job.url,
 		text: job.text,

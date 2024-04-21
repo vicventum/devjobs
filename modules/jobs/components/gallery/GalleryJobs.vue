@@ -14,7 +14,6 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 		params: { id },
 		query: { color },
 	}
-	// router.push({ name: 'job-id', params: { id }, query: { color: finalColor } })
 	// router.push(`/${id}`)
 }
 </script>
@@ -29,9 +28,13 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 					class="gallery__link"
 					:to="goToPage({ id: job.id, color: job.color })"
 				>
-					<!-- v-for="job in jobList"
-			:key="job.id" -->
+					<!-- :to="{
+						name: 'job-id',
+						params: { id: job.id },
+						query: { color: job.color },
+					}" -->
 					<CardJob
+						:id="job.id"
 						class="gallery__card"
 						:logo="job.logo"
 						:date="job.date"
