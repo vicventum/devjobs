@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type Props = {
 	relativeDate: string
-	type: string | null
+	type?: string
 }
 
 defineProps<Props>()

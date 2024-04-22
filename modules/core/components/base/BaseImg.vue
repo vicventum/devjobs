@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type Props = {
 	src: string
-	alt?: string
+	alt: string
 }
 
 // const { src = 'https://picsum.photos/40/40?image=232' } = defineProps<{

@@ -3,14 +3,14 @@
 
 type Props = {
 	id: string
-	logo: string | null
 	date: Date
-	type: string | null
+	color: Color
 	title: string
 	company: string
-	location: string | null
-	color: Color
 	isRemote: boolean
+	type?: string
+	location?: string
+	logo?: string
 }
 type Emits = {
 	'error-loading-image': [id: string]

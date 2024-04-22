@@ -3,11 +3,11 @@
 
 type Props = {
 	color: Color
-	logo: string | null
 	company: string
 	urlApply: string
 	urlCompany?: string
-	companyNumEmployees: string | null
+	logo?: string
+	companyNumEmployees?: string
 }
 const props = defineProps<Props>()
 

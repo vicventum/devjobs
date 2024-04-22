@@ -1,12 +1,12 @@
 <script setup lang="ts">
 type Props = {
 	date: Date
-	location: string | null
 	isRemote: boolean
 	text: string
 	title: string
-	type: string | null
 	urlApply: string
+	type?: string
+	location?: string
 }
 const props = defineProps<Props>()
 

@@ -1,6 +1,9 @@
 import type { Color, JobDataResponse } from '@/modules/jobs/types'
 
-export function utilFormatJob(job: JobDataResponse, color?: Color) {
+export function utilFormatJob(
+	job: JobDataResponse,
+	color?: Color,
+): JobDataDetail {
 	// const { DEFAULT_JOB_COLOR } = useConstants()
 	const customColor = color ?? utilRandomColor()
 

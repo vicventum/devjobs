@@ -2,9 +2,9 @@
 import type { Color } from '@/modules/jobs/types'
 
 type Props = {
-	src: string | null
 	text: string
 	color: Color
+	src?: string
 	size?: string
 	rounded?: boolean
 }

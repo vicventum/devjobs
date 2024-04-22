@@ -1,9 +1,9 @@
 <script setup lang="ts">
 type Props = {
 	relativeDate: string
-	type: string | null
 	title: string
 	company: string
+	type?: string
 }
 
 defineProps<Props>()

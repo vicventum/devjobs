@@ -1,11 +1,21 @@
 <script setup lang="ts">
-import { defineModel } from 'vue'
+type Props = {
+	prependIcon: string
+	appendIcon: string
+}
+defineProps<Props>()
+
 const modelValue = defineModel<boolean>({ default: false })
 </script>
 
 <template>
-	<!-- v-model="model" -->
-	<v-switch v-model="modelValue" hide-details inset />
+	<v-switch
+		v-model="modelValue"
+		:prepend-icon="prependIcon"
+		:append-icon="appendIcon"
+		hide-details
+		inset
+	/>
 </template>
 
 <style lang="scss" scoped></style>

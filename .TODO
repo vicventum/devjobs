@@ -1,6 +1,7 @@
 ## TODO's
 
 - [x] Refactorizar el componente CardJobImg (probablemente separarlo)
+- [ ] Cuestionar sobre si vale la pena evitar la herencia de atributos en componentes base
 
 ## FIX ME
 

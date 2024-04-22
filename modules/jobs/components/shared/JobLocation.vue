@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type Props = {
-	location: string | null
 	isRemote: boolean
+	location?: string
 }
 
 defineProps<Props>()

@@ -1,8 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+type Props = {
+	placeholder: string
+	prependInnerIcon: string
+}
+defineProps<Props>()
+
+const modelValue = defineModel<string>()
+</script>
 
 <template>
 	<v-text-field
+		v-model="modelValue"
 		class="input"
+		:placeholder="placeholder"
+		:prepend-inner-icon="prependInnerIcon"
 		variant="solo"
 		density="comfortable"
 		hide-details

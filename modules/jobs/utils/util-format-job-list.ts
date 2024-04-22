@@ -1,6 +1,6 @@
 import type { Color, JobDataResponse } from '@/modules/jobs/types'
 
-export function utilFormatJobList(jobList: JobDataResponse[]) {
+export function utilFormatJobList(jobList: JobDataResponse[]): JobData[] {
 	// const { DEFAULT_JOB_COLOR } = useConstants()
 
 	return jobList.map((job) => ({

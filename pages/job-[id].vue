@@ -21,24 +21,24 @@ const { jobDetail, isLoading, isError } = useJob({ id: `${jobId}` })
 				<JobDetailSummary
 					class="job-summary mb-8"
 					:color="jobDetail.color"
-					:logo="jobDetail.logo"
 					:company="jobDetail.company"
-					:company-num-employees="jobDetail.companyNumEmployees"
 					:url-apply="jobDetail.urlApply"
 					:url-company="jobDetail?.urlCompany"
+					:logo="jobDetail.logo || undefined"
+					:company-num-employees="jobDetail.companyNumEmployees || undefined"
 				/>
 				<JobDetailContent
 					class="job-content mb-8"
 					:company="jobDetail.company"
 					:date="jobDetail.date"
 					:keywords="jobDetail.keywords"
-					:location="jobDetail.location"
 					:is-remote="jobDetail.remote"
 					:source="jobDetail.source"
 					:text="jobDetail.text"
 					:title="jobDetail.title"
-					:type="jobDetail.type"
 					:url-apply="jobDetail.urlApply"
+					:location="jobDetail.location || undefined"
+					:type="jobDetail.type || undefined"
 				/>
 			</template>
 		</JobDetailErrorHandler>

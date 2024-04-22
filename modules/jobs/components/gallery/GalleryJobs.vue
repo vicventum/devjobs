@@ -36,14 +36,14 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 					<CardJob
 						:id="job.id"
 						class="gallery__card"
-						:logo="job.logo"
 						:date="job.date"
-						:type="job.type"
 						:title="job.title"
 						:company="job.company"
-						:location="job.location"
 						:color="job.color"
 						:is-remote="job.remote"
+						:logo="job.logo || undefined"
+						:type="job.type || undefined"
+						:location="job.location || undefined"
 					/>
 				</NuxtLink>
 			</template>
