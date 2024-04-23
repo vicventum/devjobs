@@ -5,14 +5,14 @@ export function utilFormatJobList(jobList: JobDataResponse[]): JobData[] {
 
 	return jobList.map((job) => ({
 		id: job.id,
-		logo: job.logo,
 		title: job.role,
 		company: job.company_name,
-		type: job.employment_type,
-		location: job.location,
 		date: job.date_posted,
 		// color: job.logo ? DEFAULT_JOB_COLOR : utilRandomColor(),
 		color: utilRandomColor(),
 		remote: job.remote,
+		logo: job.logo ?? undefined,
+		type: job.employment_type ?? undefined,
+		location: job.location ?? undefined,
 	}))
 }

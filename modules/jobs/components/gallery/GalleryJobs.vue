@@ -41,9 +41,9 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 						:company="job.company"
 						:color="job.color"
 						:is-remote="job.remote"
-						:logo="job.logo || undefined"
-						:type="job.type || undefined"
-						:location="job.location || undefined"
+						:logo="job.logo"
+						:type="job.type"
+						:location="job.location"
 					/>
 				</NuxtLink>
 			</template>

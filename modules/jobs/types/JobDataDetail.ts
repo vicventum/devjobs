@@ -5,6 +5,6 @@ export interface JobDataDetail extends JobData {
 	text: string
 	keywords: string[]
 	source: string
-	companyNumEmployees: null | string
 	urlCompany?: string
+	companyNumEmployees?: string
 }

@@ -2,7 +2,7 @@ import { Factory } from 'fishery'
 import { faker } from '@faker-js/faker'
 // import type { Color, JobData, JobType } from '@/types'
 
-const jobTypeList: JobType[] = ['contract', 'full time', null]
+const jobTypeList: JobType[] = ['contract', 'full time', undefined]
 
 // Generate a random color
 function generateRandomColor(): Color {

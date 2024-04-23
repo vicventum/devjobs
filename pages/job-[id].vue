@@ -24,8 +24,8 @@ const { jobDetail, isLoading, isError } = useJob({ id: `${jobId}` })
 					:company="jobDetail.company"
 					:url-apply="jobDetail.urlApply"
 					:url-company="jobDetail?.urlCompany"
-					:logo="jobDetail.logo || undefined"
-					:company-num-employees="jobDetail.companyNumEmployees || undefined"
+					:logo="jobDetail.logo"
+					:company-num-employees="jobDetail.companyNumEmployees"
 				/>
 				<JobDetailContent
 					class="job-content mb-8"
@@ -37,8 +37,8 @@ const { jobDetail, isLoading, isError } = useJob({ id: `${jobId}` })
 					:text="jobDetail.text"
 					:title="jobDetail.title"
 					:url-apply="jobDetail.urlApply"
-					:location="jobDetail.location || undefined"
-					:type="jobDetail.type || undefined"
+					:location="jobDetail.location"
+					:type="jobDetail.type"
 				/>
 			</template>
 		</JobDetailErrorHandler>

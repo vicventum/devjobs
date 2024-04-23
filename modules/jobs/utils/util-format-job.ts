@@ -9,11 +9,8 @@ export function utilFormatJob(
 
 	return {
 		id: job.id,
-		logo: job.logo,
 		title: job.role,
 		company: job.company_name,
-		type: job.employment_type,
-		location: job.location,
 		date: job.date_posted,
 		// color: job.logo ? DEFAULT_JOB_COLOR : customColor,
 		color: customColor,
@@ -22,7 +19,10 @@ export function utilFormatJob(
 		text: job.text,
 		keywords: job.keywords,
 		source: job.source,
-		companyNumEmployees: job.company_num_employees,
+		companyNumEmployees: job.company_num_employees ?? undefined,
+		logo: job.logo ?? undefined,
+		type: job.employment_type ?? undefined,
+		location: job.location ?? undefined,
 		urlCompany: undefined,
 	}
 }
