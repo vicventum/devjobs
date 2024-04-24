@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import * as utilFormat from '@/modules/core/utils/util-format'
+
 type Props = {
 	date: Date
 	isRemote: boolean
@@ -10,8 +12,7 @@ type Props = {
 }
 const props = defineProps<Props>()
 
-const { toRelativeDate } = utilFormat()
-const relativeDate = ref(toRelativeDate(props.date))
+const relativeDate = ref(utilFormat.toRelativeDate(props.date))
 </script>
 
 <template>

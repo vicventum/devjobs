@@ -1,4 +1,4 @@
-export function utilCheckResponseType<T>(resp: T, schema: any): T {
+export function utilCheckResponseSchema<T>(resp: T, schema: any): T {
 	try {
 		const responseChecked: T = schema.parse(resp)
 		// Los datos son válidos si no se ha lanzado una excepción hasta este punto

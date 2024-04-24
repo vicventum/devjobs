@@ -1,9 +1,10 @@
+import type { JobListResponse, JobDataResponse } from '@/modules/jobs/types'
 import type {
 	Get,
 	GetAll,
 	JobListQuery,
 } from '@/modules/jobs/types/JobsProvider'
-// import { useOfetchApi } from '@/modules/jobs/api/clients/use-ofetch-api'
+import { useOfetchApi } from '@/modules/jobs/api/clients/use-ofetch-api'
 
 const ofetchApi = useOfetchApi()
 

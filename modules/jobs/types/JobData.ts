@@ -1,14 +1,14 @@
-// import type { Color } from '@/types'
+import type { Color } from '@/modules/core/types'
 
-export type JobType = 'contract' | 'full time' | undefined
+type JobType = 'contract' | 'full time' | undefined
 
-export interface JobData {
+interface JobData {
 	id: string
-	title: string
-	company: string
-	type: JobType
 	date: Date
 	color: Color
+	type: JobType
+	title: string
+	company: string
 	remote: boolean
 	logo?: string
 	location?: string
@@ -19,3 +19,5 @@ export interface JobData {
 	// keywords: z.array(z.string()),
 	// source: z.string(),
 }
+
+export { type JobType, type JobData }

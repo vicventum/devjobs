@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useTheme } from 'vuetify'
 const theme = useTheme()
-// console.log('🚀 ~ theme:', theme)
 
 const isDarkTheme = ref<boolean>(false)
 watch(

@@ -1,4 +1,4 @@
-// import type { JobData, DataFilter } from '@/types'
+import type { JobData, DataFilter } from '@/modules/jobs/types'
 
 export const useJobsStore = defineStore('Jobs', () => {
 	const jobList = ref<JobData[]>([])

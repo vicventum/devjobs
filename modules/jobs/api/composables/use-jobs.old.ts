@@ -1,6 +1,7 @@
 /* import type { FetchError } from 'ofetch'
 import type { JobListResponse, JobDataResponse, JobData } from '@/types'
 import { JobListSchema, JobDataSchema } from '@/types'
+import { useConstants } from '@/modules/core/composables/use-constants'
 
 // const DEFAULT_COLOR = theme.current.value.colors['light-darken-2']
 // const DEFAULT_JOB_COLOR = 'rgb(var(--v-theme-light-darken-2))'

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { DataFilter } from '@/modules/jobs/types'
+
 type Props = {
 	isLoading: boolean
 }

@@ -1,18 +1,9 @@
 import * as z from 'zod'
 
-export const EmploymentTypeSchema = z.enum(['contract', 'full time'])
-export type EmploymentType = z.infer<typeof EmploymentTypeSchema>
+const EmploymentTypeSchema = z.enum(['contract', 'full time'])
+type EmploymentType = z.infer<typeof EmploymentTypeSchema>
 
-// export const SourceSchema = z.enum([
-// 	'Berlinstartupjobs',
-// 	'Cryptocurrencyjobs',
-// 	'Hn',
-// 	'Remoteok',
-// 	'Weworkremotely',
-// ])
-// export type Source = z.infer<typeof SourceSchema>
-
-export const JobDataSchema = z.object({
+const JobDataSchema = z.object({
 	id: z.string(),
 	role: z.string(),
 	company_name: z.string(),
@@ -27,4 +18,11 @@ export const JobDataSchema = z.object({
 	keywords: z.array(z.string()),
 	source: z.string(),
 })
-export type JobDataResponse = z.infer<typeof JobDataSchema>
+type JobDataResponse = z.infer<typeof JobDataSchema>
+
+export {
+	type EmploymentType,
+	type JobDataResponse,
+	EmploymentTypeSchema,
+	JobDataSchema,
+}

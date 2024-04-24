@@ -1,12 +1,12 @@
-import { JobListSchema, JobDataSchema } from '@/modules/jobs/types'
-import type {
-	JobListResponse,
-	DataFilter,
-	JobDataResponse,
+import {
+	type JobListResponse,
+	type DataFilter,
+	type JobDataResponse,
+	JobListSchema,
+	JobDataSchema,
 } from '@/modules/jobs/types'
 import type { GetAll, Get } from '@/modules/jobs/types/JobsProvider'
-import { utilCheckResponseType } from '@/modules/core/utils/util-check-response-schema'
-// import useJobsApi from '@/composables/api/use-jobs-api'
+import { utilCheckResponseSchema } from '@/modules/core/utils/util-check-response-schema'
 
 type JobListOptions = { page?: number; filters?: DataFilter }
 
@@ -33,7 +33,7 @@ async function getJobList(
 
 	const jobListResponse = await provider({ page, query })
 
-	const jobListResponseChecked = utilCheckResponseType<JobListResponse>(
+	const jobListResponseChecked = utilCheckResponseSchema<JobListResponse>(
 		jobListResponse,
 		JobListSchema,
 	)
@@ -47,7 +47,7 @@ async function getJobDetail(
 ): Promise<JobDataResponse> {
 	const jobDetailResponse = await provider(id)
 
-	const jobDetailResponseChecked = utilCheckResponseType<JobDataResponse>(
+	const jobDetailResponseChecked = utilCheckResponseSchema<JobDataResponse>(
 		jobDetailResponse,
 		JobDataSchema,
 	)

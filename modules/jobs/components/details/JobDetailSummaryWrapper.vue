@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Color } from '@/modules/core/types'
+
 type Props = {
 	imageBgColor?: Color
 }

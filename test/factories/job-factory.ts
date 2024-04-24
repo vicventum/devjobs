@@ -1,5 +1,9 @@
 import { Factory } from 'fishery'
 import { faker } from '@faker-js/faker'
+
+import type { Color } from '@/modules/core/types'
+import type { JobType, JobData } from '@/modules/jobs/types'
+
 // import type { Color, JobData, JobType } from '@/types'
 
 const jobTypeList: JobType[] = ['contract', 'full time', undefined]

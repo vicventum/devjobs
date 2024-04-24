@@ -1,9 +1,9 @@
-interface ImgFiles {
+type ImgFiles = {
 	[key: string]: { default: string }
 }
 
-export default function (url: string): string | undefined {
+export function useSrc(url: string): string {
 	const imgFiles: ImgFiles = import.meta.globEager('@/assets/img/**')
 
-	return imgFiles[url].default
+	return imgFiles[url].default || ''
 }

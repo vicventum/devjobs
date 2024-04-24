@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import type { Color } from '~/types'
+import type { Color } from '@/modules/core/types'
 
 type Props = {
 	color: Color
@@ -17,7 +17,7 @@ const finalColor = ref(fallbackColor ?? props.color)
 </script>
 
 <template>
-	<JobDetailSummarySection :image-bg-color="finalColor">
+	<JobDetailSummaryWrapper :image-bg-color="finalColor">
 		<template #image>
 			<JobImg
 				class="card__logo-img"
@@ -61,7 +61,7 @@ const finalColor = ref(fallbackColor ?? props.color)
 				</div>
 			</div>
 		</template>
-	</JobDetailSummarySection>
+	</JobDetailSummaryWrapper>
 </template>
 
 <style lang="scss" scoped>

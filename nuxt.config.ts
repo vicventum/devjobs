@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 	imports: {
 		dirs: [
 			// scan all modules within given directory
-			'modules/**/*',
+			// 'modules/**/*',
 			// 'composables/**/*',
 		],
 	},

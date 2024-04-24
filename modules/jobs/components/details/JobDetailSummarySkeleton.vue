@@ -1,14 +1,14 @@
 <script lang="ts" setup></script>
 
 <template>
-	<JobDetailSummarySection class="skeleton">
+	<JobDetailSummaryWrapper class="skeleton">
 		<template #image>
 			<div class="skeleton__image-container">
 				<v-skeleton-loader class="skeleton__image" type="image" />
 			</div>
 		</template>
 		<v-skeleton-loader class="skeleton__content" type="heading" />
-	</JobDetailSummarySection>
+	</JobDetailSummaryWrapper>
 </template>
 
 <style lang="scss" scoped>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 type Props = {
-	isError: Boolean
-	isLoading: Boolean
-	isEmpty: Boolean
-	errorMessage?: String
-	loadingMessage?: String
-	emptyMessage?: String
+	isError: boolean
+	isLoading: boolean
+	isEmpty: boolean
+	errorMessage?: string
+	loadingMessage?: string
+	emptyMessage?: string
 }
 
 defineProps<Props>()

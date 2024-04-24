@@ -1,7 +1,7 @@
 // import { useTheme } from 'vuetify'
-// import type { Color } from '@/types'
+import type { Color } from '@/modules/core/types'
 
-export default function useConstants() {
+export function useConstants() {
 	const API_KEY = useRuntimeConfig().public.API_KEY
 	const API_BASE = useRuntimeConfig().public.API_BASE
 	const API_PROXY = useRuntimeConfig().public.API_PROXY

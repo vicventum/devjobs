@@ -1,10 +1,12 @@
 import type { JobDataResponse, JobListResponse } from '@/modules/jobs/types'
 
-export type JobListQuery = {
+type JobListQuery = {
 	page: number
 	query: object
 }
 
-export type GetAll = (data: JobListQuery) => Promise<JobListResponse>
+type GetAll = (data: JobListQuery) => Promise<JobListResponse>
 
-export type Get = (id: string) => Promise<JobDataResponse>
+type Get = (id: string) => Promise<JobDataResponse>
+
+export type { JobListQuery, GetAll, Get }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Color } from '@/modules/jobs/types'
+import type { Color } from '@/modules/core/types'
 
 type Props = {
 	text: string

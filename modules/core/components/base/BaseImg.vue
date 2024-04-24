@@ -37,10 +37,10 @@ function errorLoadingImg(): void {
 </template>
 
 <style lang="scss" scoped>
-.img {
-	/// ! DESTACADO: Se hacía para que funcionara el slot `#error`, pero lo que se necesita realmente es establecer una altura al elemento `v-img`(así se sobreescriba al final)
-	// &:deep(.v-img__error) {
-	// 	position: relative !important;
-	// }
-}
+// .img {
+/// ! DESTACADO: Se hacía para que funcionara el slot `#error`, pero lo que se necesita realmente es establecer una altura al elemento `v-img`(así se sobreescriba al final)
+// &:deep(.v-img__error) {
+// 	position: relative !important;
+// }
+// }
 </style>

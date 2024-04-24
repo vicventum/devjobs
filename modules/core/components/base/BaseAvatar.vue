@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { utilGetFirstLetter } from '@/modules/core/utils/util-get-first-letter'
+
 type Props = {
 	text: string
 	background?: string

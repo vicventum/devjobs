@@ -1,10 +1,12 @@
 <script setup lang="ts">
-// import type { Color } from '@/types'
+import type { Color } from '@/modules/core/types'
+import { useConstants } from '@/modules/core/composables/use-constants'
+import * as utilFormat from '@/modules/core/utils/util-format'
 
 type Props = {
 	id: string
-	date: Date
 	color: Color
+	date: Date
 	title: string
 	company: string
 	isRemote: boolean
@@ -18,8 +20,7 @@ type Emits = {
 const { id, color, logo, date } = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
-const { toRelativeDate } = utilFormat()
-const relativeDate = ref(toRelativeDate(date))
+const relativeDate = ref(utilFormat.toRelativeDate(date))
 
 const { DEFAULT_JOB_COLOR } = useConstants()
 const finalColor = ref(logo ? DEFAULT_JOB_COLOR : color)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { DataFilter } from '@/modules/jobs/types'
-// import useJobs from '@/composables/services/use-jobs'
+import { useJobs } from '@/modules/jobs/api/composables/use-jobs'
 
 const {
 	jobList,

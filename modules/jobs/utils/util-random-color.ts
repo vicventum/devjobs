@@ -1,4 +1,4 @@
-// import type { HexadecimalColor } from '@/types'
+import type { HexadecimalColor } from '@/modules/core/types'
 
 const COLORS: HexadecimalColor[] = [
 	'#E91E63',
@@ -7,12 +7,11 @@ const COLORS: HexadecimalColor[] = [
 	'#FFC107',
 	'#FF7043',
 	'#039BE5',
-]
+] as const
 
-export default function utilRandomColor(): HexadecimalColor {
+export function utilRandomColor(): HexadecimalColor {
 	// Obtener un índice aleatorio dentro del rango de la longitud del array COLORS
-	const randomColor = Math.floor(Math.random() * COLORS.length)
+	const indexRandomColor: number = Math.floor(Math.random() * COLORS.length)
 
-	// Devolver el color correspondiente al índice aleatorio obtenido
-	return COLORS[randomColor]
+	return COLORS[indexRandomColor]
 }

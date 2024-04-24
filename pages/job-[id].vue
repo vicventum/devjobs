@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// import useJob from '@/composables/services/use-job'
+import { useJob } from '@/modules/jobs/api/composables/use-job'
 
 definePageMeta({
 	layout: false,

@@ -1,5 +1,6 @@
-import { $fetch } from 'ofetch'
 import type { $Fetch } from 'ofetch'
+import { $fetch } from 'ofetch'
+import { useConstants } from '@/modules/core/composables/use-constants'
 
 const useOfetchApi = (): $Fetch => {
 	const { API_URL, API_KEY } = useConstants()

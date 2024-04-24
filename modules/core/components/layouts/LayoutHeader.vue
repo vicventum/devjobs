@@ -1,20 +1,22 @@
 <script setup lang="ts">
-// import useSrc from '@/composables/use-src'
+import { useSrc } from '@/modules/core/composables/use-src'
+
+const HEADER_HEIGHT = 161
 </script>
 
 <template>
 	<v-app-bar
-		class="header position-relative"
-		image="@/assets/img/desktop/bg-pattern-header.svg"
-		height="161"
+		class="header"
+		:image="useSrc('/assets/img/desktop/bg-pattern-header.svg')"
+		:height="HEADER_HEIGHT"
 		flat
 	>
-		<v-container class="d-flex align-center mt-n8">
-			<Nuxt-Link to="/" style="width: 115px">
+		<v-container class="header__logo mt-n8">
+			<Nuxt-Link to="/" class="header__logo-link">
 				<BaseImg
-					:src="useSrc('/assets/img/desktop/logo.svg')!"
-					alt="logo"
+					:src="useSrc('/assets/img/desktop/logo.svg')"
 					:cover="false"
+					alt="logo"
 				/>
 			</Nuxt-Link>
 
@@ -29,6 +31,15 @@
 
 <style lang="scss" scoped>
 .header {
+	position: relative !important;
 	z-index: 0 !important;
+
+	&__logo {
+		display: flex;
+		align-items: center;
+	}
+	&__logo-link {
+		width: 115px;
+	}
 }
 </style>

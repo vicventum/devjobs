@@ -1,4 +1,6 @@
-import type { Color, JobDataResponse } from '@/modules/jobs/types'
+import type { JobData, JobDataResponse } from '@/modules/jobs/types'
+import { useConstants } from '@/modules/core/composables/use-constants'
+import { utilRandomColor } from '@/modules/jobs/utils/util-random-color'
 
 export function utilFormatJobList(jobList: JobDataResponse[]): JobData[] {
 	// const { DEFAULT_JOB_COLOR } = useConstants()

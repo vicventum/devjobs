@@ -4,7 +4,7 @@ import { getAll as ofetchGetAll } from '@/modules/jobs/api/providers/jobs-ofetch
 import { utilFormatJobList } from '@/modules/jobs/utils/util-format-job-list'
 import { useJobsStore } from '@/modules/jobs/stores/jobs.store'
 
-const useJobs = () => {
+export const useJobs = () => {
 	const store = useJobsStore()
 	const { jobList, currentPage, isFinalPage, dataFilter } = storeToRefs(store)
 
@@ -57,5 +57,3 @@ const useJobs = () => {
 		},
 	}
 }
-
-export default useJobs
