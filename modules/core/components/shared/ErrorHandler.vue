@@ -16,7 +16,6 @@ const {
 	isLoading,
 	isEmpty,
 } = defineProps<Props>()
-console.log('💛 ~ isEmpty, isLoading, isError:', isEmpty, isLoading, isError)
 
 const slots = useSlots()
 

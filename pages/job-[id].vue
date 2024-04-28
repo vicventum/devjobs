@@ -8,13 +8,6 @@ definePageMeta({
 const route = useRoute()
 const jobId = route.params.id
 const { jobDetail, isLoading, isError } = await useJob({ id: `${jobId}` })
-console.log(
-	'💖 ~ jobDetail, isLoading, isError:',
-	jobDetail,
-	jobDetail.value,
-	isLoading.value,
-	isError.value,
-)
 </script>
 
 <template>
