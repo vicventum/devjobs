@@ -4,9 +4,9 @@ import type {
 	GetAll,
 	JobListQuery,
 } from '@/modules/jobs/types/JobsProvider'
-import { useOfetchApi } from '@/modules/jobs/api/clients/use-ofetch-api'
+import { ofetchApi } from '~/modules/jobs/api/clients/ofetch-api'
 
-const ofetchApi = useOfetchApi()
+// const ofetchApi = ofetchApi()
 
 export const getAll: GetAll = async (data: JobListQuery) => {
 	const { page, query } = data

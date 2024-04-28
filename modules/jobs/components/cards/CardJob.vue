@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Color } from '@/modules/core/types'
-// import { useConstants } from '@/modules/core/composables/use-constants'
+// import { useConstants } from '@/modules/core/constants/use-constants'
 import { DEFAULT_JOB_COLOR } from '@/modules/core/constants'
 import * as utilFormat from '@/modules/core/utils/util-format'
 

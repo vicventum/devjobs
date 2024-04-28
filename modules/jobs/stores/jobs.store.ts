@@ -34,7 +34,6 @@ export const useJobsStore = defineStore('Jobs', () => {
 		},
 		setJob(newJob: JobDataDetail | null) {
 			jobDetail.value = newJob ? { ...newJob } : null
-			console.log('💚 ~ setJob ~ jobDetail.value:', jobDetail.value, newJob)
 		},
 		setPage(page: number) {
 			if (currentPage.value === page) return null

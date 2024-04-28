@@ -23,25 +23,11 @@ export const useJob = async ({ id, color }: { id: string; color?: Color }) => {
 			// server: false,
 		},
 	)
-	console.log(
-		'🧡 ~ useJob ~ data:',
-		data.value,
-		pending.value,
-		error.value,
-		jobDetail.value,
-		id,
-	)
 
 	// ? Insertando la data (cuando ya se obtenga) en el store
 	watch(
 		() => data.value,
 		(newJobDetailResponse) => {
-			console.log(
-				'🚀 ~ useJob ~ newJobDetailResponse:',
-				data.value,
-				newJobDetailResponse,
-				id,
-			)
 			if (newJobDetailResponse) {
 				// if (newJobDetailResponse.id !== id) return null
 				// jobDetail.value = utilFormatJob(newJobDetailResponse, color)
@@ -56,18 +42,6 @@ export const useJob = async ({ id, color }: { id: string; color?: Color }) => {
 		// ? Al colocarlo en `false`, hace que no se tenga data desde un inicio, y por lo tanto se muestre el loader, de otra forma se mostraría la data previamente guardada por el `useAsyncData`
 		{ immediate: true },
 	)
-	console.log(
-		'🧡🧡 ~ useJob ~ data:',
-		jobDetail.value,
-		data.value,
-		pending.value,
-		error.value,
-	)
-
-	// if (data.value) {
-	// 	const formattedJob = utilFormatJob(data.value, color)
-	// 	store.setJob(formattedJob)
-	// }
 
 	return {
 		// --- Properties

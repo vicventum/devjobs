@@ -5,7 +5,7 @@ export function useConstants() {
 	const API_KEY = useRuntimeConfig().public.API_KEY
 	const API_BASE = useRuntimeConfig().public.API_BASE
 	const API_PROXY = useRuntimeConfig().public.API_PROXY
-	const API_URL = `${API_PROXY}${API_BASE}`
+	const API_URL = useRuntimeConfig().public.API_URL
 
 	// const defaultColor = useTheme().current.value.colors['light-darken-2']
 	// const DEFAULT_JOB_COLOR: Color = `rgb(var(--v-${defaultColor}))`
