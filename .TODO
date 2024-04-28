@@ -1,1 +1,18 @@
-- [] Refactorizar el componente CardJobImg (probablemente separarlo)
+## TODO's
+
+- [x] Refactorizar el componente CardJobImg (probablemente separarlo)
+- [ ] Cuestionar sobre si vale la pena evitar la herencia de atributos en componentes base
+- [ ] Ubicar los tipos mas cerca de los módulos que los usan
+- [ ] Quitar los `ClientOnly` y comprobar su comportamiento
+- [ ] Refactorizar archivo de constantes
+- [ ] Aplicar RWD
+- [ ] Agregar tests
+
+## FIX ME
+
+- [x] Corregir color del job en el detalle de un job, modificar el color por defecto si la imagen del job resulta dar un error, cambiar el color de la ruta en `GalleryJob`
+
+  - Solución 1: Quitar el color por defecto en los jobs que tengan imágenes. Esto hará que siempre tenga un color personalizado
+  - Solución 2: Usar una función en vez de un link en cada `CardJob`, de manera que pueda asignar el color personalizado antes de ir a la página del detalle de ese job
+
+- [ ] Corregir error al recargar la página del detalle de un job: "_[nuxt] A composable that requires access to the Nuxt instance was called outside of a plugin, Nuxt hook, Nuxt middleware, or Vue setup function. This is probably not a Nuxt bug._"

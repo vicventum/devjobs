@@ -1,41 +1,47 @@
 <script lang="ts" setup>
-import useJob from '@/composables/services/use-job'
+import { useJob } from '@/modules/jobs/api/composables/use-job'
 
 definePageMeta({
 	layout: false,
 })
 
 const route = useRoute()
-const { jobDetail, isLoading, isError } = useJob({ id: `${route.params.id}` })
-console.log('🚀 ~ jobDetail:', jobDetail, route)
+const jobId = route.params.id
+const { jobDetail, isLoading, isError } = useJob({ id: `${jobId}` })
 </script>
 
 <template>
 	<NuxtLayout name="detail">
-		<template v-if="jobDetail">
-			<CardJobSummary
-				class="job-summary mb-8"
-				:color="jobDetail.color"
-				:logo="jobDetail.logo"
-				:company="jobDetail.company"
-				:company-num-employees="jobDetail.companyNumEmployees"
-				:url-apply="jobDetail.urlApply"
-				:url-company="jobDetail?.urlCompany"
-			/>
-			<CardJobContent
-				class="job-content mb-8"
-				:company="jobDetail.company"
-				:date="jobDetail.date"
-				:keywords="jobDetail.keywords"
-				:location="jobDetail.location"
-				:remote="jobDetail.remote"
-				:source="jobDetail.source"
-				:text="jobDetail.text"
-				:title="jobDetail.title"
-				:type="jobDetail.type"
-				:url-apply="jobDetail.urlApply"
-			/>
-		</template>
+		<JobDetailErrorHandler
+			:is-loading="isLoading"
+			:is-error="isError"
+			:is-empty="!Object.keys({ ...jobDetail }).length"
+		>
+			<template v-if="jobDetail">
+				<JobDetailSummary
+					class="job-summary mb-8"
+					:color="jobDetail.color"
+					:company="jobDetail.company"
+					:url-apply="jobDetail.urlApply"
+					:url-company="jobDetail?.urlCompany"
+					:logo="jobDetail.logo"
+					:company-num-employees="jobDetail.companyNumEmployees"
+				/>
+				<JobDetailContent
+					class="job-content mb-8"
+					:company="jobDetail.company"
+					:date="jobDetail.date"
+					:keywords="jobDetail.keywords"
+					:is-remote="jobDetail.remote"
+					:source="jobDetail.source"
+					:text="jobDetail.text"
+					:title="jobDetail.title"
+					:url-apply="jobDetail.urlApply"
+					:location="jobDetail.location"
+					:type="jobDetail.type"
+				/>
+			</template>
+		</JobDetailErrorHandler>
 		<template #footer>
 			<LayoutJobDetailFooter
 				v-if="jobDetail"
