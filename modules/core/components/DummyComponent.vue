@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { dummyStore } from '@/modules/jobs/stores/dummy-store'
 const cartStore = dummyStore()
 </script>
 

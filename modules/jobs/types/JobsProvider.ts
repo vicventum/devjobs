@@ -5,8 +5,8 @@ type JobListQuery = {
 	query: object
 }
 
-type GetAll = (data: JobListQuery) => Promise<JobListResponse>
+type GetAll = (data: JobListQuery, ofetchApi: any) => Promise<JobListResponse>
 
-type Get = (id: string) => Promise<JobDataResponse>
+type Get = (id: string, ofetchApi: any) => Promise<JobDataResponse>
 
 export type { JobListQuery, GetAll, Get }

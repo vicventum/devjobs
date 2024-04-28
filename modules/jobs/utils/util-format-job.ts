@@ -1,6 +1,6 @@
 import type { Color } from '@/modules/core/types'
 import type { JobDataResponse, JobDataDetail } from '@/modules/jobs/types'
-import { useConstants } from '@/modules/core/composables/use-constants'
+// import { useConstants } from '@/modules/core/composables/use-constants'
 import { utilRandomColor } from '@/modules/jobs/utils/util-random-color'
 
 export function utilFormatJob(

@@ -1,3 +1,4 @@
+import type { $Fetch } from 'ofetch'
 import {
 	type JobListResponse,
 	type DataFilter,
@@ -13,6 +14,7 @@ type JobListOptions = { page?: number; filters?: DataFilter }
 async function getJobList(
 	provider: GetAll,
 	options: JobListOptions = {},
+	ofetchApi: $Fetch,
 ): Promise<JobListResponse> {
 	const {
 		page = 1,
@@ -31,7 +33,7 @@ async function getJobList(
 		remote: isRemoteOnly,
 	}
 
-	const jobListResponse = await provider({ page, query })
+	const jobListResponse = await provider({ page, query }, ofetchApi)
 
 	const jobListResponseChecked = utilCheckResponseSchema<JobListResponse>(
 		jobListResponse,
@@ -44,8 +46,9 @@ async function getJobList(
 async function getJobDetail(
 	provider: Get,
 	{ id }: { id: string },
+	ofetchApi: $Fetch,
 ): Promise<JobDataResponse> {
-	const jobDetailResponse = await provider(id)
+	const jobDetailResponse = await provider(id, ofetchApi)
 
 	const jobDetailResponseChecked = utilCheckResponseSchema<JobDataResponse>(
 		jobDetailResponse,

@@ -21,14 +21,15 @@
 
 import type { UseFetchOptions } from '#app'
 import { defu } from 'defu'
-import { useConstants } from '@/modules/core/composables/use-constants'
+// import { useConstants } from '@/modules/core/composables/use-constants'
+import { API_URL, API_KEY } from '@/modules/core/constants'
 
 export default function useMyFetch<T>(
 	url: string,
 	options: UseFetchOptions<T> = {},
 ) {
 	// const userAuth = useCookie('token')
-	const { API_URL, API_KEY } = useConstants()
+	// const { API_URL, API_KEY } = useConstants()
 
 	const defaults: UseFetchOptions<T> = {
 		baseURL: API_URL ?? 'https://api.nuxt.com',
