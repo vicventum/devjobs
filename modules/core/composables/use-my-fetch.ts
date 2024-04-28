@@ -21,7 +21,7 @@
 
 import type { UseFetchOptions } from '#app'
 import { defu } from 'defu'
-// import { useConstants } from '@/modules/core/composables/use-constants'
+// import { useConstants } from '@/modules/core/constants/use-constants'
 import { API_URL, API_KEY } from '@/modules/core/constants'
 
 export default function useMyFetch<T>(

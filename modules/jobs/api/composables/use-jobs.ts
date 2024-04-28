@@ -22,7 +22,6 @@ export const useJobs = () => {
 			lazy: true,
 		},
 	)
-	console.log('🧡 ~ useJobs ~ data:', data.value, pending.value, error.value)
 
 	// ? Insertando la data (cuando ya se obtenga) en el store
 	watch(
