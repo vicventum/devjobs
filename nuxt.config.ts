@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 			API_KEY: process.env.API_KEY,
 			API_BASE: process.env.API_BASE,
 			API_PROXY: process.env.API_PROXY,
+			API_URL: process.env.API_URL,
 		},
 	},
 	css: ['vuetify/styles', '~/assets/sass/main.scss'],
@@ -71,7 +72,7 @@ export default defineNuxtConfig({
 		},
 	},
 	pinia: {
-		storesDirs: ['./stores/**'],
+		// storesDirs: ['./stores/**'],
 	},
 	typescript: {
 		typeCheck: true,

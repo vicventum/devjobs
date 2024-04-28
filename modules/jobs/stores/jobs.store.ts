@@ -1,7 +1,8 @@
-import type { JobData, DataFilter } from '@/modules/jobs/types'
+import type { JobData, JobDataDetail, DataFilter } from '@/modules/jobs/types'
 
 export const useJobsStore = defineStore('Jobs', () => {
 	const jobList = ref<JobData[]>([])
+	const jobDetail = ref<JobDataDetail | null>(null)
 	const currentPage = ref<number>(1)
 	const isFinalPage = ref<boolean>(false)
 	const dataFilter = ref<DataFilter>({
@@ -19,6 +20,7 @@ export const useJobsStore = defineStore('Jobs', () => {
 	return {
 		// --- State
 		jobList,
+		jobDetail,
 		currentPage,
 		isFinalPage,
 		dataFilter,
@@ -29,6 +31,9 @@ export const useJobsStore = defineStore('Jobs', () => {
 		// --- Actions
 		setJobs(newJobs: JobData[]) {
 			jobList.value.push(...newJobs)
+		},
+		setJob(newJob: JobDataDetail | null) {
+			jobDetail.value = newJob ? { ...newJob } : null
 		},
 		setPage(page: number) {
 			if (currentPage.value === page) return null

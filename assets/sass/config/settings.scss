@@ -2,6 +2,19 @@ $ff: 'Kumbh Sans', sans-serif;
 $heading-font-family: $ff;
 $body-font-family: $ff;
 
+// @use 'vuetify/settings' as v;
+
+// @media #{map-get(v.$display-breakpoints, 'xs')} {
+// 	p { 
+// 		font-size: 0.75em;
+// 	}
+// }
+
+// @use 'vuetify/styles/settings' as vuetify;
+
+// $xs-only: #{map-get(vuetify.$display-breakpoints, 'xs-only')};
+
+
 $custom-typography: (
 	'h1': (
 		'size': 1.75rem,

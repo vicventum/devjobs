@@ -27,6 +27,7 @@ export const useJobs = () => {
 	watch(
 		() => data.value,
 		(newJobsResponse) => {
+			console.log('🚀 ~ useJobs ~ newJobsResponse:', newJobsResponse)
 			if (newJobsResponse) {
 				const jobList: JobData[] = utilFormatJobList(newJobsResponse.results)
 

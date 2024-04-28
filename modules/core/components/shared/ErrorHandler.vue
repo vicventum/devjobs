@@ -11,7 +11,10 @@ type Props = {
 const {
 	errorMessage = 'An error has occurred, please try again or reload the page',
 	loadingMessage = 'Loading...',
-	emptyMessage = 'There are no tasks to display. Create one!',
+	emptyMessage = 'There are no data to display',
+	isError,
+	isLoading,
+	isEmpty,
 } = defineProps<Props>()
 
 const slots = useSlots()
