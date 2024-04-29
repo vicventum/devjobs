@@ -1,16 +1,16 @@
-import type { JobData, DataFilter } from '@/modules/jobs/types'
+import type { JobData, DataFilter, JobListResponse } from '@/modules/jobs/types'
 import { getJobList } from '@/modules/jobs/api/services/jobs-service'
 import { getAll as ofetchGetAll } from '@/modules/jobs/api/providers/jobs-ofetch-provider'
 import { utilFormatJobList } from '@/modules/jobs/utils/util-format-job-list'
 import { useJobsStore } from '@/modules/jobs/stores/jobs.store'
 
-export const useJobs = () => {
+export const useJobs = async () => {
 	const store = useJobsStore()
 	const { jobList, currentPage, isFinalPage, dataFilter } = storeToRefs(store)
 
 	const provider = ofetchGetAll
 
-	const { data, pending, error } = useAsyncData(
+	const { data, pending, error } = await useAsyncData(
 		'jobList',
 		() =>
 			getJobList(provider, {
@@ -27,19 +27,23 @@ export const useJobs = () => {
 	watch(
 		() => data.value,
 		(newJobsResponse) => {
-			console.log('🚀 ~ useJobs ~ newJobsResponse:', newJobsResponse)
 			if (newJobsResponse) {
-				const jobList: JobData[] = utilFormatJobList(newJobsResponse.results)
+				const jobListFormatted: JobData[] = utilFormatJobList(
+					newJobsResponse.results,
+				)
+				// ? Evita agregar data duplicada cuando ya se obtuvo data desde el servidor
+				if (jobList.value.length && currentPage.value === 1) return null
 
-				store.setJobs(jobList)
+				store.setJobs(jobListFormatted)
 				store.setFinalPage(newJobsResponse.next)
 			}
 		},
-		{ immediate: false },
+		{ immediate: true },
 	)
 
 	return {
 		// --- Properties
+		// jobList: computed(() => [jobList.value[0], jobList.value[1]]),
 		jobList,
 		currentPage,
 		isFinalPage,

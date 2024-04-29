@@ -20,34 +20,32 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 
 <template>
 	<div class="gallery">
-		<ClientOnly>
-			<template v-if="jobList.length">
-				<NuxtLink
-					v-for="job in jobList"
-					:key="job.id"
-					class="gallery__link"
-					:to="goToPage({ id: job.id, color: job.color })"
-				>
-					<!-- :to="{
+		<!-- <template v-if="jobList.length"> -->
+		<NuxtLink
+			v-for="job in jobList"
+			:key="job.id"
+			class="gallery__link"
+			:to="goToPage({ id: job.id, color: job.color })"
+		>
+			<!-- :to="{
 						name: 'job-id',
 						params: { id: job.id },
 						query: { color: job.color },
 					}" -->
-					<CardJob
-						:id="job.id"
-						class="gallery__card"
-						:date="job.date"
-						:title="job.title"
-						:company="job.company"
-						:color="job.color"
-						:is-remote="job.remote"
-						:logo="job.logo"
-						:type="job.type"
-						:location="job.location"
-					/>
-				</NuxtLink>
-			</template>
-		</ClientOnly>
+			<CardJob
+				:id="job.id"
+				class="gallery__card"
+				:date="job.date"
+				:title="job.title"
+				:company="job.company"
+				:color="job.color"
+				:is-remote="job.remote"
+				:logo="job.logo"
+				:type="job.type"
+				:location="job.location"
+			/>
+		</NuxtLink>
+		<!-- </template> -->
 	</div>
 </template>
 

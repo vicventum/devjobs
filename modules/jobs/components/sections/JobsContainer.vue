@@ -10,7 +10,7 @@ const {
 	isFinalPage,
 	getPage,
 	getDataFilter,
-} = useJobs()
+} = await useJobs()
 
 const errorMessage = computed(() => {
 	if (isError)
