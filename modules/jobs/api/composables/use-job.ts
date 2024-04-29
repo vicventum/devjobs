@@ -8,14 +8,13 @@ import { useJobsStore } from '@/modules/jobs/stores/jobs.store'
 export const useJob = async ({ id, color }: { id: string; color?: Color }) => {
 	const store = useJobsStore()
 	const { jobDetail } = storeToRefs(store)
-	// store.setJob(null)
-
+	store.setJob(null)
 	// const jobDetail = ref<JobDataDetail>()
+
 	const provider: Get = ofetchGet
-	// console.log('🚀 ~ useJob ~ ofetchApi:', ofetchApi)
 
 	const { data, pending, error } = await useAsyncData(
-		'jobDetail',
+		`jobDetail-${id}`,
 		() => getJobDetail(provider, { id }),
 		{
 			lazy: true,
@@ -29,13 +28,8 @@ export const useJob = async ({ id, color }: { id: string; color?: Color }) => {
 		() => data.value,
 		(newJobDetailResponse) => {
 			if (newJobDetailResponse) {
-				// if (newJobDetailResponse.id !== id) return null
-				// jobDetail.value = utilFormatJob(newJobDetailResponse, color)
-				if (newJobDetailResponse.id !== id) {
-					store.setJob(null)
-					return null
-				}
 				const formattedJob = utilFormatJob(newJobDetailResponse, color)
+				// jobDetail.value = formattedJob
 				store.setJob(formattedJob)
 			}
 		},

@@ -1,7 +1,5 @@
 <template>
 	<div>
-		<ClientOnly>
-			<JobsContainer />
-		</ClientOnly>
+		<JobsContainer />
 	</div>
 </template>
