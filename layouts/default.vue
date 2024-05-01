@@ -1,15 +1,16 @@
-<script setup lang="ts">
-// import LayoutHeader from '@/components/layouts/LayoutHeader.vue'
-// import LayoutHeader from '../components/layouts/LayoutHeader.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<v-app data-testid="app">
 		<LayoutHeader class="mb-n8" />
-		<v-container class="position-relative">
+		<v-container class="container">
 			<slot />
 		</v-container>
 	</v-app>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+	position: relative;
+}
+</style>

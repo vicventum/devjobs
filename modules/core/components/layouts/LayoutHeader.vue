@@ -1,13 +1,32 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify'
 import { useSrc } from '@/modules/core/composables/use-src'
 
 const HEADER_HEIGHT = 161
+
+const { name } = useDisplay()
+
+const BACKGROUND_IMAGE: { [key: string]: string } = {
+	xs: '/assets/img/mobile/bg-pattern-header.svg',
+	sm: '/assets/img/tablet/bg-pattern-header.svg',
+}
+const DEFAULT_BACKGROUND_IMAGE = '/assets/img/desktop/bg-pattern-header.svg'
+
+const headerImage = computed(
+	() => BACKGROUND_IMAGE[name.value] ?? DEFAULT_BACKGROUND_IMAGE,
+)
+// xs: boolean // 0 - 595
+// sm: boolean // 600 - 959
+// md: boolean // 960 - 1279
+// lg: boolean // 1280 - 1919
+// xl: boolean // > 1920
+// xxl: boolean
 </script>
 
 <template>
 	<v-app-bar
 		class="header"
-		:image="useSrc('/assets/img/desktop/bg-pattern-header.svg')"
+		:image="useSrc(headerImage)"
 		:height="HEADER_HEIGHT"
 		flat
 	>
