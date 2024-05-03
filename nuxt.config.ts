@@ -62,6 +62,14 @@ export default defineNuxtConfig({
 				propsDestructure: true,
 			},
 		},
+		// ? Para agregar las variables de SCSS de forma global en los componentes
+		// css: {
+		// 	preprocessorOptions: {
+		// 		scss: {
+		// 			additionalData: '@use "@/assets/scss/settings.scss" as *;',
+		// 		},
+		// 	},
+		// },
 	},
 	// Configuración de Google font
 	googleFonts: {

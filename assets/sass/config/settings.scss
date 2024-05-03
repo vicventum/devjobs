@@ -131,12 +131,12 @@ $custom-typography: (
 
 		// --- v-container
 		$container-padding-x: 24px,
-		$container-max-widths:
-			(
-				// 'xs': 330px,
-				// 'sm': 690px,
-				'lg': 1110px,
-			),
+		$container-max-widths: (
+			// 'xs': 330px,
+			// 'sm': 690px,
+			'md': 1000px,
+			'lg': 1110px,
+		),
 
 		// --- v-app-bar
 		$app-bar-prominent-height: 165px,
@@ -149,6 +149,14 @@ $custom-typography: (
 		$sheet-border-radius: 4px,
 		// --- v-checkbox
 	);
+
+
+// xs: 0 - 595
+// sm: 600 - 959
+// md: 960 - 1279
+// lg: 1280 - 1919
+// xl: > 1920
+// xxl: 
 
 $xs-only: #{map-get(vuetify.$display-breakpoints, 'xs-only')};
 $sm-only: #{map-get(vuetify.$display-breakpoints, 'sm-only')};

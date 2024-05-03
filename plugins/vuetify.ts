@@ -8,6 +8,7 @@ import {
 	mdiMagnify,
 	mdiMapMarker,
 	mdiOfficeBuilding,
+	mdiFilter,
 } from '@mdi/js'
 
 // import { md1 } from 'vuetify/blueprints'
@@ -76,6 +77,7 @@ export const vuetify = createVuetify({
 			magnify: mdiMagnify,
 			mapMarker: mdiMapMarker,
 			officeBuilding: mdiOfficeBuilding,
+			filter: mdiFilter,
 		},
 		sets: {
 			mdi,

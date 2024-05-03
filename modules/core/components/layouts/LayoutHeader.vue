@@ -15,12 +15,6 @@ const DEFAULT_BACKGROUND_IMAGE = '/assets/img/desktop/bg-pattern-header.svg'
 const headerImage = computed(
 	() => BACKGROUND_IMAGE[name.value] ?? DEFAULT_BACKGROUND_IMAGE,
 )
-// xs: boolean // 0 - 595
-// sm: boolean // 600 - 959
-// md: boolean // 960 - 1279
-// lg: boolean // 1280 - 1919
-// xl: boolean // > 1920
-// xxl: boolean
 </script>
 
 <template>

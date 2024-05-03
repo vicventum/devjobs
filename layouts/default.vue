@@ -2,7 +2,7 @@
 
 <template>
 	<v-app data-testid="app">
-		<LayoutHeader class="mb-n8" />
+		<LayoutHeader class="mb-n14" />
 		<v-container class="container">
 			<slot />
 		</v-container>
