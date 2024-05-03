@@ -14,18 +14,25 @@ type Props = {
 type Emits = {
 	submit: [dataFilter: DataFilter]
 }
-defineProps<Props>()
+const { isLoading } = defineProps<Props>()
 const emit = defineEmits<Emits>()
 
 const modal = ref<boolean>(false)
 
+watch(
+	() => isLoading,
+	(isLoading) => {
+		if (!isLoading) modal.value = false
+	},
+)
+
 function openModal() {
 	modal.value = true
 }
-// function onSubmit(data?: DataFilter) {
-// 	emit('submit', data)
+
 function onSubmit() {
 	emit('submit', dataFilter.value)
+	// modal.value = false
 }
 </script>
 
