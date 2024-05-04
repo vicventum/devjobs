@@ -16,36 +16,56 @@ const relativeDate = ref(utilFormat.toRelativeDate(props.date))
 </script>
 
 <template>
-	<v-sheet class="pa-10" tag="main">
-		<article class="detail-info mb-10">
-			<div class="detail-info__content">
-				<JobTime
-					class="detail-info__time mb-1"
-					:relative-date="relativeDate"
-					:type="type"
-				/>
-				<h1 class="text-h1 mb-2">{{ title }}</h1>
+	<JobDetailContentWrapper>
+		<template #job-data>
+			<JobTime
+				class="detail-info__time mb-1"
+				:relative-date="relativeDate"
+				:type="type"
+			/>
+			<h1 class="text-h1 mb-2">{{ title }}</h1>
 
-				<JobLocation :location="location" :is-remote="isRemote" />
-			</div>
+			<JobLocation :location="location" :is-remote="isRemote" />
+		</template>
 
-			<div class="detail-info__actions">
-				<v-btn color="primary" :href="urlApply" target="_blank">
-					Apply Now
-				</v-btn>
-			</div>
-		</article>
+		<template #button>
+			<v-btn
+				class="detail-info__apply-btn"
+				color="primary"
+				:href="urlApply"
+				target="_blank"
+			>
+				Apply Now
+			</v-btn>
+		</template>
 
-		<article class="detail-content" v-html="text" />
-	</v-sheet>
+		<template #job-content>
+			<article class="detail-content" v-html="text" />
+		</template>
+	</JobDetailContentWrapper>
 </template>
 
 <style lang="scss" scoped>
+@use '@/assets/sass/config/settings.scss' as *;
+
 .detail-info {
 	display: flex;
+	flex-direction: column;
 	gap: 1rem;
 	justify-content: space-between;
-	align-items: center;
+
+	@media #{$sm-and-up} {
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&__apply-btn {
+		width: 100%;
+
+		@media #{$sm-and-up} {
+			width: initial;
+		}
+	}
 }
 
 .detail-content {
