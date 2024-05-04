@@ -1,41 +1,37 @@
 // @use 'vuetify/styles/settings' as vuetify;
 
-$ff: 'Kumbh Sans', sans-serif;
-$heading-font-family: $ff;
-$body-font-family: $ff;
-
 $custom-typography: (
 	'h1': (
-		'size': 1.75rem,
-		'weight': 700,
-		'line-height': 2.125rem,
-		'letter-spacing': -0.015625em,
-		'font-family': $heading-font-family,
-		'text-transform': none,
+		'size': var(--h1-size),
+		'weight': var(--h1-weight),
+		'line-height': var(--h1-line-height),
+		'letter-spacing': var(--h1-letter-spacing),
+		'font-family': var(--h1-font-family),
+		'text-transform': var(--h1-text-transform),
 	),
 	'h2': (
-		'size': 1.5rem,
-		'weight': 700,
-		'line-height': 1.8125rem,
-		'letter-spacing': -0.0083333333em,
-		'font-family': $heading-font-family,
-		'text-transform': none,
+		'size': var(--h2-size),
+		'weight': var(--h2-weight),
+		'line-height': var(--h2-line-height),
+		'letter-spacing': var(--h2-letter-spacing),
+		'font-family': var(--h2-font-family),
+		'text-transform': var(--h2-text-transform),
 	),
 	'h3': (
-		'size': 1.25rem,
-		'weight': 700,
-		'line-height': 1.5rem,
-		'letter-spacing': normal,
-		'font-family': $heading-font-family,
-		'text-transform': none,
+		'size': var(--h3-size),
+		'weight': var(--h3-weight),
+		'line-height': var(--h3-line-height),
+		'letter-spacing': var(--h3-letter-spacing),
+		'font-family': var(--h3-font-family),
+		'text-transform': var(--h3-text-transform),
 	),
 	'h4': (
-		'size': 0.875rem,
-		'weight': 700,
-		'line-height': 1.125rem,
-		'letter-spacing': normal,
-		'font-family': $heading-font-family,
-		'text-transform': none,
+		'size': var(--h4-size),
+		'weight': var(--h4-weight),
+		'line-height': var(--h4-line-height),
+		'letter-spacing': var(--h4-letter-spacing),
+		'font-family': var(--h4-font-family),
+		'text-transform': var(--h4-text-transform),
 	),
 	// 'h5': (
 	// 	'size': 1.5rem,
@@ -71,12 +67,12 @@ $custom-typography: (
 	// ),
 	'body-1':
 		(
-			'size': 1rem,
-			'weight': 400,
-			'line-height': 1.625rem,
-			'letter-spacing': 0.03125em,
-			'font-family': $body-font-family,
-			'text-transform': none,
+			'size': var(--body-1-size),
+			'weight': var(--body-1-weight),
+			'line-height': var(--body-1-line-height),
+			'letter-spacing': var(--body-1-letter-spacing),
+			'font-family': var(--body-1-font-family),
+			'text-transform': var(--body-1-text-transform),
 		),
 	// 'body-2': (
 	// 	'size': 0.875rem,
@@ -88,12 +84,12 @@ $custom-typography: (
 	// ),
 	'button':
 		(
-			'size': 1.125rem,
-			'weight': 700,
-			'line-height': 2.25rem,
-			'letter-spacing': 0.06em,
-			'font-family': $body-font-family,
-			'text-transform': none,
+			'size': var(--button-size),
+			'weight': var(--button-weight),
+			'line-height': var(--button-line-height),
+			'letter-spacing': var(--button-letter-spacing),
+			'font-family': var(--button-font-family),
+			'text-transform': var(--button-text-transform),
 		),
 	// 'caption': (
 	// 	'size': 0.75rem,
@@ -115,8 +111,8 @@ $custom-typography: (
 
 @use 'vuetify/settings' as vuetify with (
 		$color-pack: false,
-		$heading-font-family: $ff,
-		$body-font-family: $ff,
+		$heading-font-family: var(--heading-font-family),
+		$body-font-family: var(--body-font-family),
 		$typography: $custom-typography,
 
 		// --- v-btn
@@ -150,13 +146,12 @@ $custom-typography: (
 		// --- v-checkbox
 	);
 
-
 // xs: 0 - 595
 // sm: 600 - 959
 // md: 960 - 1279
 // lg: 1280 - 1919
 // xl: > 1920
-// xxl: 
+// xxl:
 
 $xs-only: #{map-get(vuetify.$display-breakpoints, 'xs-only')};
 $sm-only: #{map-get(vuetify.$display-breakpoints, 'sm-only')};
