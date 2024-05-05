@@ -1,10 +1,10 @@
 <template>
 	<v-app data-testid="app">
-		<LayoutHeader class="mb-n8" />
+		<LayoutHeader class="mb-n14" />
 		<v-container class="container">
 			<slot />
 		</v-container>
-		<v-sheet>
+		<v-sheet class="footer">
 			<slot name="footer" />
 		</v-sheet>
 	</v-app>
@@ -14,5 +14,9 @@
 .container {
 	position: relative;
 	max-width: var(--job-detail-container-width);
+}
+.footer {
+	/*// ? Coloca el footer siempre abajo */
+	margin-top: auto;
 }
 </style>

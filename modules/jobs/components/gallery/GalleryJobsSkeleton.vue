@@ -7,19 +7,14 @@ const { items = 9 } = defineProps<Props>()
 
 <template>
 	<section class="gallery">
-		<v-skeleton-loader
-			v-for="job in items"
-			:key="job"
-			type="avatar, text, paragraph"
-			height="270px"
-		/>
+		<CardJobSkeleton v-for="job in items" :key="job" />
 	</section>
 </template>
 
 <style scoped>
 .gallery {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
 	column-gap: 32px;
 	row-gap: 64px;
 }

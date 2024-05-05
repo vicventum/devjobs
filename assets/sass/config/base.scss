@@ -1,11 +1,10 @@
 @use 'sass:map';
 @use './settings';
-@use './font-style-mapping.scss' as fs;
 @use '../utils/scrollbar.scss';
+@import './font-styles.scss';
 // @use 'vuetify/styles';
 :root {
 	--job-detail-container-width: 730px;
-	--h2-size: #{fs.$h2-size};
 }
 
 body {
@@ -25,45 +24,45 @@ h4 {
 
 h1 {
 	// @extend .text-h1;
-	font-size: fs.$h1-size;
-	font-weight: fs.$h1-weight;
-	line-height: fs.$h1-line-height;
-	letter-spacing: fs.$h1-letter-spacing;
-	font-family: fs.$h1-font-family;
-	text-transform: fs.$h1-text-transform;
+	font-size: var(--h1-size);
+	font-weight: var(--h1-weight);
+	line-height: var(--h1-line-height);
+	letter-spacing: var(--h1-letter-spacing);
+	font-family: var(--h1-font-family);
+	text-transform: var(--h1-text-transform);
 }
 h2 {
-	font-size: fs.$h2-size;
-	font-weight: fs.$h2-weight;
-	line-height: fs.$h2-line-height;
-	letter-spacing: fs.$h2-letter-spacing;
-	font-family: fs.$h2-font-family;
-	text-transform: fs.$h2-text-transform;
+	font-size: var(--h2-size);
+	font-weight: var(--h2-weight);
+	line-height: var(--h2-line-height);
+	letter-spacing: var(--h2-letter-spacing);
+	font-family: var(--h2-font-family);
+	text-transform: var(--h2-text-transform);
 }
 h3 {
-	font-size: fs.$h3-size;
-	font-weight: fs.$h3-weight;
-	line-height: fs.$h3-line-height;
-	letter-spacing: fs.$h3-letter-spacing;
-	font-family: fs.$h3-font-family;
-	text-transform: fs.$h3-text-transform;
+	font-size: var(--h3-size);
+	font-weight: var(--h3-weight);
+	line-height: var(--h3-line-height);
+	letter-spacing: var(--h3-letter-spacing);
+	font-family: var(--h3-font-family);
+	text-transform: var(--h3-text-transform);
 }
 h4 {
-	font-size: fs.$h4-size;
-	font-weight: fs.$h4-weight;
-	line-height: fs.$h4-line-height;
-	letter-spacing: fs.$h4-letter-spacing;
-	font-family: fs.$h4-font-family;
-	text-transform: fs.$h4-text-transform;
+	font-size: var(--h4-size);
+	font-weight: var(--h4-weight);
+	line-height: var(--h4-line-height);
+	letter-spacing: var(--h4-letter-spacing);
+	font-family: var(--h4-font-family);
+	text-transform: var(--h4-text-transform);
 }
 
 p {
-	font-size: fs.$body-1-size;
-	font-weight: fs.$body-1-weight;
-	line-height: fs.$body-1-line-height;
-	letter-spacing: fs.$body-1-letter-spacing;
-	font-family: fs.$body-1-font-family;
-	text-transform: fs.$body-1-text-transform;
+	font-size: var(--body-1-size);
+	font-weight: var(--body-1-weight);
+	line-height: var(--body-1-line-height);
+	letter-spacing: var(--body-1-letter-spacing);
+	font-family: var(--body-1-font-family);
+	text-transform: var(--body-1-text-transform);
 }
 
 a {

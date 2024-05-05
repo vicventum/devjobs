@@ -1,27 +1,43 @@
 <template>
-	<v-sheet class="skeleton pa-10" tag="main">
-		<article class="skeleton-info mb-10">
-			<div class="skeleton-info__content">
-				<v-skeleton-loader type="subtitle, heading" />
-			</div>
+	<v-sheet class="skeleton" tag="main">
+		<JobDetailContentWrapper>
+			<template #job-data>
+				<v-skeleton-loader type="subtitle, heading, subtitle" />
+			</template>
 
-			<div class="skeleton-info__actions">
+			<template #button>
 				<v-skeleton-loader type="button" />
-			</div>
-		</article>
+			</template>
 
-		<v-skeleton-loader
-			v-for="n in 2"
-			:key="n"
-			class="skeleton__content"
-			type="paragraph"
-		/>
+			<template #job-content>
+				<!-- <v-skeleton-loader
+					v-for="n in 3"
+					:key="n"
+					class="skeleton__content"
+					type="paragraph"
+				/> -->
+				<v-skeleton-loader class="skeleton__content" type="paragraph@3" />
+			</template>
+		</JobDetailContentWrapper>
 	</v-sheet>
 </template>
 
 <style lang="scss" scoped>
-.skeleton-info {
-	display: grid;
-	grid-template-columns: 1fr 15%;
+@use '@/assets/sass/config/settings.scss' as *;
+.skeleton {
+	&:deep(.v-skeleton-loader__heading),
+	&:deep(.v-skeleton-loader__text),
+	&:deep(.v-skeleton-loader__button) {
+		margin-left: 0;
+	}
+	&:deep(.v-skeleton-loader__heading) {
+		margin-top: 0;
+	}
+
+	&:deep(.v-skeleton-loader__button) {
+		@media #{$sm-and-down} {
+			max-width: initial !important;
+		}
+	}
 }
 </style>

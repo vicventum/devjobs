@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type Props = {
 	placeholder: string
-	prependInnerIcon: string
+	prependInnerIcon?: string
 }
 defineProps<Props>()
 
@@ -23,6 +23,9 @@ const modelValue = defineModel<string>()
 
 <style lang="scss" scoped>
 .input {
+	&:deep(.v-field__input) {
+		text-overflow: ellipsis;
+	}
 	&:deep(.v-icon__svg) {
 		fill: rgb(var(--v-theme-primary)) !important;
 	}

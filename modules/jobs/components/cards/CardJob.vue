@@ -33,55 +33,41 @@ function setOriginalColor() {
 </script>
 
 <template>
-	<v-sheet class="card px-8 pt-12 pb-8" tag="article">
-		<JobImg
-			class="card__img"
-			:src="logo"
-			:text="company"
-			:color="finalColor"
-			size="50px"
-			rounded
-			@error="setOriginalColor"
-		>
-			<template #error>
-				<BaseAvatar
-					:text="company"
-					size="50px"
-					background="transparent"
-					color="rgb(var(--v-theme-light))"
-				/>
-			</template>
-		</JobImg>
+	<CardJobWrapper class="card">
+		<template #img>
+			<JobImg
+				class=""
+				:src="logo"
+				:text="company"
+				:color="finalColor"
+				size="50px"
+				rounded
+				@error="setOriginalColor"
+			>
+				<template #error>
+					<BaseAvatar
+						:text="company"
+						size="50px"
+						background="transparent"
+						color="rgb(var(--v-theme-light))"
+					/>
+				</template>
+			</JobImg>
+		</template>
 
-		<CardJobContent
-			:relative-date="relativeDate"
-			:type="type"
-			:title="title"
-			:company="company"
-		/>
+		<template #content>
+			<CardJobContent
+				:relative-date="relativeDate"
+				:type="type"
+				:title="title"
+				:company="company"
+			/>
+		</template>
 
-		<JobLocation class="mt-10" :location="location" :is-remote="isRemote" />
-	</v-sheet>
+		<template #footer>
+			<JobLocation class="mt-10" :location="location" :is-remote="isRemote" />
+		</template>
+	</CardJobWrapper>
 </template>
 
-<style lang="scss" scoped>
-.card {
-	position: relative;
-	cursor: pointer;
-
-	transition-property: box-shadow, filter;
-	transition-duration: 0.1s;
-	transition-timing-function: ease-out;
-
-	&:hover {
-		filter: drop-shadow(0px 0px 1px rgb(var(--v-theme-primary)));
-		// transform: scale(1.01);
-	}
-
-	&__img {
-		position: absolute;
-		left: 32px;
-		top: -25px;
-	}
-}
-</style>
+<style lang="scss" scoped></style>
