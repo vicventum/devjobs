@@ -27,6 +27,7 @@ const { jobDetail, isLoading, isError } = await useJob({ id: `${jobId}` })
 					:logo="jobDetail.logo"
 					:company-num-employees="jobDetail.companyNumEmployees"
 				/>
+
 				<JobDetailContent
 					class="job-content mb-8"
 					:company="jobDetail.company"

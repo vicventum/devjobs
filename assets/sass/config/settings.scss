@@ -153,14 +153,14 @@ $custom-typography: (
 // xl: > 1920
 // xxl:
 
-$xs-only: #{map-get(vuetify.$display-breakpoints, 'xs-only')};
-$sm-only: #{map-get(vuetify.$display-breakpoints, 'sm-only')};
+$xs-only: #{map-get(vuetify.$display-breakpoints, 'xs')};
+$sm-only: #{map-get(vuetify.$display-breakpoints, 'sm')};
 $sm-and-down: #{map-get(vuetify.$display-breakpoints, 'sm-and-down')};
 $sm-and-up: #{map-get(vuetify.$display-breakpoints, 'sm-and-up')};
-$md-only: #{map-get(vuetify.$display-breakpoints, 'md-only')};
+$md-only: #{map-get(vuetify.$display-breakpoints, 'md')};
 $md-and-down: #{map-get(vuetify.$display-breakpoints, 'md-and-down')};
 $md-and-up: #{map-get(vuetify.$display-breakpoints, 'md-and-up')};
-$lg-only: #{map-get(vuetify.$display-breakpoints, 'lg-only')};
+$lg-only: #{map-get(vuetify.$display-breakpoints, 'lg')};
 $lg-and-down: #{map-get(vuetify.$display-breakpoints, 'lg-and-down')};
 $lg-and-up: #{map-get(vuetify.$display-breakpoints, 'lg-and-up')};
-$xl-only: #{map-get(vuetify.$display-breakpoints, 'xl-only')};
+$xl-only: #{map-get(vuetify.$display-breakpoints, 'xl')};

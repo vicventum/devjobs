@@ -10,12 +10,13 @@
 			</template>
 
 			<template #job-content>
-				<v-skeleton-loader
+				<!-- <v-skeleton-loader
 					v-for="n in 3"
 					:key="n"
 					class="skeleton__content"
 					type="paragraph"
-				/>
+				/> -->
+				<v-skeleton-loader class="skeleton__content" type="paragraph@3" />
 			</template>
 		</JobDetailContentWrapper>
 	</v-sheet>
