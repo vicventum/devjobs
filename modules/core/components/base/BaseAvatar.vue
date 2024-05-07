@@ -18,11 +18,13 @@ const {
 </script>
 
 <template>
+	<!-- <ClientOnly> -->
 	<v-avatar class="avatar" :color="background" :size="size">
 		<span class="avatar__text font-weight-bold">
 			{{ utilGetFirstLetter(text) }}
 		</span>
 	</v-avatar>
+	<!-- </ClientOnly> -->
 </template>
 
 <style lang="scss" scoped>

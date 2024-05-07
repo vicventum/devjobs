@@ -7,10 +7,10 @@ const HEADER_HEIGHT = 161
 const { name } = useDisplay()
 
 const BACKGROUND_IMAGE: { [key: string]: string } = {
-	xs: '/assets/img/mobile/bg-pattern-header.svg',
-	sm: '/assets/img/tablet/bg-pattern-header.svg',
+	xs: '/_nuxt/assets/img/mobile/bg-pattern-header.svg',
+	sm: '/_nuxt/assets/img/tablet/bg-pattern-header.svg',
 }
-const DEFAULT_BACKGROUND_IMAGE = '/assets/img/desktop/bg-pattern-header.svg'
+const DEFAULT_BACKGROUND_IMAGE = '/_nuxt/assets/img/desktop/bg-pattern-header.svg'
 
 const headerImage = computed(
 	() => BACKGROUND_IMAGE[name.value] ?? DEFAULT_BACKGROUND_IMAGE,
@@ -18,16 +18,11 @@ const headerImage = computed(
 </script>
 
 <template>
-	<v-app-bar
-		class="header"
-		:image="useSrc(headerImage)"
-		:height="HEADER_HEIGHT"
-		flat
-	>
+	<v-app-bar class="header" :image="headerImage" :height="HEADER_HEIGHT" flat>
 		<v-container class="header__logo mt-n8">
 			<Nuxt-Link to="/" class="header__logo-link">
 				<BaseImg
-					:src="useSrc('/assets/img/desktop/logo.svg')"
+					:src="'/_nuxt/assets/img/desktop/logo.svg'"
 					:cover="false"
 					alt="logo"
 				/>
