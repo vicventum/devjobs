@@ -1,9 +1,12 @@
-type ImgFiles = {
-	[key: string]: { default: string }
-}
+// type ImgFiles = {
+// 	[key: string]: { default: string }
+// }
 
 export function useSrc(url: string): string {
-	const imgFiles: ImgFiles = import.meta.globEager('@/assets/img/**')
-
-	return imgFiles[url].default || ''
+	const imgFiles = import.meta.glob('@/assets/img/**', {
+		eager: true,
+		import: 'default',
+	})
+	return (imgFiles[url] as string) || ''
+	// return url
 }

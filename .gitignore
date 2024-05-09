@@ -4,8 +4,11 @@
 .nuxt
 .nitro
 .cache
+.output
 dist
 vitest.config.ts.timestamp-*
+public
+# docs
 
 # Node dependencies
 node_modules
