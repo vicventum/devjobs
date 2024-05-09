@@ -29,6 +29,10 @@ export default defineNuxtConfig({
 	build: {
 		transpile: ['vuetify'],
 	},
+	app: {
+		baseURL: '/devjobs/', // baseURL: '/<repository>/'
+		buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
+	},
 	imports: {
 		dirs: [
 			// scan all modules within given directory
@@ -39,6 +43,7 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@pinia/nuxt',
+		// 'vuetifySass',
 		// (_options, nuxt) => {
 		// 	nuxt.hooks.hook('vite:extendConfig', (config) => {
 		// 		// @ts-expect-error
