@@ -52,20 +52,20 @@ export default defineNuxtConfig({
 			})
 		},
 	],
-	// experimental: {
-	// 	// @ts-ignore
-	// 	inlineSSRStyles: false, // f`or production build
-	// },
-	// hooks: {
-	// 	'vite:extendConfig': (config) => {
-	// 		config.plugins!.push(
-	// 			vuetify({ autoImport: true }), // do not pass the 'styles' option
-	// 			vuetifySass({
-	// 				configFile: './assets/sass/config/settings.scss',
-	// 			}),
-	// 		)
-	// 	},
-	// },
+	experimental: {
+		// @ts-ignore
+		inlineSSRStyles: false, // f`or production build
+	},
+	hooks: {
+		'vite:extendConfig': (config) => {
+			config.plugins!.push(
+				vuetify({ autoImport: true }), // do not pass the 'styles' option
+				vuetifySass({
+					configFile: './assets/sass/config/settings.scss',
+				}),
+			)
+		},
+	},
 	vite: {
 		vue: {
 			template: {

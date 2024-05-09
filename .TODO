@@ -6,8 +6,8 @@
 
 - [x] Quitar los `ClientOnly` y comprobar su comportamiento
 - [x] Refactorizar archivo de constantes
-- [ ] Aplicar RWD
-  - [ ] Aplicar RWD en los skeletons
+- [x] Aplicar RWD
+  - [x] Aplicar RWD en los skeletons
 - [ ] Agregar tests
 - [ ] Refactorizar el skeleton de la galería para hacerlo más parecido a la galería real
 - [ ] Evitar renderizar los 100 jobs de una vez, dividirlos en partes y adaptarlos a la paginación en la galería
@@ -18,7 +18,7 @@
 
   - Solución 1: Quitar el color por defecto en los jobs que tengan imágenes. Esto hará que siempre tenga un color personalizado
   - Solución 2: Usar una función en vez de un link en cada `CardJob`, de manera que pueda asignar el color personalizado antes de ir a la página del detalle de ese job
-
 - [x] Corregir error al recargar la página del detalle de un job: "_[nuxt] A composable that requires access to the Nuxt instance was called outside of a plugin, Nuxt hook, Nuxt middleware, or Vue setup function. This is probably not a Nuxt bug._"
 
 - [ ] Mantener los filtros del formulario al cambiar de página
+- [ ] Corregir error de discrepancia en HTML en SSR en Nuxt v3.11.2
