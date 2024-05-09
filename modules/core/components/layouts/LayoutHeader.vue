@@ -10,8 +10,7 @@ const BACKGROUND_IMAGE: { [key: string]: string } = {
 	xs: '/assets/img/mobile/bg-pattern-header.svg',
 	sm: '/assets/img/tablet/bg-pattern-header.svg',
 }
-const DEFAULT_BACKGROUND_IMAGE =
-	'/assets/img/desktop/bg-pattern-header.svg'
+const DEFAULT_BACKGROUND_IMAGE = '/assets/img/desktop/bg-pattern-header.svg'
 
 const headerImage = computed(
 	() => BACKGROUND_IMAGE[name.value] ?? DEFAULT_BACKGROUND_IMAGE,

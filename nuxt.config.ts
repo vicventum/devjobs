@@ -1,6 +1,7 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import vuetifySass from '@paro-paro/vite-plugin-vuetify-sass'
 
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	ssr: true,
 	devtools: { enabled: false },
@@ -38,23 +39,23 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/google-fonts',
 		'@pinia/nuxt',
-		(_options, nuxt) => {
-			nuxt.hooks.hook('vite:extendConfig', (config) => {
-				// @ts-expect-error
-				config.plugins.push(
-					vuetify({
-						autoImport: true,
-						// styles: {
-						// 	configFile: './assets/sass/config/settings.scss',
-						// },
-					}),
-				)
-			})
-		},
+		// (_options, nuxt) => {
+		// 	nuxt.hooks.hook('vite:extendConfig', (config) => {
+		// 		// @ts-expect-error
+		// 		config.plugins.push(
+		// 			vuetify({
+		// 				autoImport: true,
+		// 				styles: {
+		// 					configFile: 'assets/sass/config/settings.scss',
+		// 				},
+		// 			}),
+		// 		)
+		// 	})
+		// },
 	],
 	experimental: {
 		// @ts-ignore
-		inlineSSRStyles: false, // f`or production build
+		inlineSSRStyles: false, // for production build
 	},
 	hooks: {
 		'vite:extendConfig': (config) => {
