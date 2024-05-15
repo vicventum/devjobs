@@ -26,6 +26,6 @@ export function utilFormatJob(
 		logo: job.logo ?? undefined,
 		type: job.employment_type ?? undefined,
 		location: job.location ?? undefined,
-		urlCompany: undefined,
+		urlCompany: job.url_company ?? undefined,
 	}
 }

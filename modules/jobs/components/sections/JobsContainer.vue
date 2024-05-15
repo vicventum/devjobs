@@ -6,6 +6,7 @@ const {
 	jobList,
 	isLoading,
 	isError,
+	error,
 	currentPage,
 	isFinalPage,
 	getPage,
@@ -13,9 +14,9 @@ const {
 } = await useJobs()
 
 const errorMessage = computed(() => {
-	if (isError)
-		return 'An error has occurred, please try again or reload the page'
-	if (!jobList.value.length) return 'No available jobs found'
+	console.log('🚀 ~ errorMessage ~ error.value:', { error: error.value })
+	// if (isError) return 'An error has occurred, please try again or reload the page'
+	if (isError ?? !jobList.value.length) return 'No available jobs found'
 })
 
 function submitDataFilter(dataFilter: DataFilter) {
@@ -44,7 +45,7 @@ function submitDataFilter(dataFilter: DataFilter) {
 		<footer class="actions pa-4 my-16">
 			<v-btn
 				:loading="isLoading"
-				:disabled="isLoading || isFinalPage"
+				:disabled="isLoading || isFinalPage || isError"
 				color="primary"
 				@click="getPage(currentPage + 1)"
 			>

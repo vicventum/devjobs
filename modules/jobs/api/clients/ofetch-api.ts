@@ -5,10 +5,10 @@ import { useConstants } from '@/modules/core/constants/use-constants'
 
 // const ofetchApi = (): $Fetch => {
 function ofetchApi<T>(url: string, options?: FetchOptions): Promise<T> {
-	const { API_URL, API_KEY } = useConstants()
+	const { API_URL } = useConstants()
 
 	const api: $Fetch = $fetch.create({
-		// your default options
+		// default options
 		baseURL: API_URL ?? 'https://api.nuxt.com',
 	})
 
@@ -16,7 +16,6 @@ function ofetchApi<T>(url: string, options?: FetchOptions): Promise<T> {
 		...options,
 		headers: {
 			...options?.headers,
-			Authorization: `Token ${API_KEY}`,
 		},
 	})
 }

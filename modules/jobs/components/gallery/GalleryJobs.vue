@@ -54,7 +54,7 @@ function goToPage(data: { id: string; color: string }): RouteLocationRaw {
 	display: grid;
 	// * DESTACADO: Esto se debe a que 1fr se trata de la distribución del espacio disponible (!). Esto se rompe tan pronto como el contenido supera el tamaño de la pista
 	// ? El `minmax` es para obligar a que el contenido de una columna no puede ser más grande que una sección del grid
-	grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
 
 	column-gap: 32px;
 	row-gap: 64px;

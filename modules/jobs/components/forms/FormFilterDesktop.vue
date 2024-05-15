@@ -31,6 +31,7 @@ function onSubmit(data: DataFilter) {
 					v-model="dataFilter.title"
 					placeholder="Filter by title, companies, expertise..."
 					prepend-inner-icon="$magnify"
+					clearable
 				/>
 			</div>
 
@@ -41,6 +42,7 @@ function onSubmit(data: DataFilter) {
 					v-model="dataFilter.location"
 					placeholder="Filter by location..."
 					prepend-inner-icon="$mapMarker"
+					clearable
 				/>
 			</div>
 

@@ -26,6 +26,7 @@ function onSubmit() {
 					class="pa-4"
 					placeholder="Filter by location..."
 					prepend-inner-icon="$mapMarker"
+					clearable
 				/>
 
 				<v-divider />

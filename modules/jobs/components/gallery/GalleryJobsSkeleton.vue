@@ -14,7 +14,7 @@ const { items = 9 } = defineProps<Props>()
 <style scoped>
 .gallery {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
 	column-gap: 32px;
 	row-gap: 64px;
 }
