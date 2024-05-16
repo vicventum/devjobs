@@ -17,6 +17,7 @@ const JobDataSchema = z.object({
 	date_posted: z.coerce.date(),
 	keywords: z.array(z.string()),
 	source: z.string(),
+	url_company: z.union([z.null(), z.string()]),
 })
 type JobDataResponse = z.infer<typeof JobDataSchema>
 

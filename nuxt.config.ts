@@ -2,6 +2,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import vuetifySass from '@paro-paro/vite-plugin-vuetify-sass'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const isDev = process.env.NODE_ENV !== 'production'
 export default defineNuxtConfig({
 	ssr: true,
 	devtools: { enabled: false },
@@ -30,8 +31,8 @@ export default defineNuxtConfig({
 		transpile: ['vuetify'],
 	},
 	app: {
-		baseURL: '/devjobs/', // baseURL: '/<repository>/'
-		buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
+		baseURL: isDev ? process.env.BASE_URL_DEV : process.env.BASE_URL_PROD, // baseURL: '/<repository>/'
+		// buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
 	},
 	imports: {
 		dirs: [

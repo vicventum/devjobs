@@ -42,8 +42,8 @@ export const useJobsStore = defineStore('Jobs', () => {
 
 			currentPage.value = page
 		},
-		setFinalPage(finalPage: string | null) {
-			isFinalPage.value = !finalPage
+		setFinalPage(isFinalPageValue: boolean) {
+			isFinalPage.value = isFinalPageValue
 		},
 		setDataFilter(data: DataFilter) {
 			resetData()

@@ -28,14 +28,15 @@ export const useJobs = async () => {
 		() => data.value,
 		(newJobsResponse) => {
 			if (newJobsResponse) {
-				const jobListFormatted: JobData[] = utilFormatJobList(
-					newJobsResponse.results,
-				)
+				if (!newJobsResponse.length) {
+					store.setFinalPage(true)
+					return null
+				}
+				const jobListFormatted: JobData[] = utilFormatJobList(newJobsResponse)
 				// ? Evita agregar data duplicada cuando ya se obtuvo data desde el servidor
 				if (jobList.value.length && currentPage.value === 1) return null
 
 				store.setJobs(jobListFormatted)
-				store.setFinalPage(newJobsResponse.next)
 			}
 		},
 		{ immediate: true },

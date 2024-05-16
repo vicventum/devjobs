@@ -1,0 +1,13 @@
+.Vue-Toastification {
+	&__container {
+		top: 1em !important;
+		right: 1em !important;
+		left: auto !important;
+	}
+
+	&__toast.custom-toast {
+		width: auto !important;
+		margin-left: auto;
+		border-radius: 8px;
+	}
+}

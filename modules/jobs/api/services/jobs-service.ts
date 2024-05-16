@@ -26,12 +26,14 @@ async function getJobList(
 	const isRemoteOnly: true | '' = filters.isRemote ? filters.isRemote : ''
 	const query = {
 		// page,
-		search: filters.title,
+		role: filters.title,
 		location: filters.location,
 		remote: isRemoteOnly,
 	}
 
-	const jobListResponse = await provider({ page, query })
+	const queryCleaned = cleanQueryObject(query)
+
+	const jobListResponse = await provider({ page, query: queryCleaned })
 
 	const jobListResponseChecked = utilCheckResponseSchema<JobListResponse>(
 		jobListResponse,
@@ -53,6 +55,10 @@ async function getJobDetail(
 	)
 
 	return jobDetailResponseChecked
+}
+
+function cleanQueryObject(query: object) {
+	return Object.fromEntries(Object.entries(query).filter(([_, value]) => value))
 }
 
 export { getJobList, getJobDetail }

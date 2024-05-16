@@ -2,6 +2,7 @@
 type Props = {
 	placeholder: string
 	prependInnerIcon?: string
+	clearable?: boolean
 }
 defineProps<Props>()
 
@@ -14,6 +15,7 @@ const modelValue = defineModel<string>()
 		class="input"
 		:placeholder="placeholder"
 		:prepend-inner-icon="prependInnerIcon"
+		:clearable="clearable"
 		variant="solo"
 		density="comfortable"
 		hide-details

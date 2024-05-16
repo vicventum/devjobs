@@ -61,7 +61,13 @@ const avatarTextSize = computed(() => (smAndUp.value ? '3.5rem' : undefined))
 			<!-- <h3 class="text-body-1 text-light-darken-4">{{ urlCompany }}</h3> -->
 		</template>
 		<template #actions>
-			<v-btn color="primary" variant="tonal" :disabled="!urlCompany">
+			<v-btn
+				color="primary"
+				variant="tonal"
+				:disabled="!urlCompany"
+				:href="urlCompany"
+				target="_blank"
+			>
 				Company Site
 			</v-btn>
 		</template>

@@ -10,9 +10,13 @@ import { ofetchApi } from '~/modules/jobs/api/clients/ofetch-api'
 
 export const getAll: GetAll = async (data: JobListQuery) => {
 	const { page, query } = data
-	const resp = await ofetchApi<JobListResponse>(`/jobs/?page=${page}`, {
-		query,
-	})
+	const LIMIT_PAGE = 15
+	const resp = await ofetchApi<JobListResponse>(
+		`/jobs/?page=${page}&limit=${LIMIT_PAGE}`,
+		{
+			query,
+		},
+	)
 
 	return resp
 }

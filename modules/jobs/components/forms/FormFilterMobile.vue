@@ -42,6 +42,7 @@ function onSubmit() {
 			<BaseInput
 				v-model="dataFilter.title"
 				placeholder="Filter by title, companies, expertise..."
+				clearable
 			/>
 			<v-btn
 				class="form__filter-icon"
