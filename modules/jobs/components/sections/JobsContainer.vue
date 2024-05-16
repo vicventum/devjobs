@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useToast } from 'vue-toastification'
+// import { useToast } from 'vue-toastification'
 import type { DataFilter } from '@/modules/jobs/types'
 import { useJobs } from '@/modules/jobs/api/composables/use-jobs'
 const {
@@ -30,15 +30,15 @@ function setPage(nextPage: number) {
 	getPage(nextPage)
 }
 
-const toast = useToast()
+// const toast = useToast()
 
-watch(
-	() => isFinalPage.value,
-	(newValue) => {
-		if (isFromSubmit) toast.info('No more jobs found')
-		isFromSubmit = false
-	},
-)
+// watch(
+// 	() => isFinalPage.value,
+// 	(newValue) => {
+// 		if (isFromSubmit) toast.info('No more jobs found')
+// 		isFromSubmit = false
+// 	},
+// )
 </script>
 
 <template>
