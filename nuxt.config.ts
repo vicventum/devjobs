@@ -28,11 +28,11 @@ export default defineNuxtConfig({
 		},
 	],
 	build: {
-		transpile: ['vuetify'],
+		transpile: ['vuetify', 'vue-sonner'],
 	},
 	app: {
-		baseURL: isDev ? process.env.BASE_URL_DEV : process.env.BASE_URL_PROD, // baseURL: '/<repository>/'
-		// buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
+		baseURL: '/devjobs/', // baseURL: '/<repository>/'
+		buildAssetsDir: 'assets', // don't use "_" at the begining of the folder name to avoids nojkill conflict
 	},
 	imports: {
 		dirs: [
@@ -62,6 +62,7 @@ export default defineNuxtConfig({
 	experimental: {
 		// @ts-ignore
 		inlineSSRStyles: false, // for production build
+		payloadExtraction: false,
 	},
 	hooks: {
 		'vite:extendConfig': (config) => {

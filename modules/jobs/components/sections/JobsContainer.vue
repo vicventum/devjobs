@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { useToast } from 'vue-toastification'
 import type { DataFilter } from '@/modules/jobs/types'
 import { useJobs } from '@/modules/jobs/api/composables/use-jobs'
 const {
@@ -14,7 +13,6 @@ const {
 } = await useJobs()
 
 const errorMessage = computed(() => {
-	// console.log('🚀 ~ errorMessage ~ error.value:', { error: error.value })
 	// if (isError) return 'An error has occurred, please try again or reload the page'
 	if (isError ?? !jobList.value.length) return 'No available jobs found'
 })
@@ -30,15 +28,15 @@ function setPage(nextPage: number) {
 	getPage(nextPage)
 }
 
-// const toast = useToast()
+const { $toast } = useNuxtApp()
 
-// watch(
-// 	() => isFinalPage.value,
-// 	(newValue) => {
-// 		if (isFromSubmit) toast.info('No more jobs found')
-// 		isFromSubmit = false
-// 	},
-// )
+watch(
+	() => isFinalPage.value,
+	() => {
+		if (isFromSubmit) $toast.info('No more jobs found')
+		isFromSubmit = false
+	},
+)
 </script>
 
 <template>
@@ -69,6 +67,7 @@ function setPage(nextPage: number) {
 				Load More
 			</v-btn>
 		</footer>
+		<BaseToaster />
 	</div>
 </template>
 
